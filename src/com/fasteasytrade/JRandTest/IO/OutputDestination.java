@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.IO;
+package com.fasteasytrade.jrandtest.io;
 
 /**
  * This interface will be used by several output classes, so diffferent output

@@ -31,9 +31,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Algo;
+package com.fasteasytrade.jrandtest.algo;
 
-import com.fasteasytrade.JRandTest.IO.FileAlgoRandomStream;
+import com.fasteasytrade.jrandtest.io.FileAlgoRandomStream;
 
 /**
  * Simple LCG from NIST test package as a random stream
@@ -57,9 +57,7 @@ public class Lcg1 extends FileAlgoRandomStream {
         super(keyFileName);
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setupKeys()
-     */
+    
     @Override
     public void setupKeys() {
 
@@ -67,9 +65,6 @@ public class Lcg1 extends FileAlgoRandomStream {
 
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setup()
-     */
     @Override
     public void setup() {
 
@@ -77,12 +72,6 @@ public class Lcg1 extends FileAlgoRandomStream {
 
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#openInputStream()
-     *      <p>
-     *      if filename exists (not null), we open file and later will encrypt
-     *      it. Else, algorithm will generate random data (as PRNG).
-     */
     @Override
     public boolean openInputStream() throws Exception {
 
@@ -99,9 +88,6 @@ public class Lcg1 extends FileAlgoRandomStream {
         return open;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readByte()
-     */
     @Override
     public byte readByte() throws Exception {
         if (!isOpen()) {
@@ -165,9 +151,6 @@ public class Lcg1 extends FileAlgoRandomStream {
         return (byte)(prng ^ data);
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readInt()
-     */
     @Override
     public int readInt() throws Exception {
         if (!isOpen()) {
@@ -187,9 +170,6 @@ public class Lcg1 extends FileAlgoRandomStream {
         return prng;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readLong()
-     */
     @Override
     public long readLong() throws Exception {
         if (!isOpen()) {

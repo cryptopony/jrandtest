@@ -30,7 +30,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.IO;
+package com.fasteasytrade.jrandtest.io;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -68,33 +68,21 @@ public class FileRandomStream implements RandomStream {
         filename = s;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#getFilename()
-     */
     @Override
     public String getFilename() {
         return filename;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#setFilename(java.lang.String)
-     */
     @Override
     public void setFilename(String s) {
         filename = s;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#isOpen()
-     */
     @Override
     public boolean isOpen() {
         return open;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#openInputStream()
-     */
     @Override
     public boolean openInputStream() throws Exception {
         open = false;
@@ -113,9 +101,6 @@ public class FileRandomStream implements RandomStream {
         return true;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#closeInputStream()
-     */
     @Override
     public boolean closeInputStream() {
         try {
@@ -129,9 +114,6 @@ public class FileRandomStream implements RandomStream {
         return true;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readByte()
-     */
     @Override
     public byte readByte() throws Exception {
 
@@ -160,9 +142,6 @@ public class FileRandomStream implements RandomStream {
         return -1;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readInt()
-     */
     @Override
     public int readInt() throws Exception {
         if (!isOpen()) {
@@ -179,9 +158,6 @@ public class FileRandomStream implements RandomStream {
         return result;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readLong()
-     */
     @Override
     public long readLong() throws Exception {
         if (!isOpen()) {

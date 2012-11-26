@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.IO;
+package com.fasteasytrade.jrandtest.io;
 
 /**
  * RandomStream interface represen stream of data to be checked by the different

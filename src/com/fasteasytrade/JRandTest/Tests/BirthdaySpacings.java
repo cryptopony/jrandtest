@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * BirthdaySpacings from DieHard
@@ -40,9 +40,6 @@ package com.fasteasytrade.JRandTest.Tests;
  *  
  */
 public class BirthdaySpacings extends Base {
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");
@@ -66,9 +63,6 @@ public class BirthdaySpacings extends Base {
 
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#test(java.lang.String)
-     */
     @Override
     public void test(String filename) throws Exception {
 

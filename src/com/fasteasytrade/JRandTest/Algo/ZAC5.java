@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Algo;
+package com.fasteasytrade.jrandtest.algo;
 
 import java.util.Random;
 
@@ -295,7 +295,7 @@ public class ZAC5 extends Cipher {
      */
     public void initEncrypt() {
         int i;
-        com.fasteasytrade.JRandTest.Algo.SHA1 sha = new com.fasteasytrade.JRandTest.Algo.SHA1();
+        SHA1 sha = new SHA1();
 
         for (i = 0; i < 4096; i++) {
             sha.update(cryptKey.next());

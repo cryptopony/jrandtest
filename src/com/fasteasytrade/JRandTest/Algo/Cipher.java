@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Algo;
+package com.fasteasytrade.jrandtest.algo;
 
 /**
  * Cipher class is a base to all cipher algorithms in JRandTest.

@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * Run from DieHard
@@ -128,9 +128,6 @@ public class Run extends Base {
 
     } // end udruns
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");

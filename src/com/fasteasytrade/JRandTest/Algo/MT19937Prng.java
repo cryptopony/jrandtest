@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Algo;
+package com.fasteasytrade.jrandtest.algo;
 
 /**
  * MT19937Prng class java implements MT19937 prng.

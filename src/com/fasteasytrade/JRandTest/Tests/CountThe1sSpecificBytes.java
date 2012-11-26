@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * CountThe1sSpecificBytes from DieHard
@@ -39,9 +39,7 @@ package com.fasteasytrade.JRandTest.Tests;
  * @author Zur Aougav
  */
 public class CountThe1sSpecificBytes extends CountThe1s {
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.CountThe1s#setParameters()
-     */
+
     @Override
     public void setParameters() {
         testStream = false;

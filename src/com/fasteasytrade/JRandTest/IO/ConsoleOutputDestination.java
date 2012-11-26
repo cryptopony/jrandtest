@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.IO;
+package com.fasteasytrade.jrandtest.io;
 
 /**
  * @author Zur Aougav
@@ -46,17 +46,11 @@ package com.fasteasytrade.JRandTest.IO;
  */
 public class ConsoleOutputDestination implements OutputDestination {
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.OutputDestination#printf(java.lang.String)
-     */
     @Override
     public void printf(String s) {
         System.out.println(s);
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.OutputDestination#puts(java.lang.String)
-     */
     @Override
     public void puts(String s) {
         System.out.println(s);

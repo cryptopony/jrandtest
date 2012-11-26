@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * OverlappingPairsSparseOccupancy (OPSO) from DieHard
@@ -59,9 +59,6 @@ public class OverlappingPairsSparseOccupancy extends Base {
 
     //	end used by get_w
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");
@@ -90,9 +87,6 @@ public class OverlappingPairsSparseOccupancy extends Base {
         std = 290.0;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#test(java.lang.String)
-     */
     @Override
     public void test(String filename) {
         int j;

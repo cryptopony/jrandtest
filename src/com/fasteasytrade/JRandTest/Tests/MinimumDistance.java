@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * MinimumDistance from DieHard
@@ -47,9 +47,6 @@ public class MinimumDistance extends Base {
     final int side = 10000;
     final double ratio = 10000.0 / UNIMAX;
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");
@@ -68,11 +65,6 @@ public class MinimumDistance extends Base {
 
     }
 
-    /**
-     * class point is in Base class
-     * <p>
-     * @see com.fasteasytrade.JRandTest.Tests.Base#test(java.lang.String)
-     */
     @Override
     public void test(String filename) throws Exception {
         point[] pts;

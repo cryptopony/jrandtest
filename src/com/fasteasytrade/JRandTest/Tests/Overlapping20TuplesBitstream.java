@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * Overlapping20TuplesBitstream from DieHard
@@ -49,9 +49,6 @@ package com.fasteasytrade.JRandTest.Tests;
  */
 public class Overlapping20TuplesBitstream extends Base {
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");
@@ -72,9 +69,6 @@ public class Overlapping20TuplesBitstream extends Base {
         puts("\t|-------------------------------------------------------------|\n");
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#test(java.lang.String)
-     */
     @Override
     public void test(String filename) throws Exception {
         final int nb_pw = 20, power = 21, no_obs = 20;

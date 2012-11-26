@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * BinaryRankTestFor6x8Matrices from DieHard
@@ -52,9 +52,6 @@ public class BinaryRankTestFor6x8Matrices extends Base {
 
     int no_matrices = 100000;
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");
@@ -69,9 +66,6 @@ public class BinaryRankTestFor6x8Matrices extends Base {
         puts("\t|-------------------------------------------------------------|\n");
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#test(java.lang.String)
-     */
     @Override
     public void test(String filename) throws Exception {
 

@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * Squeeze from DieHard
@@ -62,9 +62,6 @@ public class Squeeze extends Base {
     double tmp;
     double chsq = 0;
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");
@@ -79,9 +76,6 @@ public class Squeeze extends Base {
         puts("\t|-------------------------------------------------------------|\n");
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#test(java.lang.String)
-     */
     @Override
     public void test(String filename) throws Exception {
         printf("\t\t\tRESULTS OF SQUEEZE TEST FOR " + filename + "\n\n");

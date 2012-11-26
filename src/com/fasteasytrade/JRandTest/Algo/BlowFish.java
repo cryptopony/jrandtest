@@ -31,9 +31,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Algo;
+package com.fasteasytrade.jrandtest.algo;
 
-import com.fasteasytrade.JRandTest.IO.FileAlgoRandomStream;
+import com.fasteasytrade.jrandtest.io.FileAlgoRandomStream;
 
 /**
  * Stream of random bytes from BFcipher class
@@ -79,25 +79,16 @@ public class BlowFish extends FileAlgoRandomStream {
         super(keyFileName);
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#getFilename()
-     */
     @Override
     public String getFilename() {
         return filename;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#setFilename(java.lang.String)
-     */
     @Override
     public void setFilename(String s) {
         filename = s;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setupKeys()
-     */
     @Override
     public void setupKeys() {
         publicKeyLength = 256;
@@ -105,9 +96,6 @@ public class BlowFish extends FileAlgoRandomStream {
         super.setupKeys();
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setup()
-     */
     @Override
     public void setup() {
 
@@ -134,12 +122,6 @@ public class BlowFish extends FileAlgoRandomStream {
         }
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#openInputStream()
-     *      <p>
-     *      if filename exists (not null), we open file and later will encrypt
-     *      it. Else, algorithm will generate random data (as PRNG).
-     */
     @Override
     public boolean openInputStream() throws Exception {
 
@@ -159,9 +141,6 @@ public class BlowFish extends FileAlgoRandomStream {
         return open;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readByte()
-     */
     @Override
     public byte readByte() throws Exception {
         if (!isOpen()) {
@@ -209,9 +188,6 @@ public class BlowFish extends FileAlgoRandomStream {
         return prng;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readInt()
-     */
     @Override
     public int readInt() throws Exception {
         if (!isOpen()) {
@@ -239,9 +215,6 @@ public class BlowFish extends FileAlgoRandomStream {
         return (byte)(prng ^ data);
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readLong()
-     */
     @Override
     public long readLong() throws Exception {
         if (!isOpen()) {

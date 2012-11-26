@@ -32,9 +32,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
-import com.fasteasytrade.JRandTest.Utils.Derf;
+import com.fasteasytrade.jrandtest.utils.Derf;
 
 /**
  * Count1Bit class extends Base
@@ -46,9 +46,6 @@ import com.fasteasytrade.JRandTest.Utils.Derf;
 
 public class Count1Bit extends Base {
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|-------------------------------------------------------------|");

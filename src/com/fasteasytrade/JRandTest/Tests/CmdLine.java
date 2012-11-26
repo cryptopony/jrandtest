@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -41,9 +41,9 @@ import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
-import com.fasteasytrade.JRandTest.IO.AlgoRandomStream;
-import com.fasteasytrade.JRandTest.IO.FileRandomStream;
-import com.fasteasytrade.JRandTest.IO.HttpGetUrlRandomStream;
+import com.fasteasytrade.jrandtest.io.AlgoRandomStream;
+import com.fasteasytrade.jrandtest.io.FileRandomStream;
+import com.fasteasytrade.jrandtest.io.HttpGetUrlRandomStream;
 
 /**
  * Commnad line class to read from console / end-user the filename /

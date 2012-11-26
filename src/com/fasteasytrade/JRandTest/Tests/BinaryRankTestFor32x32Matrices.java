@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * BinaryRankTestFor32x32Matrices from DieHard *
@@ -56,9 +56,6 @@ public class BinaryRankTestFor32x32Matrices extends BinaryRankTestFor6x8Matrices
         puts("\t|-------------------------------------------------------------|");
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.BinaryRankTestFor6x8Matrices#setParameters()
-     */
     @Override
     public void setParameters() {
         testName = "32x32";

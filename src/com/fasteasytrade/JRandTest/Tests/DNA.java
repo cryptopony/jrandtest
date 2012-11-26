@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 /**
  * DNA from DieHard
@@ -41,9 +41,6 @@ package com.fasteasytrade.JRandTest.Tests;
  */
 public class DNA extends OverlappingPairsSparseOccupancy {
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
     @Override
     public void help() {
         puts("\n\t|------------------------------------------------------------ |");
@@ -59,9 +56,6 @@ public class DNA extends OverlappingPairsSparseOccupancy {
         puts("\t|------------------------------------------------------------ |\n");
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.Tests.OverlappingPairsSparseOccupancy#setParameters()
-     */
     @Override
     public void setParameters() {
         testName = "DNA";

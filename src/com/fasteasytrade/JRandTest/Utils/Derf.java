@@ -31,7 +31,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.fasteasytrade.JRandTest.Utils;
+package com.fasteasytrade.jrandtest.utils;
 
 /**
  * original source from www1.fpl.fs.fed.us/Derf.np.java 

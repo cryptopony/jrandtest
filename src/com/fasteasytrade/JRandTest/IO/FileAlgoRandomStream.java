@@ -32,7 +32,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.IO;
+package com.fasteasytrade.jrandtest.io;
 
 import java.io.FileInputStream;
 
@@ -63,18 +63,12 @@ public abstract class FileAlgoRandomStream extends FileRandomStream implements A
         setupKeys();
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setupKeys()
-     */
     @Override
     public void setupKeys() {
         publicKey = new byte[publicKeyLength];
         privateKey = new byte[privateKeyLength];
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setPublicKeyFromFile(java.lang.String)
-     */
     @Override
     public void setPublicKeyFromFile(String f) {
         try {
@@ -85,9 +79,6 @@ public abstract class FileAlgoRandomStream extends FileRandomStream implements A
         }
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setPublicKey(byte[])
-     */
     @Override
     public void setPublicKey(byte[] k) {
         if (k == null) {
@@ -98,9 +89,6 @@ public abstract class FileAlgoRandomStream extends FileRandomStream implements A
         }
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setPrivateKeyFromFile(java.lang.String)
-     */
     @Override
     public void setPrivateKeyFromFile(String f) {
         try {
@@ -111,9 +99,6 @@ public abstract class FileAlgoRandomStream extends FileRandomStream implements A
         }
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.AlgoRandomStream#setPrivateKey(byte[])
-     */
     @Override
     public void setPrivateKey(byte[] k) {
         if (k == null) {
@@ -141,25 +126,16 @@ public abstract class FileAlgoRandomStream extends FileRandomStream implements A
         return filename;
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readByte()
-     */
     @Override
     public byte readByte() throws Exception {
         return super.readByte();
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readInt()
-     */
     @Override
     public int readInt() throws Exception {
         return super.readInt();
     }
 
-    /**
-     * @see com.fasteasytrade.JRandTest.IO.RandomStream#readLong()
-     */
     @Override
     public long readLong() throws Exception {
         return super.readLong();

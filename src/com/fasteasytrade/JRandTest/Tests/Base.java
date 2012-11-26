@@ -32,13 +32,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package com.fasteasytrade.JRandTest.Tests;
+package com.fasteasytrade.jrandtest.tests;
 
 import java.util.Vector;
 
-import com.fasteasytrade.JRandTest.IO.OutputDestination;
-import com.fasteasytrade.JRandTest.IO.RandomStream;
-import com.fasteasytrade.JRandTest.Utils.Derf;
+import com.fasteasytrade.jrandtest.io.OutputDestination;
+import com.fasteasytrade.jrandtest.io.RandomStream;
+import com.fasteasytrade.jrandtest.utils.Derf;
 
 /**
  * Base class for all test classes.
