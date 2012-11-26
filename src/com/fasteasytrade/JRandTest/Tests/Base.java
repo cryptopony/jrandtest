@@ -34,7 +34,6 @@
 
 package com.fasteasytrade.JRandTest.Tests;
 
-import java.util.Enumeration;
 import java.util.Vector;
 
 import com.fasteasytrade.JRandTest.IO.OutputDestination;
@@ -473,13 +472,9 @@ public abstract class Base {
             return;
         }
 
-        OutputDestination od = null;
-
-        for (Enumeration e = vecOutputDestinations.elements(); e.hasMoreElements();) {
-            od = (OutputDestination)e.nextElement();
+        for (OutputDestination od: vecOutputDestinations) {
             od.printf(s);
         }
-
     }
 
     /**
@@ -503,7 +498,7 @@ public abstract class Base {
         }
     }
 
-    Vector vecOutputDestinations = new Vector();
+    Vector<OutputDestination> vecOutputDestinations = new Vector<OutputDestination>();
 
     /**
      * register output destination in vector of output destinations. printf and

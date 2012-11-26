@@ -125,8 +125,8 @@ public class CmdLine {
      * run (as Base interface).
      *  
      */
-    private static Vector loadPropFile(String fn) {
-        Vector v = new Vector(); // to keep correct strings of lines
+    private static Vector<String[]> loadPropFile(String fn) {
+        Vector<String> v = new Vector<String>(); // to keep correct strings of lines
         String line;
         ResourceBundle rb = null;
 
@@ -159,9 +159,9 @@ public class CmdLine {
                 System.out.println("load resource bundle...");
                 rb = ResourceBundle.getBundle(fn);
                 if (rb != null) {
-                    Enumeration enm = rb.getKeys();
+                    Enumeration<String> enm = rb.getKeys();
                     while (enm.hasMoreElements()) {
-                        String key = (String)enm.nextElement();
+                        String key = enm.nextElement();
                         String value = rb.getString(key);
                         line = key + "=" + value;
                         v.add(line);
@@ -183,7 +183,7 @@ public class CmdLine {
         int i;
 
         for (int j = 0; j < vsize; j++) {
-            line = (String)v.elementAt(j);
+            line = v.elementAt(j);
             i = line.indexOf("=");
             n = line.substring(0, i).trim();
             c = line.substring(i + 1).trim();
@@ -191,10 +191,10 @@ public class CmdLine {
             classNames[j] = c;
         }
 
-        v = new Vector(2);
-        v.add(cardNames);
-        v.add(classNames);
-        return v;
+        Vector<String[]> v2 = new Vector<String[]>(2);
+        v2.add(cardNames);
+        v2.add(classNames);
+        return v2;
     }
 
     /**
@@ -216,10 +216,10 @@ public class CmdLine {
         /**
          * load algorithms' names
          */
-        Vector tvec = loadPropFile("allalgos.txt");
+        Vector<String[]> tvec = loadPropFile("allalgos.txt");
         if (tvec != null) {
-            algoNames = (String[])tvec.elementAt(0);
-            algoClassNames = (String[])tvec.elementAt(1);
+            algoNames = tvec.elementAt(0);
+            algoClassNames = tvec.elementAt(1);
         }
 
         /**
@@ -227,8 +227,8 @@ public class CmdLine {
          */
         tvec = loadPropFile("alltests.txt");
         if (tvec != null) {
-            cardNames = (String[])tvec.elementAt(0);
-            classNames = (String[])tvec.elementAt(1);
+            cardNames = tvec.elementAt(0);
+            classNames = tvec.elementAt(1);
         }
 
         String line = null;
@@ -427,11 +427,10 @@ public class CmdLine {
                         classname = "com.fasteasytrade.JRandTest.Algo." + algoclassname;
                         System.out.println("algorithm: " + algoname + " from " + classname);
                         rs = (AlgoRandomStream)Class.forName(classname).newInstance();
+                        rs.setupKeys();
+                    } else {
+                        rs.setupKeys();
                     }
-                    /*
-                     * prepare keys
-                     */
-                    rs.setupKeys();
 
                     /*
                      * set input file to algorthm, if any

@@ -640,6 +640,10 @@ public class ZAC3 extends Cipher {
             outFilename = args[++i];
         }
 
+        if (op == null) {
+            throw new IllegalArgumentException("No op specified.");
+        }
+
         /**
          * gen key files
          */

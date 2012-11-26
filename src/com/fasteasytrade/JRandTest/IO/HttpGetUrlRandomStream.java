@@ -36,7 +36,7 @@ import java.io.DataInputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -122,11 +122,9 @@ public class HttpGetUrlRandomStream implements RandomStream {
              */
             System.out.println(" headers for url: " + url);
             System.out.println(" lengthOfData = " + lengthOfData);
-            Map m = con.getHeaderFields();
-            Set s = m.keySet();
-            Iterator i = s.iterator();
-            while (i.hasNext()) {
-                String x = (String)i.next();
+            Map<String,List<String>> m = con.getHeaderFields();
+            Set<String> s = m.keySet();
+            for (String x: s) {
                 Object o = m.get(x);
                 String y = null;
                 if (o instanceof String) {

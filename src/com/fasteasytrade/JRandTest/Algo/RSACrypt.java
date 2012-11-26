@@ -120,7 +120,7 @@ public class RSACrypt extends Cipher {
     /**
      * encrypt byte[] and returns vector of bigintegers.
      */
-    public Vector encrypt(byte[] message) {
+    public Vector<BigInteger> encrypt(byte[] message) {
         return encrypt(message, message.length);
     }
 
@@ -133,14 +133,14 @@ public class RSACrypt extends Cipher {
      * byte 1 - 4 = random number
      * byte 5 .. getMessageLen-1 = data
      */
-    public Vector encrypt(byte[] message, int mlen) {
+    public Vector<BigInteger> encrypt(byte[] message, int mlen) {
         if (mlen < 1) {
             return null;
         }
         int numMsgs = 1 + (mlen - 1) / (getMessageLength() - 5);
         int rest = mlen % (getMessageLength() - 5);
 
-        Vector rslt = new Vector();
+        Vector<BigInteger> rslt = new Vector<BigInteger>();
         byte[] tmp = new byte[getMessageLength()];
         int i, x;
         int j = 0; // read from message buffer
@@ -182,11 +182,11 @@ public class RSACrypt extends Cipher {
             }
 
             out.writeInt(len); // write length of data
-            Vector vec = encrypt(buffer);
+            Vector<BigInteger> vec = encrypt(buffer);
             if (vec.size() != 1) {
                 throw new IOException("encrypt does not return a biginteger!");
             }
-            write((BigInteger)vec.elementAt(0), out); // write biginteger
+            write(vec.elementAt(0), out); // write biginteger
         }
 
         out.writeInt(-1); // write "dummy" EOF - no more bigintegers
@@ -237,11 +237,11 @@ public class RSACrypt extends Cipher {
             }
 
             write(len, out); // write length of data
-            Vector vec = encrypt(buffer);
+            Vector<BigInteger> vec = encrypt(buffer);
             if (vec.size() != 1) {
                 throw new IOException("encrypt does not return a biginteger!");
             }
-            write((BigInteger)vec.elementAt(0), out); // write biginteger
+            write(vec.elementAt(0), out); // write biginteger
         }
 
         write(-1, out); // write "dummy" EOF - no more bigintegers
@@ -422,9 +422,9 @@ public class RSACrypt extends Cipher {
         rsa.generateKeys(128);
         String mymsg = "Shall I compare thee to a summer\'s day?\n" + "Thou art more lovely and more temperate.\n" + "Rough winds do shake the darling buds of May,\n" + "And summer\'s lease hath all too short a date.\n" + "Sometime too hot the eye of heaven shines,\n" + "And often is his gold complexion dimmed,\n" + "And every fair from fair sometime declines,\n" + "By chance or nature\'s changing course untrimmed;\n" + "But thy eternal summer shall not fade\n" + "Nor lose possession of that fair thou ow\'st,\n" + "Nor shall death brag thou wander\'st in his shade\n" + "When in eternal lines to time thou grow\'st.\n" + "     So long as men can breathe or eyes can see,\n" + "     So long lives this, and this gives life to thee.\n" + "\n" + "Sonnet 18, William Shakespeare\n" + "";
         byte[] mymsgb = mymsg.getBytes();
-        Vector v = rsa.encrypt(mymsgb);
+        Vector<BigInteger> v = rsa.encrypt(mymsgb);
         for (int i = 0; i < v.size(); i++) {
-            BigInteger t = (BigInteger)v.elementAt(i);
+            BigInteger t = v.elementAt(i);
             System.out.print(new String(rsa.decrypt(t).toByteArray()));
         }
     }

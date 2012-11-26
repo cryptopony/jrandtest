@@ -239,6 +239,8 @@ public class CountThe1s extends Base {
                     chsq = -chsq;
                     ltrspwd = 5;
                     break;
+                default:
+                    throw new AssertionError();
             }
 
             for (i = 0; i < wdspos; i++) {
