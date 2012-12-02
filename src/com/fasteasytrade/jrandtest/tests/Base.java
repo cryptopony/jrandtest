@@ -50,8 +50,6 @@ import com.fasteasytrade.jrandtest.utils.Derf;
 
 public abstract class Base {
 
-    final public double PI = Math.PI; // 3.141592653589793;
-
     final public int DIM = 4096;
 
     final public long UNIMAX = 4294967296L; //  pow(2,32)
@@ -226,7 +224,7 @@ public abstract class Base {
         }
 
         if (tmp == 1) {
-            return Math.sqrt(PI);
+            return Math.sqrt(Math.PI);
         } else if (tmp == 2) {
             return 1;
         }
@@ -237,7 +235,7 @@ public abstract class Base {
      * p.d.f of Standard Normal
      */
     public double phi(double x) {
-        return Math.exp(-x * x / 2.0) / Math.sqrt(2.0 * PI);
+        return Math.exp(-x * x / 2.0) / Math.sqrt(2.0 * Math.PI);
     }
 
     /**
