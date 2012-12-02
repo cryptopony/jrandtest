@@ -34,6 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * Squeeze from DieHard
  * <p>
@@ -61,26 +63,27 @@ public class Squeeze extends Base {
     double[] Ef = { 21.03, 57.79, 175.54, 467.32, 1107.83, 2367.84, 4609.44, 8241.16, 13627.81, 20968.49, 30176.12, 40801.97, 52042.03, 62838.28, 72056.37, 78694.51, 82067.55, 81919.35, 78440.08, 72194.12, 63986.79, 54709.31, 45198.52, 36136.61, 28000.28, 21055.67, 15386.52, 10940.20, 7577.96, 5119.56, 3377.26, 2177.87, 1374.39, 849.70, 515.18, 306.66, 179.39, 103.24, 58.51, 32.69, 18.03, 9.82, 11.21 };
     double tmp;
     double chsq = 0;
+    final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|                 This is the SQUEEZE test                    |");
-        puts("\t| Random integers are floated to get uniforms on [0,1). Start-|");
-        puts("\t| ing with k=2^31-1=2147483647, the test finds j, the number  |");
-        puts("\t| of iterations necessary to reduce k to 1 using the reduction|");
-        puts("\t| k=ceiling(k*U), with U provided by floating integers from   |");
-        puts("\t| the file being tested.  Such j''s are found 100,000 times,  |");
-        puts("\t| then counts for the number of times j was <=6,7,...,47,>=48 |");
-        puts("\t| are used to provide a chi-square test for cell frequencies. |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|                 This is the SQUEEZE test                    |");
+        log.info("\t| Random integers are floated to get uniforms on [0,1). Start-|");
+        log.info("\t| ing with k=2^31-1=2147483647, the test finds j, the number  |");
+        log.info("\t| of iterations necessary to reduce k to 1 using the reduction|");
+        log.info("\t| k=ceiling(k*U), with U provided by floating integers from   |");
+        log.info("\t| the file being tested.  Such j''s are found 100,000 times,  |");
+        log.info("\t| then counts for the number of times j was <=6,7,...,47,>=48 |");
+        log.info("\t| are used to provide a chi-square test for cell frequencies. |");
+        log.info("\t|-------------------------------------------------------------|\n");
     }
 
     @Override
     public void test(String filename) throws Exception {
-        printf("\t\t\tRESULTS OF SQUEEZE TEST FOR " + filename + "\n\n");
-        printf("\t\t    Table of standardized frequency counts\n");
-        printf("\t\t(obs-exp)^2/exp  for j=(1,..,6), 7,...,47,(48,...)\n\t");
+        log.info("\t\t\tRESULTS OF SQUEEZE TEST FOR " + filename + "\n\n");
+        log.info("\t\t    Table of standardized frequency counts\n");
+        log.info("\t\t(obs-exp)^2/exp  for j=(1,..,6), 7,...,47,(48,...)\n\t");
 
         openInputStream();
 
@@ -102,7 +105,7 @@ public class Squeeze extends Base {
                     break;
                 }
                 if (tmp < 0 || tmp > 1) {
-                    printf("\ntmp < 0 || tmp > 1: " + tmp);
+                    log.info("\ntmp < 0 || tmp > 1: " + tmp);
                 }
                 k = (long)(k * tmp + 1);
                 ++j;
@@ -123,15 +126,15 @@ public class Squeeze extends Base {
         for (i = 0; i < 43; ++i) {
             tmp = (f[i] - Ef[i]) / Math.sqrt(Ef[i]);
             chsq += tmp * tmp;
-            printf("\t% " + d4(tmp) + "  ");
+            log.info("\t% " + d4(tmp) + "  ");
             if ((i + 1) % 6 == 0) {
-                printf("\n\t");
+                log.info("\n\t");
             }
         }
 
-        printf("\n\t\tChi-square with 42 degrees of freedom: " + d4(chsq) + "\n");
-        printf("\t\tz-score=" + d4((chsq - 42.) / std) + ", p-value=" + d4(1 - Chisq(42, chsq)) + "\n");
-        printf("\t_____________________________________________________________\n\n");
+        log.info("\n\t\tChi-square with 42 degrees of freedom: " + d4(chsq) + "\n");
+        log.info("\t\tz-score=" + d4((chsq - 42.) / std) + ", p-value=" + d4(1 - Chisq(42, chsq)) + "\n");
+        log.info("\t_____________________________________________________________\n\n");
 
         return;
     }

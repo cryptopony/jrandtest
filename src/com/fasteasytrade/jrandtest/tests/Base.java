@@ -35,6 +35,7 @@
 package com.fasteasytrade.jrandtest.tests;
 
 import java.util.Vector;
+import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.io.OutputDestination;
 import com.fasteasytrade.jrandtest.io.RandomStream;
@@ -49,6 +50,8 @@ import com.fasteasytrade.jrandtest.utils.Derf;
  */
 
 public abstract class Base {
+
+    final private Logger log = Logger.getLogger(getClass().getName());
 
     final public int DIM = 4096;
 
@@ -219,7 +222,7 @@ public abstract class Base {
         int tmp = 2 * (int)z;
 
         if (tmp != 2 * (int)z || z == 0) {
-            printf("Error in calling G(z)!!!");
+            log.info("Error in calling G(z)!!!");
             return 0.0000001;
         }
 
@@ -413,36 +416,14 @@ public abstract class Base {
     } // end avg
 
     /**
-     * printf on all output destinations registered into vector output
-     * destinations. Support multiple output destinations.
-     */
-    public void printf(String s) {
-        if (vecOutputDestinations.isEmpty()) {
-            System.out.print(s);
-            return;
-        }
-
-        for (OutputDestination od: vecOutputDestinations) {
-            od.printf(s);
-        }
-    }
-
-    /**
-     * puts - use printf
-     */
-    public void puts(String s) {
-        printf(s + "\r\n");
-    }
-
-    /**
      * show the bit-pattern of an integer 32 bits
      */
     public void showbit(int n) {
         for (int i = 0; i < 32; ++i) {
             if ((n & 0x8000) == 0) {
-                printf("0");
+                log.info("0");
             } else {
-                printf("1");
+                log.info("1");
             }
             n <<= 1;
         }
@@ -516,7 +497,7 @@ public abstract class Base {
         try {
             return rs.openInputStream();
         } catch (Exception e) {
-            printf("" + e);
+            log.info("" + e);
             return false;
         }
     }
@@ -533,7 +514,7 @@ public abstract class Base {
         try {
             return rs.closeInputStream();
         } catch (Exception e) {
-            printf("" + e);
+            log.info("" + e);
             return false;
         }
     }
@@ -552,7 +533,7 @@ public abstract class Base {
             //return rs.readByte(filename);
             return rs.readByte();
         } catch (Exception e) {
-            printf("" + e);
+            log.info("" + e);
             return -1;
         }
     }
@@ -570,7 +551,7 @@ public abstract class Base {
         try {
             return rs.readInt();
         } catch (Exception e) {
-            printf("" + e);
+            log.info("" + e);
             return -1;
         }
     }
@@ -588,7 +569,7 @@ public abstract class Base {
         try {
             return rs.readLong();
         } catch (Exception e) {
-            printf("" + e);
+            log.info("" + e);
             return -1;
         }
     }

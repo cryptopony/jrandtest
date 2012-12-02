@@ -359,7 +359,7 @@ public final class SHA1 extends Cipher implements Cloneable {
      * Internally used when the buffer is ready for the digest. <br>
      * Completely unrolled for maximum performance.
      */
-    private final void update_buffers() {
+    final private void update_buffers() {
         for (int i = 16; i < 80; i++) {
             W[i] = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16];
             W[i] = (W[i] << 1) | (W[i] >>> 31);

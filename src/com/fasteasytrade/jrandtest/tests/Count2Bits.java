@@ -34,6 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * Count2Bits class extends Base
  * <p>
@@ -44,13 +46,15 @@ package com.fasteasytrade.jrandtest.tests;
 
 public class Count2Bits extends Base {
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|    This is part of the Count test.  It counts consecutive 2 |");
-        puts("\t|bits. The sums and the differences are reported. The         |");
-        puts("\t|expection is 25%, each sum from total 2 bits.                |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|    This is part of the Count test.  It counts consecutive 2 |");
+        log.info("\t|bits. The sums and the differences are reported. The         |");
+        log.info("\t|expection is 25%, each sum from total 2 bits.                |");
+        log.info("\t|-------------------------------------------------------------|\n");
     }
 
     /**
@@ -63,7 +67,7 @@ public class Count2Bits extends Base {
         int j;
         long length = 0;
 
-        printf("\t\t\tThe Count2Bits test for file " + filename + "\n");
+        log.info("\t\t\tThe Count2Bits test for file " + filename + "\n");
 
         openInputStream();
 
@@ -87,21 +91,21 @@ public class Count2Bits extends Base {
         closeInputStream();
 
         double pv = KStest(v5, no_seqs);
-        printf("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
+        log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
 
         long k = length / v5.length;
-        printf("\n\t found " + length + " 2 bits.");
-        printf("\n\t expected avg for 2 bits: " + k);
-        printf("\n\t found avg for 2 bits: " + d4((long)avg(v5)));
+        log.info("\n\t found " + length + " 2 bits.");
+        log.info("\n\t expected avg for 2 bits: " + k);
+        log.info("\n\t found avg for 2 bits: " + d4((long)avg(v5)));
         for (j = 0; j < 4; j++) {
-            printf("\n\t count 2 bits " + j + ": " + d4(v5[j]) + " delta: " + d4(v5[j] - k) + " %: " + d4(100.00 * v5[j] / k - 100.00));
+            log.info("\n\t count 2 bits " + j + ": " + d4(v5[j]) + " delta: " + d4(v5[j] - k) + " %: " + d4(100.00 * v5[j] / k - 100.00));
         }
 
         double t = stdev(v5, k);
-        printf("\n\t stdev for 2 bits\t: " + d4(t));
-        printf("\n\t % stdev for 2 bits\t: %" + d4(100.00 * t / k));
-        printf("\n\t chitest for 2 bits\t: " + d4(chitest(v5, k)));
-        printf("\n\t r2 for 2 bits\t\t: " + d4(r2_double(v5)));
+        log.info("\n\t stdev for 2 bits\t: " + d4(t));
+        log.info("\n\t % stdev for 2 bits\t: %" + d4(100.00 * t / k));
+        log.info("\n\t chitest for 2 bits\t: " + d4(chitest(v5, k)));
+        log.info("\n\t r2 for 2 bits\t\t: " + d4(r2_double(v5)));
 
         return;
     }

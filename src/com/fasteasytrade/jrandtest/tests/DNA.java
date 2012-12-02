@@ -33,6 +33,8 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * DNA from DieHard
  * 
@@ -41,19 +43,21 @@ package com.fasteasytrade.jrandtest.tests;
  */
 public class DNA extends OverlappingPairsSparseOccupancy {
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|------------------------------------------------------------ |");
-        puts("\t|    The DNA test considers an alphabet of 4 letters: C,G,A,T,|");
-        puts("\t|determined by two designated bits in the sequence of random  |");
-        puts("\t|integers being tested.  It considers 10-letter words, so that|");
-        puts("\t|as in OPSO and OQSO, there are 2^20 possible words, and the  |");
-        puts("\t|mean number of missing words from a string of 2^21  (over-   |");
-        puts("\t|lapping)  10-letter  words (2^21+9 \"keystrokes\") is 141909.  |");
-        puts("\t|The standard deviation sigma=339 was determined as for OQSO  |");
-        puts("\t|by simulation.  (Sigma for OPSO, 290, is the true value (to  |");
-        puts("\t|three places), not determined by simulation.                 |");
-        puts("\t|------------------------------------------------------------ |\n");
+        log.info("\n\t|------------------------------------------------------------ |");
+        log.info("\t|    The DNA test considers an alphabet of 4 letters: C,G,A,T,|");
+        log.info("\t|determined by two designated bits in the sequence of random  |");
+        log.info("\t|integers being tested.  It considers 10-letter words, so that|");
+        log.info("\t|as in OPSO and OQSO, there are 2^20 possible words, and the  |");
+        log.info("\t|mean number of missing words from a string of 2^21  (over-   |");
+        log.info("\t|lapping)  10-letter  words (2^21+9 \"keystrokes\") is 141909.  |");
+        log.info("\t|The standard deviation sigma=339 was determined as for OQSO  |");
+        log.info("\t|by simulation.  (Sigma for OPSO, 290, is the true value (to  |");
+        log.info("\t|three places), not determined by simulation.                 |");
+        log.info("\t|------------------------------------------------------------ |\n");
     }
 
     @Override

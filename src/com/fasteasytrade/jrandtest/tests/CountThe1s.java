@@ -33,6 +33,8 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * CountThe1s from DieHard
  * 
@@ -64,26 +66,28 @@ public class CountThe1s extends Base {
 
     boolean testStream = false;
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|    This is the COUNT-THE-1''s TEST on a stream of bytes.    |");
-        puts("\t|Consider the file under test as a stream of bytes (four per  |");
-        puts("\t|32 bit integer).  Each byte can contain from 0 to 8 1''s,    |");
-        puts("\t|with probabilities 1,8,28,56,70,56,28,8,1 over 256.  Now let |");
-        puts("\t|the stream of bytes provide a string of overlapping  5-letter|");
-        puts("\t|words, each \"letter\" taking values A,B,C,D,E. The letters are|");
-        puts("\t|determined by the number of 1''s in a byte: 0,1,or 2 yield A,|");
-        puts("\t|3 yields B, 4 yields C, 5 yields D and 6,7 or 8 yield E. Thus|");
-        puts("\t|we have a monkey at a typewriter hitting five keys with vari-|");
-        puts("\t|ous probabilities (37,56,70,56,37 over 256).  There are 5^5  |");
-        puts("\t|possible 5-letter words, and from a string of 256,000 (over- |");
-        puts("\t|lapping) 5-letter words, counts are made on the frequencies  |");
-        puts("\t|for each word.   The quadratic form in the weak inverse of   |");
-        puts("\t|the covariance matrix of the cell counts provides a chisquare|");
-        puts("\t|test: Q5-Q4, the difference of the naive Pearson sums of     |");
-        puts("\t|(OBS-EXP)^2/EXP on counts for 5- and 4-letter cell counts.   |");
-        puts("\n\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|    This is the COUNT-THE-1''s TEST on a stream of bytes.    |");
+        log.info("\t|Consider the file under test as a stream of bytes (four per  |");
+        log.info("\t|32 bit integer).  Each byte can contain from 0 to 8 1''s,    |");
+        log.info("\t|with probabilities 1,8,28,56,70,56,28,8,1 over 256.  Now let |");
+        log.info("\t|the stream of bytes provide a string of overlapping  5-letter|");
+        log.info("\t|words, each \"letter\" taking values A,B,C,D,E. The letters are|");
+        log.info("\t|determined by the number of 1''s in a byte: 0,1,or 2 yield A,|");
+        log.info("\t|3 yields B, 4 yields C, 5 yields D and 6,7 or 8 yield E. Thus|");
+        log.info("\t|we have a monkey at a typewriter hitting five keys with vari-|");
+        log.info("\t|ous probabilities (37,56,70,56,37 over 256).  There are 5^5  |");
+        log.info("\t|possible 5-letter words, and from a string of 256,000 (over- |");
+        log.info("\t|lapping) 5-letter words, counts are made on the frequencies  |");
+        log.info("\t|for each word.   The quadratic form in the weak inverse of   |");
+        log.info("\t|the covariance matrix of the cell counts provides a chisquare|");
+        log.info("\t|test: Q5-Q4, the difference of the naive Pearson sums of     |");
+        log.info("\t|(OBS-EXP)^2/EXP on counts for 5- and 4-letter cell counts.   |");
+        log.info("\n\t|-------------------------------------------------------------|\n");
 
     }
 
@@ -105,13 +109,13 @@ public class CountThe1s extends Base {
         setParameters();
 
         if (!testStream) {
-            printf("\t\tTest results for specific bytes from " + filename + "\n");
+            log.info("\t\tTest results for specific bytes from " + filename + "\n");
         } else {
-            printf("\t\tTest result for the byte stream from " + filename + "\n");
+            log.info("\t\tTest result for the byte stream from " + filename + "\n");
         }
 
-        printf("\t  (Degrees of freedom: 5^4-5^3=2500; sample size: " + no_wds + ")\n\n");
-        printf("\t" + s + "\tchisquare\tz-score\t\tp-value\n");
+        log.info("\t  (Degrees of freedom: 5^4-5^3=2500; sample size: " + no_wds + ")\n\n");
+        log.info("\t" + s + "\tchisquare\tz-score\t\tp-value\n");
 
         do {
             cnt_stat(filename, rt);
@@ -162,9 +166,9 @@ public class CountThe1s extends Base {
         double Ef, chsq = 0, z;
 
         if (!testStream) {
-            printf("\t" + (25 - rshft) + " to " + (32 - rshft) + "  ");
+            log.info("\t" + (25 - rshft) + " to " + (32 - rshft) + "  ");
         } else {
-            printf("\t\t");
+            log.info("\t\t");
         }
 
         openInputStream();
@@ -200,7 +204,7 @@ public class CountThe1s extends Base {
             }
             if (!isOpen()) {
                 System.out.println("filename " + filename + " is closed... at byte " + i);
-                printf("\n\tError: filename " + filename + " is closed... at byte/int " + i + "\n");
+                log.info("\n\tError: filename " + filename + " is closed... at byte/int " + i + "\n");
                 break;
             }
 
@@ -254,7 +258,7 @@ public class CountThe1s extends Base {
         }
 
         z = (chsq - mean) / std;
-        printf("\t" + d4(chsq) + "\t\t" + d4(z) + "\t\t" + d4(1.0 - Phi(z)) + "\n");
+        log.info("\t" + d4(chsq) + "\t\t" + d4(z) + "\t\t" + d4(1.0 - Phi(z)) + "\n");
 
         return chsq;
     }

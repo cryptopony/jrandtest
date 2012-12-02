@@ -40,6 +40,7 @@ import java.io.InputStreamReader;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 import java.util.Vector;
+import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.io.AlgoRandomStream;
 import com.fasteasytrade.jrandtest.io.FileRandomStream;
@@ -54,6 +55,8 @@ import com.fasteasytrade.jrandtest.io.HttpGetUrlRandomStream;
  * @author Zur Aougav
  */
 public class CmdLine {
+
+    final private Logger log = Logger.getLogger(getClass().getName());
 
     String[] cardNames = { "Monte Carlo", "Count 1 Bit", "Count 2 Bits" };
 
@@ -462,7 +465,7 @@ public class CmdLine {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                ob.printf("" + e);
+                log.info("" + e);
             }
 
         } while (true); // run several tests on the the same algorithm / input file

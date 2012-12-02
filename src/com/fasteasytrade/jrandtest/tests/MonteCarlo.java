@@ -34,6 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * MonteCarlo class extends Base
  * <p>
@@ -49,13 +51,15 @@ package com.fasteasytrade.jrandtest.tests;
 
 public class MonteCarlo extends Base {
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|    This is the Monte Carlo test. We read 16 bits as X, and  |");
-        puts("\t|16 bits as Y. If (X,Y) point in circle(256) we count success.|");
-        puts("\t|piValue is (success / num_of_points) * 4.                    |");
-        puts("\t|-------------------------------------------------------------|");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|    This is the Monte Carlo test. We read 16 bits as X, and  |");
+        log.info("\t|16 bits as Y. If (X,Y) point in circle(256) we count success.|");
+        log.info("\t|piValue is (success / num_of_points) * 4.                    |");
+        log.info("\t|-------------------------------------------------------------|");
     }
 
     /**
@@ -67,7 +71,7 @@ public class MonteCarlo extends Base {
         long success = 0;
         long length = 0;
 
-        printf("\t\t\tThe MonteCarlo test for file " + filename + "\n");
+        log.info("\t\t\tThe MonteCarlo test for file " + filename + "\n");
 
         openInputStream();
 
@@ -102,12 +106,12 @@ public class MonteCarlo extends Base {
 
         closeInputStream();
 
-        printf("\n\t found " + length + " points.");
-        printf("\n\t found " + success + " points in circle(256).");
+        log.info("\n\t found " + length + " points.");
+        log.info("\n\t found " + success + " points in circle(256).");
 
         double piValue = ((double)success / length);
         piValue *= 4.0;
-        printf("\n\t piValue: " + d4(piValue));
+        log.info("\n\t piValue: " + d4(piValue));
 
         return;
     }

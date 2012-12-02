@@ -33,6 +33,8 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * OverlappingQuadruplesSparseOccupancy (OQSO) from DieHard
  *
@@ -40,19 +42,21 @@ package com.fasteasytrade.jrandtest.tests;
  */
 public class OverlappingQuadruplesSparseOccupancy extends OverlappingPairsSparseOccupancy {
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|------------------------------------------------------------ |");
-        puts("\t|    OQSO means Overlapping-Quadruples-Sparse-Occupancy       |");
-        puts("\t|  The test OQSO is similar, except that it considers 4-letter|");
-        puts("\t|words from an alphabet of 32 letters, each letter determined |");
-        puts("\t|by a designated string of 5 consecutive bits from the test   |");
-        puts("\t|file, elements of which are assumed 32-bit random integers.  |");
-        puts("\t|The mean number of missing words in a sequence of 2^21 four- |");
-        puts("\t|letter words,  (2^21+3 \"keystrokes\"), is again 141909, with  |");
-        puts("\t|sigma = 295.  The mean is based on theory; sigma comes from  |");
-        puts("\t|extensive simulation.                                        |");
-        puts("\t|------------------------------------------------------------ |\n");
+        log.info("\n\t|------------------------------------------------------------ |");
+        log.info("\t|    OQSO means Overlapping-Quadruples-Sparse-Occupancy       |");
+        log.info("\t|  The test OQSO is similar, except that it considers 4-letter|");
+        log.info("\t|words from an alphabet of 32 letters, each letter determined |");
+        log.info("\t|by a designated string of 5 consecutive bits from the test   |");
+        log.info("\t|file, elements of which are assumed 32-bit random integers.  |");
+        log.info("\t|The mean number of missing words in a sequence of 2^21 four- |");
+        log.info("\t|letter words,  (2^21+3 \"keystrokes\"), is again 141909, with  |");
+        log.info("\t|sigma = 295.  The mean is based on theory; sigma comes from  |");
+        log.info("\t|extensive simulation.                                        |");
+        log.info("\t|------------------------------------------------------------ |\n");
     }
 
     @Override

@@ -33,6 +33,8 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * BinaryRankTestFor6x8Matrices from DieHard
  * 
@@ -52,18 +54,20 @@ public class BinaryRankTestFor6x8Matrices extends Base {
 
     int no_matrices = 100000;
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|This is the BINARY RANK TEST for 6x8 matrices.  From each of |");
-        puts("\t|six random 32-bit integers from the generator under test, a  |");
-        puts("\t|specified byte is chosen, and the resulting six bytes form a |");
-        puts("\t|6x8 binary matrix whose rank is determined.  That rank can be|");
-        puts("\t|from 0 to 6, but ranks 0,1,2,3 are rare; their counts are    |");
-        puts("\t|pooled with those for rank 4. Ranks are found for 100,000    |");
-        puts("\t|random matrices, and a chi-square test is performed on       |");
-        puts("\t|counts for ranks 6,5 and (0,...,4) (pooled together).        |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|This is the BINARY RANK TEST for 6x8 matrices.  From each of |");
+        log.info("\t|six random 32-bit integers from the generator under test, a  |");
+        log.info("\t|specified byte is chosen, and the resulting six bytes form a |");
+        log.info("\t|6x8 binary matrix whose rank is determined.  That rank can be|");
+        log.info("\t|from 0 to 6, but ranks 0,1,2,3 are rare; their counts are    |");
+        log.info("\t|pooled with those for rank 4. Ranks are found for 100,000    |");
+        log.info("\t|random matrices, and a chi-square test is performed on       |");
+        log.info("\t|counts for ranks 6,5 and (0,...,4) (pooled together).        |");
+        log.info("\t|-------------------------------------------------------------|\n");
     }
 
     @Override
@@ -71,7 +75,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
 
         setParameters();
 
-        printf("\t\tRank test for binary matrices (" + testName + ") from " + filename + "\n");
+        log.info("\t\tRank test for binary matrices (" + testName + ") from " + filename + "\n");
 
         double[] p = new double[rt + 1];
 
@@ -84,18 +88,18 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             return;
         }
 
-        puts("\t    TEST SUMMARY, 25 tests on 100,000 random 6x8 matrices");
-        puts("\n\t    These should be 25 uniform [0,1] random variates:\n");
+        log.info("\t    TEST SUMMARY, 25 tests on 100,000 random 6x8 matrices");
+        log.info("\n\t    These should be 25 uniform [0,1] random variates:\n");
 
         for (rt = 24; rt >= 0; --rt) {
             if ((rt + 1) % 5 == 0) {
-                puts("\n");
+                log.info("\n");
             }
-            printf("\t" + d4(p[rt]));
+            log.info("\t" + d4(p[rt]));
         }
 
-        printf("\n\t\tThe KS test for those 25 supposed UNI's yields\n");
-        printf("\t\t\tKS p-value = " + d4(KStest(p, 25)) + "\n");
+        log.info("\n\t\tThe KS test for those 25 supposed UNI's yields\n");
+        log.info("\t\t\tKS p-value = " + d4(KStest(p, 25)) + "\n");
 
     }
 
@@ -146,14 +150,14 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             mask = 0xff;
             llim = 4;
             p = p6;
-            printf("\n\t\t\t      bits " + (25 - rt) + " to " + (32 - rt) + "\n");
+            log.info("\n\t\t\t      bits " + (25 - rt) + " to " + (32 - rt) + "\n");
         }
 
         row = new int[no_row];
 
         f = new int[df + 1];
 
-        puts("\n\tRANK\tOBSERVED\tEXPECTED\t(O-E)^2/E\tSUM\n");
+        log.info("\n\tRANK\tOBSERVED\tEXPECTED\t(O-E)^2/E\tSUM\n");
 
         openInputStream();
 
@@ -187,15 +191,15 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             Ef = no_matrices * p[i];
             tmp = (f[i] - Ef) * (f[i] - Ef) / Ef;
             chsq += tmp;
-            printf("\t" + cat[Math.min(1, i)] + (i + llim) + "\t" + d4(f[i]) + "\t" + d4(Ef));
-            printf("\t" + d4(tmp) + "\t" + d4(chsq) + "\n");
+            log.info("\t" + cat[Math.min(1, i)] + (i + llim) + "\t" + d4(f[i]) + "\t" + d4(Ef));
+            log.info("\t" + d4(tmp) + "\t" + d4(chsq) + "\n");
         }
 
         pvalue = 1 - Chisq(df, chsq);
-        printf("\n\t\tchi-square = " + d4(chsq) + " with df = " + df + ";");
-        printf("  p-value = " + d4(pvalue) + "\n");
+        log.info("\n\t\tchi-square = " + d4(chsq) + " with df = " + df + ";");
+        log.info("  p-value = " + d4(pvalue) + "\n");
 
-        printf("\t--------------------------------------------------------------\n");
+        log.info("\t--------------------------------------------------------------\n");
 
         return pvalue;
     }

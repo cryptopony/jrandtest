@@ -34,6 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * MinimumDistance from DieHard
  * 
@@ -46,22 +48,23 @@ public class MinimumDistance extends Base {
     final int no_smpl = 100;
     final int side = 10000;
     final double ratio = 10000.0 / UNIMAX;
+    final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|              THE MINIMUM DISTANCE TEST                      |");
-        puts("\t|It does this 100 times:  choose n=8000 random points in a    |");
-        puts("\t|square of side 10000.  Find d, the minimum distance between  |");
-        puts("\t|the (n^2-n)/2 pairs of points.  If the points are truly inde-|");
-        puts("\t|pendent uniform, then d^2, the square of the minimum distance|");
-        puts("\t|should be (very close to) exponentially distributed with mean|");
-        puts("\t|.995 .  Thus 1-exp(-d^2/.995) should be uniform on [0,1) and |");
-        puts("\t|a KSTEST on the resulting 100 values serves as a test of uni-|");
-        puts("\t|formity for random points in the square. Test numbers=0 mod 5|");
-        puts("\t|are printed but the KSTEST is based on the full set of 100   |");
-        puts("\t|random choices of 8000 points in the 10000x10000 square.     |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|              THE MINIMUM DISTANCE TEST                      |");
+        log.info("\t|It does this 100 times:  choose n=8000 random points in a    |");
+        log.info("\t|square of side 10000.  Find d, the minimum distance between  |");
+        log.info("\t|the (n^2-n)/2 pairs of points.  If the points are truly inde-|");
+        log.info("\t|pendent uniform, then d^2, the square of the minimum distance|");
+        log.info("\t|should be (very close to) exponentially distributed with mean|");
+        log.info("\t|.995 .  Thus 1-exp(-d^2/.995) should be uniform on [0,1) and |");
+        log.info("\t|a KSTEST on the resulting 100 values serves as a test of uni-|");
+        log.info("\t|formity for random points in the square. Test numbers=0 mod 5|");
+        log.info("\t|are printed but the KSTEST is based on the full set of 100   |");
+        log.info("\t|random choices of 8000 points in the 10000x10000 square.     |");
+        log.info("\t|-------------------------------------------------------------|\n");
 
     }
 
@@ -75,8 +78,8 @@ public class MinimumDistance extends Base {
         double sum = 0;
         double pvalue;
 
-        printf("\t\tThis is the MINIMUM DISTANCE test for file " + filename + "\n\n");
-        printf("\tSample no.\t d^2\t\t mean\t\tequiv uni\n");
+        log.info("\t\tThis is the MINIMUM DISTANCE test for file " + filename + "\n\n");
+        log.info("\tSample no.\t d^2\t\t mean\t\tequiv uni\n");
 
         openInputStream();
 
@@ -132,16 +135,16 @@ public class MinimumDistance extends Base {
             p[i - 1] = 1 - Math.exp(-dmin / .995); /* transforming into U[0,1] */
 
             if (i % 5 == 0) {
-                printf("\n\t   " + i + "\t\t" + d4(dmin) + "\t\t" + d4(sum / i) + "\t\t" + d4(p[i - 1]));
+                log.info("\n\t   " + i + "\t\t" + d4(dmin) + "\t\t" + d4(sum / i) + "\t\t" + d4(p[i - 1]));
             }
         }
 
         closeInputStream();
 
-        puts("\n\t--------------------------------------------------------------");
-        printf("\n\tResult of KS test on " + no_smpl + " transformed mindist^2's:");
+        log.info("\n\t--------------------------------------------------------------");
+        log.info("\n\tResult of KS test on " + no_smpl + " transformed mindist^2's:");
         pvalue = KStest(p, no_smpl);
-        printf(" p-value=" + d4(pvalue) + "\n\n");
+        log.info(" p-value=" + d4(pvalue) + "\n\n");
 
     }
 

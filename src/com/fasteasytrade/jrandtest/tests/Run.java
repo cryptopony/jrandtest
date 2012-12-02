@@ -34,6 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * Run from DieHard
  * <p>
@@ -45,6 +47,8 @@ package com.fasteasytrade.jrandtest.tests;
  */
 
 public class Run extends Base {
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     /**
      * @param x array of doubles
      * @param length is length of array x
@@ -65,7 +69,7 @@ public class Run extends Base {
         double[] b = { 1. / 6, 5. / 24, 11. / 120, 19. / 720, 29. / 5040, 1. / 840 };
 
         if (length < 4000) {
-            puts("Length of the sequence is too short (< 4000)!!!");
+            log.info("Length of the sequence is too short (< 4000)!!!");
             throw new Exception("Length of the sequence is too short (< 4000)!!!");
             //System.exit(0);
         }
@@ -130,19 +134,19 @@ public class Run extends Base {
 
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|    This is the RUNS test.  It counts runs up, and runs down,|");
-        puts("\t|in a sequence of uniform [0,1) variables, obtained by float- |");
-        puts("\t|ing the 32-bit integers in the specified file. This example  |");
-        puts("\t|shows how runs are counted: .123,.357,.789,.425,.224,.416,.95|");
-        puts("\t|contains an up-run of length 3, a down-run of length 2 and an|");
-        puts("\t|up-run of (at least) 2, depending on the next values.  The   |");
-        puts("\t|covariance matrices for the runs-up and runs-down are well   |");
-        puts("\t|known, leading to chisquare tests for quadratic forms in the |");
-        puts("\t|weak inverses of the covariance matrices.  Runs are counted  |");
-        puts("\t|for sequences of length 10,000.  This is done ten times. Then|");
-        puts("\t|another three sets of ten.                                   |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|    This is the RUNS test.  It counts runs up, and runs down,|");
+        log.info("\t|in a sequence of uniform [0,1) variables, obtained by float- |");
+        log.info("\t|ing the 32-bit integers in the specified file. This example  |");
+        log.info("\t|shows how runs are counted: .123,.357,.789,.425,.224,.416,.95|");
+        log.info("\t|contains an up-run of length 3, a down-run of length 2 and an|");
+        log.info("\t|up-run of (at least) 2, depending on the next values.  The   |");
+        log.info("\t|covariance matrices for the runs-up and runs-down are well   |");
+        log.info("\t|known, leading to chisquare tests for quadratic forms in the |");
+        log.info("\t|weak inverses of the covariance matrices.  Runs are counted  |");
+        log.info("\t|for sequences of length 10,000.  This is done ten times. Then|");
+        log.info("\t|another three sets of ten.                                   |");
+        log.info("\t|-------------------------------------------------------------|\n");
 
     }
 
@@ -163,8 +167,8 @@ public class Run extends Base {
         double[] pd;
         double pv;
 
-        printf("\t\t\tThe RUNS test for file " + filename + "\n");
-        puts("\t\t(Up and down runs in a sequence of 10000 numbers)");
+        log.info("\t\t\tThe RUNS test for file " + filename + "\n");
+        log.info("\t\t(Up and down runs in a sequence of 10000 numbers)");
 
         openInputStream();
 
@@ -186,10 +190,10 @@ public class Run extends Base {
             }
 
             pv = KStest(pu, no_seqs);
-            printf("\n\t\t\t\tSet " + i + "\n");
-            printf("\t\t runs up; ks test for " + no_seqs + " p's: " + pv + "\n");
+            log.info("\n\t\t\t\tSet " + i + "\n");
+            log.info("\t\t runs up; ks test for " + no_seqs + " p's: " + pv + "\n");
             pv = KStest(pd, no_seqs);
-            printf("\t\t runs down; ks test for " + no_seqs + " p's: " + pv + "\n");
+            log.info("\t\t runs down; ks test for " + no_seqs + " p's: " + pv + "\n");
         }
 
         closeInputStream();

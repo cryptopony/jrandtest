@@ -33,6 +33,8 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * BirthdaySpacings from DieHard
  * 
@@ -40,26 +42,29 @@ package com.fasteasytrade.jrandtest.tests;
  *  
  */
 public class BirthdaySpacings extends Base {
+
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|           This is the BIRTHDAY SPACINGS TEST                |");
-        puts("\t|Choose m birthdays in a \"year\" of n days.  List the spacings |");
-        puts("\t|between the birthdays.  Let j be the number of values that   |");
-        puts("\t|occur more than once in that list, then j is asymptotically  |");
-        puts("\t|Poisson distributed with mean m^3/(4n).  Experience shows n  |");
-        puts("\t|must be quite large, say n>=2^18, for comparing the results  |");
-        puts("\t|to the Poisson distribution with that mean.  This test uses  |");
-        puts("\t|n=2^24 and m=2^10, so that the underlying distribution for j |");
-        puts("\t|is taken to be Poisson with lambda=2^30/(2^26)=16. A sample  |");
-        puts("\t|of 200 j''s is taken, and a chi-square goodness of fit test  |");
-        puts("\t|provides a p value.  The first test uses bits 1-24 (counting |");
-        puts("\t|from the left) from integers in the specified file.  Then the|");
-        puts("\t|file is closed and reopened, then bits 2-25 of the same inte-|");
-        puts("\t|gers are used to provide birthdays, and so on to bits 9-32.  |");
-        puts("\t|Each set of bits provides a p-value, and the nine p-values   |");
-        puts("\t|provide a sample for a KSTEST.                               |");
-        puts("\t|------------------------------------------------------------ |\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|           This is the BIRTHDAY SPACINGS TEST                |");
+        log.info("\t|Choose m birthdays in a \"year\" of n days.  List the spacings |");
+        log.info("\t|between the birthdays.  Let j be the number of values that   |");
+        log.info("\t|occur more than once in that list, then j is asymptotically  |");
+        log.info("\t|Poisson distributed with mean m^3/(4n).  Experience shows n  |");
+        log.info("\t|must be quite large, say n>=2^18, for comparing the results  |");
+        log.info("\t|to the Poisson distribution with that mean.  This test uses  |");
+        log.info("\t|n=2^24 and m=2^10, so that the underlying distribution for j |");
+        log.info("\t|is taken to be Poisson with lambda=2^30/(2^26)=16. A sample  |");
+        log.info("\t|of 200 j''s is taken, and a chi-square goodness of fit test  |");
+        log.info("\t|provides a p value.  The first test uses bits 1-24 (counting |");
+        log.info("\t|from the left) from integers in the specified file.  Then the|");
+        log.info("\t|file is closed and reopened, then bits 2-25 of the same inte-|");
+        log.info("\t|gers are used to provide birthdays, and so on to bits 9-32.  |");
+        log.info("\t|Each set of bits provides a p-value, and the nine p-values   |");
+        log.info("\t|provide a sample for a KSTEST.                               |");
+        log.info("\t|------------------------------------------------------------ |\n");
 
     }
 
@@ -81,10 +86,10 @@ public class BirthdaySpacings extends Base {
         int dgf = 0;
         double chi_fit;
 
-        printf("\t\tRESULTS OF BIRTHDAY SPACINGS TEST FOR " + filename + "\n");
-        printf("\t(no_bdays=" + no_bday + ", no_days/yr=2^" + no_bits + ",");
-        printf(" lambda=" + d4(lambda) + ", sample size=" + no_obs + ")\n\n");
-        printf("\tBits used\tmean\t\tchisqr\t\tp-value\n");
+        log.info("\t\tRESULTS OF BIRTHDAY SPACINGS TEST FOR " + filename + "\n");
+        log.info("\t(no_bdays=" + no_bday + ", no_days/yr=2^" + no_bits + ",");
+        log.info(" lambda=" + d4(lambda) + ", sample size=" + no_obs + ")\n\n");
+        log.info("\tBits used\tmean\t\tchisqr\t\tp-value\n");
 
         int[] obs = new int[no_obs];
         double[] p = new double[32 - no_bits + 1];
@@ -130,17 +135,17 @@ public class BirthdaySpacings extends Base {
             chi_fit = resultVec[1];
             p[rt] = resultVec[2];
 
-            printf("\t " + (33 - no_bits - rt) + " to " + (32 - rt));
-            printf("\t" + d4((double)sum / no_obs) + "\t\t" + d4(chi_fit) + "\t\t" + d4(p[rt]) + "\n");
+            log.info("\t " + (33 - no_bits - rt) + " to " + (32 - rt));
+            log.info("\t" + d4((double)sum / no_obs) + "\t\t" + d4(chi_fit) + "\t\t" + d4(p[rt]) + "\n");
 
         }
 
         pvalue = KStest(p, 32 - no_bits + 1);
 
-        printf("\n\t\t\tdegree of freedoms is: " + dgf + "\n");
-        puts("\t---------------------------------------------------------------");
-        printf("\n\t\tp-value for KStest on those " + (32 - no_bits + 1) + " p-values: " + d4(pvalue));
-        puts("\n");
+        log.info("\n\t\t\tdegree of freedoms is: " + dgf + "\n");
+        log.info("\t---------------------------------------------------------------");
+        log.info("\n\t\tp-value for KStest on those " + (32 - no_bits + 1) + " p-values: " + d4(pvalue));
+        log.info("\n");
 
         return;
     }

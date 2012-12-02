@@ -33,6 +33,8 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 /**
  * Overlapping20TuplesBitstream from DieHard
  * <p>
@@ -49,24 +51,26 @@ package com.fasteasytrade.jrandtest.tests;
  */
 public class Overlapping20TuplesBitstream extends Base {
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|                  THE BITSTREAM TEST                         |");
-        puts("\t|The file under test is viewed as a stream of bits. Call them |");
-        puts("\t|b1,b2,... .  Consider an alphabet with two \"letters\", 0 and 1|");
-        puts("\t|and think of the stream of bits as a succession of 20-letter |");
-        puts("\t|\"words\", overlapping.  Thus the first word is b1b2...b20, the|");
-        puts("\t|second is b2b3...b21, and so on.  The bitstream test counts  |");
-        puts("\t|the number of missing 20-letter (20-bit) words in a string of|");
-        puts("\t|2^21 overlapping 20-letter words.  There are 2^20 possible 20|");
-        puts("\t|letter words.  For a truly random string of 2^21+19 bits, the|");
-        puts("\t|number of missing words j should be (very close to) normally |");
-        puts("\t|distributed with mean 141,909 and sigma 428.  Thus           |");
-        puts("\t| (j-141909)/428 should be a standard normal variate (z score)|");
-        puts("\t|that leads to a uniform [0,1) p value.  The test is repeated |");
-        puts("\t|twenty times.                                                |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|                  THE BITSTREAM TEST                         |");
+        log.info("\t|The file under test is viewed as a stream of bits. Call them |");
+        log.info("\t|b1,b2,... .  Consider an alphabet with two \"letters\", 0 and 1|");
+        log.info("\t|and think of the stream of bits as a succession of 20-letter |");
+        log.info("\t|\"words\", overlapping.  Thus the first word is b1b2...b20, the|");
+        log.info("\t|second is b2b3...b21, and so on.  The bitstream test counts  |");
+        log.info("\t|the number of missing 20-letter (20-bit) words in a string of|");
+        log.info("\t|2^21 overlapping 20-letter words.  There are 2^20 possible 20|");
+        log.info("\t|letter words.  For a truly random string of 2^21+19 bits, the|");
+        log.info("\t|number of missing words j should be (very close to) normally |");
+        log.info("\t|distributed with mean 141,909 and sigma 428.  Thus           |");
+        log.info("\t| (j-141909)/428 should be a standard normal variate (z score)|");
+        log.info("\t|that leads to a uniform [0,1) p value.  The test is repeated |");
+        log.info("\t|twenty times.                                                |");
+        log.info("\t|-------------------------------------------------------------|\n");
     }
 
     @Override
@@ -98,14 +102,14 @@ public class Overlapping20TuplesBitstream extends Base {
             bitmask[i] = bitmask[i - 1] << 1;
         }
 
-        printf("\t\tTHE OVERLAPPING 20-TUPLES BITSTREAM  TEST for " + filename + "\n");
-        printf("\t (" + nb_pw + " bits/word, " + no_wds + " words");
-        printf(" " + no_obs + " bitstreams.");
-        printf(" No. missing words \n\t  should average " + d4(mean));
-        printf(" with sigma=" + d4(std) + ".)\n");
-        puts("\t----------------------------------------------------------------");
-        printf("\n\t\t   Bitstream test results for " + filename + ".\n\n");
-        printf("\tBitstream\tNo. missing words\tz-score\t\tp-value\n");
+        log.info("\t\tTHE OVERLAPPING 20-TUPLES BITSTREAM  TEST for " + filename + "\n");
+        log.info("\t (" + nb_pw + " bits/word, " + no_wds + " words");
+        log.info(" " + no_obs + " bitstreams.");
+        log.info(" No. missing words \n\t  should average " + d4(mean));
+        log.info(" with sigma=" + d4(std) + ".)\n");
+        log.info("\t----------------------------------------------------------------");
+        log.info("\n\t\t   Bitstream test results for " + filename + ".\n\n");
+        log.info("\tBitstream\tNo. missing words\tz-score\t\tp-value\n");
 
         openInputStream();
 
@@ -123,7 +127,7 @@ public class Overlapping20TuplesBitstream extends Base {
             for (j = 0; j < no_bits; ++j) {
                 w32 = uni();
                 if (!isOpen()) {
-                    printf("\nError: end of file too early... End processing.\n\n");
+                    log.info("\nError: end of file too early... End processing.\n\n");
                     break;
                 }
 
@@ -155,12 +159,12 @@ public class Overlapping20TuplesBitstream extends Base {
             }
 
             z = (no_mswds - mean) / std;
-            printf("\t   " + i + "\t\t" + no_mswds + " \t\t\t" + d4(z) + "\t\t" + d4(1 - Phi(z)) + "\n");
+            log.info("\t   " + i + "\t\t" + no_mswds + " \t\t\t" + d4(z) + "\t\t" + d4(1 - Phi(z)) + "\n");
         }
 
         closeInputStream();
 
-        puts("\t----------------------------------------------------------------");
+        log.info("\t----------------------------------------------------------------");
     }
 
 }

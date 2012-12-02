@@ -35,17 +35,18 @@
 package com.fasteasytrade.jrandtest.io;
 
 /**
- * RandomStream interface represen stream of data to be checked by the different
- * tests. The interface will be implemented by real classes to read data from
- * files, external devices, web urls or algorithms.
+ * Represents stream of data to be checked by the different tests. The interface
+ * will be implemented by real classes to read data from files, external 
+ * devices, web urls, or algorithms.
  * 
  * @author Zur Aougav
  */
 public interface RandomStream {
+
     /**
      * check if RandomStream is open
      * 
-     * @return true if open (still data in stream), else flase
+     * @return true if open (still data in stream), else false
      */
     public boolean isOpen();
 

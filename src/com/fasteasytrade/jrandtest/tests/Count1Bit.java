@@ -34,6 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.logging.Logger;
+
 import com.fasteasytrade.jrandtest.utils.Derf;
 
 /**
@@ -46,13 +48,15 @@ import com.fasteasytrade.jrandtest.utils.Derf;
 
 public class Count1Bit extends Base {
 
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     public void help() {
-        puts("\n\t|-------------------------------------------------------------|");
-        puts("\t|    This is part of the Count test.  It counts the bits, 0's |");
-        puts("\t|and 1's. The sums and the differences are reported. The      |");
-        puts("\t|expection is 50%, each sum from total bits.                  |");
-        puts("\t|-------------------------------------------------------------|\n");
+        log.info("\n\t|-------------------------------------------------------------|");
+        log.info("\t|    This is part of the Count test.  It counts the bits, 0's |");
+        log.info("\t|and 1's. The sums and the differences are reported. The      |");
+        log.info("\t|expection is 50%, each sum from total bits.                  |");
+        log.info("\t|-------------------------------------------------------------|\n");
     }
 
     /**
@@ -65,7 +69,7 @@ public class Count1Bit extends Base {
         int j;
         long length = 0;
 
-        printf("\t\t\tThe Count1Bit test for file " + filename + "\n");
+        log.info("\t\t\tThe Count1Bit test for file " + filename + "\n");
 
         openInputStream();
 
@@ -89,29 +93,29 @@ public class Count1Bit extends Base {
         closeInputStream();
 
         double pv = KStest(v4, no_seqs);
-        printf("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
+        log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
 
         //printf("\n\t count bits 0&1. Should be: " + length * 4);
         long k = length / v4.length;
-        printf("\n\t found " + length + " 1 bit.");
-        printf("\n\t expected avg for 1 bit: " + k);
-        printf("\n\t found avg for 1 bit: " + (long)avg(v4));
+        log.info("\n\t found " + length + " 1 bit.");
+        log.info("\n\t expected avg for 1 bit: " + k);
+        log.info("\n\t found avg for 1 bit: " + (long)avg(v4));
         for (j = 0; j < no_seqs; j++) {
-            printf("\n\t bit " + j + ": " + d4(v4[j]) + " delta: " + d4(v4[j] - k) + " %: " + d4((100.00 * v4[j] / k - 100.00)));
+            log.info("\n\t bit " + j + ": " + d4(v4[j]) + " delta: " + d4(v4[j] - k) + " %: " + d4((100.00 * v4[j] / k - 100.00)));
         }
 
-        printf("\n\t the sum is\t\t:" + (long)(v4[1] - v4[0]));
-        printf("\n\t % sum/n is\t\t: %" + d4(100 * (v4[1] - v4[0]) / length));
+        log.info("\n\t the sum is\t\t:" + (long)(v4[1] - v4[0]));
+        log.info("\n\t % sum/n is\t\t: %" + d4(100 * (v4[1] - v4[0]) / length));
 
         double t = stdev(v4, k);
-        printf("\n\t stdev for 1 bit\t: " + d4(t));
-        printf("\n\t % stdev for 1 bit\t: %" + d4(100.00 * t / k));
-        printf("\n\t chitest for 1 bit\t: " + d4(chitest(v4, k)));
-        printf("\n\t r2 for 1 bit\t\t: " + d4(r2_double(v4)));
+        log.info("\n\t stdev for 1 bit\t: " + d4(t));
+        log.info("\n\t % stdev for 1 bit\t: %" + d4(100.00 * t / k));
+        log.info("\n\t chitest for 1 bit\t: " + d4(chitest(v4, k)));
+        log.info("\n\t r2 for 1 bit\t\t: " + d4(r2_double(v4)));
 
         double e = Math.abs(v4[1] - v4[0]) / Math.sqrt(2.0 * length);
         e = Derf.derfc(e);
-        printf("\n\t pValue (erfc)\t\t\t: " + d4(e));
+        log.info("\n\t pValue (erfc)\t\t\t: " + d4(e));
 
         return;
     }
