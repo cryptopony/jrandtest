@@ -96,14 +96,14 @@ public class Run extends Base {
             if (up > 0) {
                 ++dcnt[rd];
                 rd = 0;
-                ru = MIN(ru + 1, 5);
+                ru = Math.min(ru + 1, 5);
                 continue;
             }
 
             if (up < 0) {
                 ++ucnt[ru];
                 ru = 0;
-                rd = MIN(rd + 1, 5);
+                rd = Math.min(rd + 1, 5);
                 continue;
             }
         }

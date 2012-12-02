@@ -41,8 +41,8 @@ package com.fasteasytrade.jrandtest.tests;
 public class OverlappingPairsSparseOccupancy extends Base {
 
     final int bits_pw = 20;
-    final double mean = pow(2, bits_pw) * exp(-2);
-    final int dim = (int)pow(2, bits_pw - 5);
+    final double mean = Math.pow(2, bits_pw) * Math.exp(-2);
+    final int dim = (int)Math.pow(2, bits_pw - 5);
     final int no_tests = 1;
 
     /**
@@ -94,7 +94,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
         int wd;
         long[] maskbit = new long[32];
         int i, k, rt = 0;
-        int no_wds = (int)pow(2, bits_pw + 1);
+        int no_wds = (int)Math.pow(2, (bits_pw + 1));
         int no_mswds;
         int[] wds;
         double z;
@@ -164,7 +164,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
 
         if (flag != rt) {
             flag = rt;
-            maskltr = (int)pow(2, bits_pl) - 1;
+            maskltr = (int)Math.pow(2, bits_pl) - 1;
             ltrs_pw = 20 / bits_pl;
 
             for (int i = 1; i < ltrs_pw; i++) {

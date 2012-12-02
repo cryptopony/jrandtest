@@ -51,7 +51,7 @@ package com.fasteasytrade.jrandtest.tests;
 public class Squeeze extends Base {
     final int no_trials = 100000;
     final double ratio = no_trials / 1000000.0;
-    final double std = sqrt(84);
+    final double std = Math.sqrt(84);
 
     int i;
     long k;
@@ -111,7 +111,7 @@ public class Squeeze extends Base {
                 break;
             }
 
-            j = MAX(j - 6, 0);
+            j = Math.max(j - 6, 0);
             ++f[j];
         }
 
@@ -121,7 +121,7 @@ public class Squeeze extends Base {
          * compute chi-square 
          */
         for (i = 0; i < 43; ++i) {
-            tmp = (f[i] - Ef[i]) / sqrt(Ef[i]);
+            tmp = (f[i] - Ef[i]) / Math.sqrt(Ef[i]);
             chsq += tmp * tmp;
             printf("\t% " + d4(tmp) + "  ");
             if ((i + 1) % 6 == 0) {

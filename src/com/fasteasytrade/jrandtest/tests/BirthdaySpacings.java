@@ -69,8 +69,8 @@ public class BirthdaySpacings extends Base {
         final int no_obs = 500;
         final int no_bday = 1024;
         final int no_bits = 24;
-        final int mask = (int)pow(2, no_bits) - 1;
-        final double lambda = pow(no_bday, 3) / (4.0 * pow(2, no_bits));
+        final int mask = (int)Math.pow(2, no_bits) - 1;
+        final double lambda = Math.pow(no_bday, 3) / (4.0 * Math.pow(2, no_bits));
 
         int rt;
         int i, k, sum;

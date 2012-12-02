@@ -52,7 +52,7 @@ public class CountThe1s extends Base {
 
     final double mean = 2500.0;
 
-    final double std = sqrt(5000.0);
+    final double std = Math.sqrt(5000.0);
 
     final double prob[] = { 37. / 256., 56. / 256., 70. / 256., 56. / 256., 37. / 256. };
 

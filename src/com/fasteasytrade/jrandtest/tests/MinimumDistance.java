@@ -118,7 +118,7 @@ public class MinimumDistance extends Base {
                     d = (pts[k].y - pts[j].y) * (pts[k].y - pts[j].y);
                     if (d < dmin) {
                         d += (pts[k].x - pts[j].x) * (pts[k].x - pts[j].x);
-                        dmin = MIN(dmin, d);
+                        dmin = Math.min(dmin, d);
                         if (dmin == 0) {
                             System.out.println("dmin=0 @ i=" + i + " j=" + j + " k=" + k);
                         }
@@ -129,7 +129,7 @@ public class MinimumDistance extends Base {
             //dmin = sqrt(dmin);
 
             sum += dmin;
-            p[i - 1] = 1 - exp(-dmin / .995); /* transforming into U[0,1] */
+            p[i - 1] = 1 - Math.exp(-dmin / .995); /* transforming into U[0,1] */
 
             if (i % 5 == 0) {
                 printf("\n\t   " + i + "\t\t" + d4(dmin) + "\t\t" + d4(sum / i) + "\t\t" + d4(p[i - 1]));

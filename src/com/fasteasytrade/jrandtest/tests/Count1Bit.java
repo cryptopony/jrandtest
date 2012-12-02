@@ -109,7 +109,7 @@ public class Count1Bit extends Base {
         printf("\n\t chitest for 1 bit\t: " + d4(chitest(v4, k)));
         printf("\n\t r2 for 1 bit\t\t: " + d4(r2_double(v4)));
 
-        double e = ABS(v4[1] - v4[0]) / sqrt(2.0 * length);
+        double e = Math.abs(v4[1] - v4[0]) / Math.sqrt(2.0 * length);
         e = Derf.derfc(e);
         printf("\n\t pValue (erfc)\t\t\t: " + d4(e));
 

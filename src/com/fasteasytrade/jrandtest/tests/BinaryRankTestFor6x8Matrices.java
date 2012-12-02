@@ -174,7 +174,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             }
 
             cls = rankBinaryMatrix();
-            cls = MAX(llim, cls) - llim;
+            cls = Math.max(llim, cls) - llim;
             f[cls]++;
         }
 
@@ -187,7 +187,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             Ef = no_matrices * p[i];
             tmp = (f[i] - Ef) * (f[i] - Ef) / Ef;
             chsq += tmp;
-            printf("\t" + cat[MIN(1, i)] + (i + llim) + "\t" + d4(f[i]) + "\t" + d4(Ef));
+            printf("\t" + cat[Math.min(1, i)] + (i + llim) + "\t" + d4(f[i]) + "\t" + d4(Ef));
             printf("\t" + d4(tmp) + "\t" + d4(chsq) + "\n");
         }
 

@@ -72,11 +72,11 @@ public class Overlapping20TuplesBitstream extends Base {
     @Override
     public void test(String filename) throws Exception {
         final int nb_pw = 20, power = 21, no_obs = 20;
-        final int no_bits = (int)pow(2, power - 5);
-        final int no_wds = (int)pow(2, power);
-        final int dim = (int)pow(2, nb_pw - 5);
-        int mask = (int)pow(2, nb_pw) - 1;
-        final double mean = pow(2, nb_pw) * exp(-pow(2, (power - nb_pw)));
+        final int no_bits = (int)Math.pow(2, power - 5);
+        final int no_wds = (int)Math.pow(2, power);
+        final int dim = (int)Math.pow(2, nb_pw - 5);
+        int mask = (int)Math.pow(2, nb_pw) - 1;
+        final double mean = Math.pow(2, nb_pw) * Math.exp(-Math.pow(2, power - nb_pw));
         final double std = 428;
 
         //int w20;

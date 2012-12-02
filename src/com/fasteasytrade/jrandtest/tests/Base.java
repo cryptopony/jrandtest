@@ -56,60 +56,12 @@ public abstract class Base {
 
     final public long UNIMAX = 4294967296L; //  pow(2,32)
 
-    public double MAX(double a, double b) {
-        return (a < b ? b : a);
-    }
-
-    public int MAX(int a, int b) {
-        return (a < b ? b : a);
-    }
-
-    public double MIN(double a, double b) {
-        return (a > b ? b : a);
-    }
-
-    public int MIN(int a, int b) {
-        return (a > b ? b : a);
-    }
-
-    public double ABS(double a) {
-        return (a > 0 ? a : -a);
-    }
-
-    public int ABS(int a) {
-        return (a > 0 ? a : -a);
-    }
-
     public double SIGN(double a) {
         return (a > 0 ? 1 : -1);
     }
 
     public int SIGN(int a) {
         return (a > 0 ? 1 : -1);
-    }
-
-    public double pow(double a, double b) {
-        return Math.pow(a, b);
-    }
-
-    public double sqrt(double a) {
-        return Math.sqrt(a);
-    }
-
-    public double sqrt(int a) {
-        return Math.sqrt(a);
-    }
-
-    public double exp(double a) {
-        return Math.exp(a);
-    }
-
-    public double exp(int a) {
-        return Math.exp(a);
-    }
-
-    public double log(double a) {
-        return Math.log(a);
     }
 
     /**
@@ -274,7 +226,7 @@ public abstract class Base {
         }
 
         if (tmp == 1) {
-            return sqrt(PI);
+            return Math.sqrt(PI);
         } else if (tmp == 2) {
             return 1;
         }
@@ -285,7 +237,7 @@ public abstract class Base {
      * p.d.f of Standard Normal
      */
     public double phi(double x) {
-        return exp(-x * x / 2.0) / sqrt(2.0 * PI);
+        return Math.exp(-x * x / 2.0) / Math.sqrt(2.0 * PI);
     }
 
     /**
@@ -293,7 +245,7 @@ public abstract class Base {
      */
     public double Phi(double x) {
         double tmp;
-        tmp = x / sqrt(2.0);
+        tmp = x / Math.sqrt(2.0);
         tmp = 1.0 + Derf.derf(tmp);
         return tmp / 2.0;
     }
@@ -302,7 +254,7 @@ public abstract class Base {
      * p.d.f of Chi-square
      */
     public double chisq(int df, double x) {
-        return (pow(x / 2, (df - 2) / 2.) * exp(-x / 2) / (2 * G(df / 2.)));
+        return (Math.pow(x / 2, (df - 2) / 2.) * Math.exp(-x / 2) / (2 * G(df / 2.)));
     }
 
     /**
@@ -310,9 +262,9 @@ public abstract class Base {
      */
     public double Chisq(int df, double x) {
         if (df == 1) {
-            return 2 * Phi(sqrt(x)) - 1;
+            return 2 * Phi(Math.sqrt(x)) - 1;
         } else if (df == 2) {
-            return 1 - exp(-x / 2);
+            return 1 - Math.exp(-x / 2);
         } else {
             return (Chisq(df - 2, x) - 2 * chisq(df, x));
         }
@@ -323,9 +275,9 @@ public abstract class Base {
      */
     public double Poisson(double lambda, int k) {
         if (k == 0) {
-            return exp(-lambda);
+            return Math.exp(-lambda);
         }
-        return exp(-lambda) * pow(lambda, k) / G(k + 1);
+        return Math.exp(-lambda) * Math.pow(lambda, k) / G(k + 1);
     }
 
     public static double chitest(double[] data, double expected) {
@@ -673,14 +625,14 @@ public abstract class Base {
         int i;
         double pvalue, tmp;
         double z = -dim * dim;
-        double epsilon = pow(10, -20);
+        double epsilon = Math.pow(10, -20);
 
         qsort(x, dim);
 
         for (i = 0; i < dim; ++i) {
             tmp = x[i] * (1 - x[dim - 1 - i]);
-            tmp = MAX(epsilon, tmp);
-            z -= (2 * i + 1) * log(tmp);
+            tmp = Math.max(epsilon, tmp);
+            z -= (2 * i + 1) * Math.log(tmp);
         }
 
         z /= dim;
@@ -694,21 +646,21 @@ public abstract class Base {
      * <p>
      * Used by KStest
      */
-    private double AD(double z) {
+    private static double AD(double z) {
         if (z < .01) {
             return 0;
         }
 
         if (z <= 2) {
-            return 2 * exp(-1.2337 / z) * (1 + z / 8 - .04958 * z * z / (1.325 + z)) / sqrt(z);
+            return 2 * Math.exp(-1.2337 / z) * (1 + z / 8 - .04958 * z * z / (1.325 + z)) / Math.sqrt(z);
         }
 
         if (z <= 4) {
-            return 1 - .6621361 * exp(-1.091638 * z) - .95095 * exp(-2.005138 * z);
+            return 1 - .6621361 * Math.exp(-1.091638 * z) - .95095 * Math.exp(-2.005138 * z);
         }
 
         if (4 < z) {
-            return 1 - .4938691 * exp(-1.050321 * z) - .5946335 * exp(-1.527198 * z);
+            return 1 - .4938691 * Math.exp(-1.050321 * z) - .5946335 * Math.exp(-1.527198 * z);
         }
 
         return -1; // error indicator
