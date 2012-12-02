@@ -34,10 +34,8 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
-import java.util.Vector;
 import java.util.logging.Logger;
 
-import com.fasteasytrade.jrandtest.io.OutputDestination;
 import com.fasteasytrade.jrandtest.io.RandomStream;
 import com.fasteasytrade.jrandtest.utils.Derf;
 
@@ -426,33 +424,6 @@ public abstract class Base {
                 log.info("1");
             }
             n <<= 1;
-        }
-    }
-
-    Vector<OutputDestination> vecOutputDestinations = new Vector<OutputDestination>();
-
-    /**
-     * register output destination in vector of output destinations. printf and
-     * puts willwrite data to all destinations.
-     * 
-     * @param od
-     *            register this OutputDestination interface
-     */
-    public void addOutputDestination(OutputDestination od) {
-        if (!vecOutputDestinations.contains(od)) {
-            vecOutputDestinations.add(od);
-        }
-    }
-
-    /**
-     * unregister output destination from vector of output destinations.
-     * 
-     * @param od
-     *            OutputDestination interface to be removed
-     */
-    public void removeOutputDestination(OutputDestination od) {
-        if (vecOutputDestinations.contains(od)) {
-            vecOutputDestinations.remove(od);
         }
     }
 
