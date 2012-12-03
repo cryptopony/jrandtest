@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -53,7 +54,7 @@ public class Count2Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 4;
         double[] v5 = new double[4]; // count 2-bits: 00/01/10/11
         int j;
@@ -97,6 +98,6 @@ public class Count2Bits extends Base {
         log.info("\n\t chitest for 2 bits\t: " + Format.d4(Stat.chitest(v5, k)));
         log.info("\n\t r2 for 2 bits\t\t: " + Format.d4(Stat.r2_double(v5)));
 
-        return;
+        return Result.UNKNOWN;
     }
-} // end class
+}

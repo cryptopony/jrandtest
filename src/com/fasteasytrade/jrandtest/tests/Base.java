@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.io.RandomStream;
@@ -64,6 +65,6 @@ public abstract class Base {
     /**
      * test method to be implemented by each test class.
      */
-    public abstract void test() throws Exception;
+    public abstract Result test(Map<String,String> details) throws Exception;
 
 }

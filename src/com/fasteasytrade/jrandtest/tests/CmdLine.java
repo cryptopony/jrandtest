@@ -451,7 +451,7 @@ public class CmdLine {
                 /*
                  * run test!
                  */
-                ob.test();
+                ob.test(null);
 
             } catch (Exception e) {
                 e.printStackTrace();

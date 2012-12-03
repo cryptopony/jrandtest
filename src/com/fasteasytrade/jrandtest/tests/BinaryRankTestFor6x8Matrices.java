@@ -33,6 +33,7 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -67,7 +68,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
 
         setParameters();
 
@@ -79,7 +80,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
         } while (rt >= 0);
 
         if (!testName.equals("6x8")) {
-            return;
+            return Result.UNKNOWN;
         }
 
         log.info("\t    TEST SUMMARY, 25 tests on 100,000 random 6x8 matrices");
@@ -94,6 +95,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
 
         log.info("\n\t\tThe KS test for those 25 supposed UNI's yields\n");
         log.info("\t\t\tKS p-value = " + Format.d4(Stat.KStest(p, 25)) + "\n");
+        return Result.UNKNOWN;
 
     }
 

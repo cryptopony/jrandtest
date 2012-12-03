@@ -34,6 +34,7 @@
 package com.fasteasytrade.jrandtest.tests;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -63,7 +64,7 @@ public class BirthdaySpacings extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
 
         final int no_obs = 500;
         final int no_bday = 1024;
@@ -140,7 +141,7 @@ public class BirthdaySpacings extends Base {
         log.info("\n\t\tp-value for KStest on those " + (32 - no_bits + 1) + " p-values: " + Format.d4(pvalue));
         log.info("\n");
 
-        return;
+        return Result.UNKNOWN;
     }
 
 }

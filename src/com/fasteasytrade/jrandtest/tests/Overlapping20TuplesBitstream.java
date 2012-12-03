@@ -33,6 +33,7 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -60,7 +61,7 @@ public class Overlapping20TuplesBitstream extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int nb_pw = 20, power = 21, no_obs = 20;
         final int no_bits = (int)Math.pow(2, power - 5);
         final int no_wds = (int)Math.pow(2, power);
@@ -149,6 +150,6 @@ public class Overlapping20TuplesBitstream extends Base {
         rs.closeInputStream();
 
         log.info("\t----------------------------------------------------------------");
+        return Result.UNKNOWN;
     }
-
 }

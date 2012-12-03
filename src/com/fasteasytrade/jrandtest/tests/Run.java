@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Stat;
@@ -143,7 +144,7 @@ public class Run extends Base {
     } // end udruns
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int no_sets = 2;
         final int no_seqs = 10;
         final int length = 10000;
@@ -186,7 +187,7 @@ public class Run extends Base {
 
         rs.closeInputStream();
 
-        return;
+        return Result.UNKNOWN;
     }
 
-} // end class
+}

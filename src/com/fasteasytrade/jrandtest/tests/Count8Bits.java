@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -51,7 +52,7 @@ public class Count8Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 256;
         double[] v1 = new double[no_seqs]; // count each byte, 0 .. 255		
         long length = 0;
@@ -90,7 +91,7 @@ public class Count8Bits extends Base {
         log.info("\n\t chitest for 1 byte\t: " + Format.d4(Stat.chitest(v1, k)));
         log.info("\n\t r2 for 1 byte\t\t: " + Format.d4(Stat.r2_double(v1)));
 
-        return;
+        return Result.UNKNOWN;
     }
 
-} // end class
+}

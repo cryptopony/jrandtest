@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Derf;
@@ -57,7 +58,7 @@ public class Count1Bit extends Base {
     /**
      */
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 2;
         double[] v4 = new double[no_seqs]; // count bit 0's and 1's
         int j;
@@ -109,7 +110,7 @@ public class Count1Bit extends Base {
         e = Derf.derfc(e);
         log.info("\n\t pValue (erfc)\t\t\t: " + Format.d4(e));
 
-        return;
+        return Result.UNKNOWN;
     }
 
-} // end class
+}

@@ -33,6 +33,7 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -89,7 +90,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
     }
 
     @Override
-    public void test() {
+    public Result test(Map<String,String> details) {
         int j;
         int u, l;
         int wd;
@@ -154,6 +155,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
 
         log.info("\t------------------------------");
         log.info("-----------------------------------\n");
+        return Result.UNKNOWN;
     }
 
     /**

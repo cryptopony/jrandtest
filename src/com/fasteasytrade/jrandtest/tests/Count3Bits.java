@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -50,7 +51,7 @@ public class Count3Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 8;
         double[] v1 = new double[no_seqs]; // count 3 bits - 000/001/010/../111
         long length = 0;
@@ -111,7 +112,7 @@ public class Count3Bits extends Base {
         log.info("\n\t chitest for 3 bits\t: " + Format.d4(Stat.chitest(v1, k)));
         log.info("\n\t r2 for 3 bits\t\t: " + Format.d4(Stat.r2_double(v1)));
 
-        return;
+        return Result.UNKNOWN;
     }
 
-} // end class
+}

@@ -33,6 +33,7 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -97,7 +98,7 @@ public class CountThe1s extends Base {
     }
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
 
         setParameters();
 
@@ -109,7 +110,7 @@ public class CountThe1s extends Base {
             --rt;
         } while (rt >= 0);
 
-        return;
+        return Result.UNKNOWN;
     }
 
     /**

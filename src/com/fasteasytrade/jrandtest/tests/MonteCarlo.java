@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -55,7 +56,7 @@ public class MonteCarlo extends Base {
     /**
      */
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int square256 = 256 * 256; // square(radius) of circle(256)
         long success = 0;
         long length = 0;
@@ -100,7 +101,7 @@ public class MonteCarlo extends Base {
         piValue *= 4.0;
         log.info("\n\t piValue: " + Format.d4(piValue));
 
-        return;
+        return Result.UNKNOWN;
     }
 
-} // end class
+}

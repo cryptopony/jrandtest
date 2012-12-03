@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
@@ -51,7 +52,7 @@ public class Count4Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test() throws Exception {
+    public Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 16;
         double[] v6 = new double[no_seqs];
         // count 4-bits: 0000/0001/.../1111		
@@ -95,7 +96,7 @@ public class Count4Bits extends Base {
         log.info("\n\t chitest for 4 bits\t: " + Format.d4(Stat.chitest(v6, k)));
         log.info("\n\t r2 for 4 bits\t\t: " + Format.d4(Stat.r2_double(v6)));
 
-        return;
+        return Result.UNKNOWN;
     }
 
-} // end class
+}
