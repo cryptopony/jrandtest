@@ -240,7 +240,7 @@ public abstract class Base {
      * @return double number netween 0 and 1.
      */
     public double read32BitsAsDouble() {
-        return ((double)(0x00ffffffffL & readInt())) / (double)0x0ffffffffL;
+        return rs.read32BitsAsDouble();
     }
 
     /**

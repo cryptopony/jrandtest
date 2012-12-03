@@ -107,4 +107,12 @@ public interface RandomStream {
      */
     public long readLong();
 
+    /**
+     * read one int from registered input random stream and divide it by
+     * (2^32 - 1).
+     * 
+     * @return double number netween 0 and 1.
+     */
+    public double read32BitsAsDouble();
+
 }

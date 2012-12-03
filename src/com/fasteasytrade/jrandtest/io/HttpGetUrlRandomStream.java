@@ -199,4 +199,15 @@ public class HttpGetUrlRandomStream implements RandomStream {
         return result;
     }
 
+    /**
+     * read one int from registered input random stream and divide it by
+     * (2^32 - 1).
+     * 
+     * @return double number netween 0 and 1.
+     */
+    @Override
+    public double read32BitsAsDouble() {
+        return ((double)(0x00ffffffffL & readInt())) / (double)0x0ffffffffL;
+    }
+
 }
