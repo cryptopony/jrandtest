@@ -53,8 +53,6 @@ public abstract class Base {
 
     final public int DIM = 4096;
 
-    final public long UNIMAX = 4294967296L; //  pow(2,32)
-
     public double SIGN(double a) {
         return (a > 0 ? 1 : -1);
     }

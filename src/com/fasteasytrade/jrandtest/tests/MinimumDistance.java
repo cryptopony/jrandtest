@@ -58,7 +58,7 @@ public class MinimumDistance extends Base {
     final int no_pts = 8000;
     final int no_smpl = 100;
     final int side = 10000;
-    final double ratio = 10000.0 / UNIMAX;
+    final double ratio = 10000.0 / Integer.MAX_VALUE;
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
