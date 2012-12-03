@@ -34,6 +34,7 @@ package com.fasteasytrade.jrandtest.io;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * This class represents an encrypted or random source file. Data, bytes or
@@ -84,7 +85,7 @@ public class FileRandomStream implements RandomStream {
     }
 
     @Override
-    public boolean openInputStream() throws Exception {
+    public boolean openInputStream() {
         open = false;
         if (filename == null) {
             return false;
@@ -93,7 +94,11 @@ public class FileRandomStream implements RandomStream {
          * throw exception if error... we want to let the "caller" method
          * "knows" what's going on...
          */
-        infile = new BufferedInputStream(new FileInputStream(filename), 1024 * 64); // size of buffer. 64KB.
+        try {
+            infile = new BufferedInputStream(new FileInputStream(filename), 1024 * 64);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
         open = true;
         count = 0;
         actualSize = SIZE;
@@ -115,7 +120,7 @@ public class FileRandomStream implements RandomStream {
     }
 
     @Override
-    public byte readByte() throws Exception {
+    public byte readByte() {
 
         if (!isOpen()) {
             return -1;
@@ -143,7 +148,7 @@ public class FileRandomStream implements RandomStream {
     }
 
     @Override
-    public int readInt() throws Exception {
+    public int readInt() {
         if (!isOpen()) {
             return -1;
         }
@@ -159,7 +164,7 @@ public class FileRandomStream implements RandomStream {
     }
 
     @Override
-    public long readLong() throws Exception {
+    public long readLong() {
         if (!isOpen()) {
             return -1;
         }

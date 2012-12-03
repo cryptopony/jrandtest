@@ -33,6 +33,7 @@
  */
 package com.fasteasytrade.jrandtest.algo;
 
+import javax.crypto.ShortBufferException;
 import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -98,7 +99,7 @@ public class DES extends FileAlgoRandomStream {
     }
 
     @Override
-    public boolean openInputStream() throws Exception {
+    public boolean openInputStream() {
 
         if (filename != null) {
             super.openInputStream();
@@ -114,7 +115,7 @@ public class DES extends FileAlgoRandomStream {
     }
 
     @Override
-    public byte readByte() throws Exception {
+    public byte readByte() {
         if (!isOpen()) {
             return -1;
         }
@@ -136,7 +137,11 @@ public class DES extends FileAlgoRandomStream {
                     return -1;
                 }
                 countLastRead = 0;
-                algo.update(buffer, 0, actualSize, buffer); // encrypt it
+                try {
+                    algo.update(buffer, 0, actualSize, buffer);
+                } catch (ShortBufferException e) {
+                    throw new IllegalStateException(e);
+                } // encrypt it
             }
 
             prng = buffer[countLastRead++];
@@ -158,7 +163,7 @@ public class DES extends FileAlgoRandomStream {
     }
 
     @Override
-    public int readInt() throws Exception {
+    public int readInt() {
         if (!isOpen()) {
             return -1;
         }
@@ -177,7 +182,7 @@ public class DES extends FileAlgoRandomStream {
     }
 
     @Override
-    public long readLong() throws Exception {
+    public long readLong() {
         if (!isOpen()) {
             return -1;
         }

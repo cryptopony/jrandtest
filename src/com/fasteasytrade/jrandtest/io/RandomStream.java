@@ -68,10 +68,8 @@ public interface RandomStream {
      * open the input stream.
      * 
      * @return boolean true for success, else false.
-     * @throws Exception -
-     *             Usually IOException.
      */
-    abstract public boolean openInputStream() throws Exception;
+    abstract public boolean openInputStream();
 
     /**
      * close the input stream.
@@ -90,7 +88,7 @@ public interface RandomStream {
      * 
      * @return byte read form stream, -1 if passed end of file
      */
-    public byte readByte() throws Exception;
+    public byte readByte();
 
     /**
      * Processing is similar to readByte.
@@ -98,7 +96,7 @@ public interface RandomStream {
      * 
      * @return int (32 bits, 4 bytes) read form stream, -1 if passed end of file
      */
-    public int readInt() throws Exception;
+    public int readInt();
 
     /**
      * Processing is similar to readByte.
@@ -107,6 +105,6 @@ public interface RandomStream {
      * @return long (64 bits, 8 bytes) read form stream, -1 if passed end of
      *         file
      */
-    public long readLong() throws Exception;
+    public long readLong();
 
 }

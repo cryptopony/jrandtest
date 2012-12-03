@@ -127,17 +127,17 @@ public abstract class FileAlgoRandomStream extends FileRandomStream implements A
     }
 
     @Override
-    public byte readByte() throws Exception {
+    public byte readByte() {
         return super.readByte();
     }
 
     @Override
-    public int readInt() throws Exception {
+    public int readInt() {
         return super.readInt();
     }
 
     @Override
-    public long readLong() throws Exception {
+    public long readLong() {
         return super.readLong();
     }
 }

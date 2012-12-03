@@ -93,7 +93,7 @@ public class HttpGetUrlRandomStream implements RandomStream {
     }
 
     @Override
-    public boolean openInputStream() throws Exception {
+    public boolean openInputStream() {
         open = false;
         if (filename == null) {
             return false;
@@ -129,8 +129,7 @@ public class HttpGetUrlRandomStream implements RandomStream {
 
             infile = new DataInputStream(con.getInputStream());
         } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
+            throw new IllegalStateException(e);
         }
         open = true;
         count = 0;
@@ -150,7 +149,7 @@ public class HttpGetUrlRandomStream implements RandomStream {
     }
 
     @Override
-    public byte readByte() throws Exception {
+    public byte readByte() {
         if (!isOpen()) {
             return -1;
         }
@@ -177,7 +176,7 @@ public class HttpGetUrlRandomStream implements RandomStream {
     }
 
     @Override
-    public int readInt() throws Exception {
+    public int readInt() {
         int result = 0;
         for (int i = 0; i < 4; i++) {
             result = (result << 8) | (0xff & readByte());
@@ -189,7 +188,7 @@ public class HttpGetUrlRandomStream implements RandomStream {
     }
 
     @Override
-    public long readLong() throws Exception {
+    public long readLong() {
         int result = 0;
         for (int i = 0; i < 8; i++) {
             result = (result << 8) | (0xff & readByte());

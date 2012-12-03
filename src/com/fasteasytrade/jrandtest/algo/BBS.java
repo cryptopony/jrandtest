@@ -78,7 +78,7 @@ public class BBS extends FileAlgoRandomStream {
     }
 
     @Override
-    public boolean openInputStream() throws Exception {
+    public boolean openInputStream() {
 
         if (filename != null) {
             super.openInputStream();
@@ -94,7 +94,7 @@ public class BBS extends FileAlgoRandomStream {
     }
 
     @Override
-    public byte readByte() throws Exception {
+    public byte readByte() {
         if (!isOpen()) {
             return -1;
         }
@@ -131,7 +131,7 @@ public class BBS extends FileAlgoRandomStream {
     }
 
     @Override
-    public int readInt() throws Exception {
+    public int readInt() {
         if (!isOpen()) {
             return -1;
         }
@@ -150,7 +150,7 @@ public class BBS extends FileAlgoRandomStream {
     }
 
     @Override
-    public long readLong() throws Exception {
+    public long readLong() {
         if (!isOpen()) {
             return -1;
         }
