@@ -53,15 +53,12 @@ public class MonteCarlo extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     /**
-     * @param filename input file with random data
      */
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         final int square256 = 256 * 256; // square(radius) of circle(256)
         long success = 0;
         long length = 0;
-
-        log.info("\t\t\tThe MonteCarlo test for file " + filename + "\n");
 
         rs.openInputStream();
 

@@ -67,11 +67,9 @@ public class BinaryRankTestFor6x8Matrices extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
 
         setParameters();
-
-        log.info("\t\tRank test for binary matrices (" + testName + ") from " + filename + "\n");
 
         double[] p = new double[rt + 1];
 

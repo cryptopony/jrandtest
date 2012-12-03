@@ -49,16 +49,11 @@ public class Count3Bits extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
 
-    /**
-     * @param filename input file with random data
-     */
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         final int no_seqs = 8;
         double[] v1 = new double[no_seqs]; // count 3 bits - 000/001/010/../111
         long length = 0;
-
-        log.info("\t\t\tThe Count3Bits test for file " + filename + "\n");
 
         rs.openInputStream();
 

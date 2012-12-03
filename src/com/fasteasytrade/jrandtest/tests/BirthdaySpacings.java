@@ -63,7 +63,7 @@ public class BirthdaySpacings extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
 
         final int no_obs = 500;
         final int no_bday = 1024;
@@ -80,7 +80,6 @@ public class BirthdaySpacings extends Base {
         int dgf = 0;
         double chi_fit;
 
-        log.info("\t\tRESULTS OF BIRTHDAY SPACINGS TEST FOR " + filename + "\n");
         log.info("\t(no_bdays=" + no_bday + ", no_days/yr=2^" + no_bits + ",");
         log.info(" lambda=" + Format.d4(lambda) + ", sample size=" + no_obs + ")\n\n");
         log.info("\tBits used\tmean\t\tchisqr\t\tp-value\n");

@@ -73,8 +73,7 @@ public class Squeeze extends Base {
     double chsq = 0;
 
     @Override
-    public void test(String filename) throws Exception {
-        log.info("\t\t\tRESULTS OF SQUEEZE TEST FOR " + filename + "\n\n");
+    public void test() throws Exception {
         log.info("\t\t    Table of standardized frequency counts\n");
         log.info("\t\t(obs-exp)^2/exp  for j=(1,..,6), 7,...,47,(48,...)\n\t");
 

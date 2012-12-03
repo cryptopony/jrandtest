@@ -451,7 +451,7 @@ public class CmdLine {
                 /*
                  * run test!
                  */
-                ob.test(algoname + " @ " + filename);
+                ob.test();
 
             } catch (Exception e) {
                 e.printStackTrace();

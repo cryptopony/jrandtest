@@ -89,7 +89,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
     }
 
     @Override
-    public void test(String filename) {
+    public void test() {
         int j;
         int u, l;
         int wd;
@@ -105,7 +105,6 @@ public class OverlappingPairsSparseOccupancy extends Base {
          */
         setParameters();
 
-        log.info("\t\t\t   " + testName + " test for file " + filename + "\n\n");
         log.info("\tBits used\tNo. missing words");
         log.info("\tz-score\t\tp-value\n");
 

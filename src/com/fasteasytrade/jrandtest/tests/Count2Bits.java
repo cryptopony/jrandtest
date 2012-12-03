@@ -52,17 +52,12 @@ public class Count2Bits extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
 
-    /**
-     * @param filename input file with random data
-     */
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         final int no_seqs = 4;
         double[] v5 = new double[4]; // count 2-bits: 00/01/10/11
         int j;
         long length = 0;
-
-        log.info("\t\t\tThe Count2Bits test for file " + filename + "\n");
 
         rs.openInputStream();
 

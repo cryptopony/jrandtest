@@ -63,9 +63,7 @@ public abstract class Base {
 
     /**
      * test method to be implemented by each test class.
-     * 
-     * @param filename is the filename to be read or the algorithm name.
      */
-    public abstract void test(String filename) throws Exception;
+    public abstract void test() throws Exception;
 
 }

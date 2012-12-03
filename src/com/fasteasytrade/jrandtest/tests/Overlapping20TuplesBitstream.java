@@ -60,7 +60,7 @@ public class Overlapping20TuplesBitstream extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         final int nb_pw = 20, power = 21, no_obs = 20;
         final int no_bits = (int)Math.pow(2, power - 5);
         final int no_wds = (int)Math.pow(2, power);
@@ -88,13 +88,11 @@ public class Overlapping20TuplesBitstream extends Base {
             bitmask[i] = bitmask[i - 1] << 1;
         }
 
-        log.info("\t\tTHE OVERLAPPING 20-TUPLES BITSTREAM  TEST for " + filename + "\n");
         log.info("\t (" + nb_pw + " bits/word, " + no_wds + " words");
         log.info(" " + no_obs + " bitstreams.");
         log.info(" No. missing words \n\t  should average " + Format.d4(mean));
         log.info(" with sigma=" + Format.d4(std) + ".)\n");
         log.info("\t----------------------------------------------------------------");
-        log.info("\n\t\t   Bitstream test results for " + filename + ".\n\n");
         log.info("\tBitstream\tNo. missing words\tz-score\t\tp-value\n");
 
         rs.openInputStream();

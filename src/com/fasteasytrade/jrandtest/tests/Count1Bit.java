@@ -55,16 +55,13 @@ public class Count1Bit extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     /**
-     * @param filename input file with random data
      */
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         final int no_seqs = 2;
         double[] v4 = new double[no_seqs]; // count bit 0's and 1's
         int j;
         long length = 0;
-
-        log.info("\t\t\tThe Count1Bit test for file " + filename + "\n");
 
         rs.openInputStream();
 

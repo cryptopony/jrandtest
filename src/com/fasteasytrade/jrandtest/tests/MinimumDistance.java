@@ -66,7 +66,7 @@ public class MinimumDistance extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         Point[] pts;
 
         int i, j, k;
@@ -75,7 +75,6 @@ public class MinimumDistance extends Base {
         double sum = 0;
         double pvalue;
 
-        log.info("\t\tThis is the MINIMUM DISTANCE test for file " + filename + "\n\n");
         log.info("\tSample no.\t d^2\t\t mean\t\tequiv uni\n");
 
         rs.openInputStream();

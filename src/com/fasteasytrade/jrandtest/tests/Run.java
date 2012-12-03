@@ -142,11 +142,8 @@ public class Run extends Base {
 
     } // end udruns
 
-    /**
-     * @param filename input file with random data
-     */
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
         final int no_sets = 2;
         final int no_seqs = 10;
         final int length = 10000;
@@ -159,7 +156,6 @@ public class Run extends Base {
         double[] pd;
         double pv;
 
-        log.info("\t\t\tThe RUNS test for file " + filename + "\n");
         log.info("\t\t(Up and down runs in a sequence of 10000 numbers)");
 
         rs.openInputStream();

@@ -97,21 +97,15 @@ public class CountThe1s extends Base {
     }
 
     @Override
-    public void test(String filename) throws Exception {
+    public void test() throws Exception {
 
         setParameters();
-
-        if (!testStream) {
-            log.info("\t\tTest results for specific bytes from " + filename + "\n");
-        } else {
-            log.info("\t\tTest result for the byte stream from " + filename + "\n");
-        }
 
         log.info("\t  (Degrees of freedom: 5^4-5^3=2500; sample size: " + no_wds + ")\n\n");
         log.info("\t" + s + "\tchisquare\tz-score\t\tp-value\n");
 
         do {
-            cnt_stat(filename, rt);
+            cnt_stat(rt);
             --rt;
         } while (rt >= 0);
 
@@ -150,7 +144,7 @@ public class CountThe1s extends Base {
     /**
      * count the 1's in the sequence of bytes
      */
-    double cnt_stat(String filename, int rshft) {
+    double cnt_stat(int rshft) {
         int wd;
         int i, j;
         int[] f = null; // will be used as f4 or f5
@@ -196,8 +190,6 @@ public class CountThe1s extends Base {
                 x1 = b2l(0xff & (rs.readInt() >>> rshft));
             }
             if (!rs.isOpen()) {
-                System.out.println("filename " + filename + " is closed... at byte " + i);
-                log.info("\n\tError: filename " + filename + " is closed... at byte/int " + i + "\n");
                 break;
             }
 
