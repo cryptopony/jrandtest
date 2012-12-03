@@ -38,6 +38,7 @@ import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Derf;
 import com.fasteasytrade.jrandtest.utils.Format;
+import com.fasteasytrade.jrandtest.utils.Stat;
 
 /**
  * Counts individual bits. It counts the bits, 0's and 1's. The sums and

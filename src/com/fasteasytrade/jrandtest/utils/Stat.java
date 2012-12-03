@@ -1,9 +1,9 @@
-package com.fasteasytrade.jrandtest.tests;
+package com.fasteasytrade.jrandtest.utils;
 
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-import com.fasteasytrade.jrandtest.utils.Derf;
+import com.fasteasytrade.jrandtest.tests.Base;
 
 /**
  * Statistical functions.

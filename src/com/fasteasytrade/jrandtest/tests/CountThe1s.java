@@ -36,6 +36,7 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
+import com.fasteasytrade.jrandtest.utils.Stat;
 
 /**
  * Counts the 1 bits. Consider the file under test as a stream of bytes

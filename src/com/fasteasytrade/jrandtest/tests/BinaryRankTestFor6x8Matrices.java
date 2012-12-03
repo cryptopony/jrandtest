@@ -36,6 +36,7 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
+import com.fasteasytrade.jrandtest.utils.Stat;
 
 /**
  * The Binary Rank Test for 6x8 matrices. From each of six random 32-bit

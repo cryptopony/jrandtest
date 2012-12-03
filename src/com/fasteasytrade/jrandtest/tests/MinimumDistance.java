@@ -38,6 +38,7 @@ import java.util.Arrays;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
+import com.fasteasytrade.jrandtest.utils.Stat;
 
 /**
  * The Minimum Distance Test.

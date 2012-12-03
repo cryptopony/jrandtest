@@ -37,6 +37,7 @@ import java.util.Arrays;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Format;
+import com.fasteasytrade.jrandtest.utils.Stat;
 
 /**
  * The Birthday Spacings Test. Choose m birthdays in a \"year\" of n days.
