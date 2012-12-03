@@ -35,6 +35,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The Binary Rank Test for 6x8 matrices. From each of six random 32-bit
  * integers from the generator under test, a specified byte is chosen, and
@@ -88,11 +90,11 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             if ((rt + 1) % 5 == 0) {
                 log.info("\n");
             }
-            log.info("\t" + d4(p[rt]));
+            log.info("\t" + Format.d4(p[rt]));
         }
 
         log.info("\n\t\tThe KS test for those 25 supposed UNI's yields\n");
-        log.info("\t\t\tKS p-value = " + d4(KStest(p, 25)) + "\n");
+        log.info("\t\t\tKS p-value = " + Format.d4(Stat.KStest(p, 25)) + "\n");
 
     }
 
@@ -184,13 +186,13 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             Ef = no_matrices * p[i];
             tmp = (f[i] - Ef) * (f[i] - Ef) / Ef;
             chsq += tmp;
-            log.info("\t" + cat[Math.min(1, i)] + (i + llim) + "\t" + d4(f[i]) + "\t" + d4(Ef));
-            log.info("\t" + d4(tmp) + "\t" + d4(chsq) + "\n");
+            log.info("\t" + cat[Math.min(1, i)] + (i + llim) + "\t" + Format.d4(f[i]) + "\t" + Format.d4(Ef));
+            log.info("\t" + Format.d4(tmp) + "\t" + Format.d4(chsq) + "\n");
         }
 
         pvalue = 1 - Stat.Chisq(df, chsq);
-        log.info("\n\t\tchi-square = " + d4(chsq) + " with df = " + df + ";");
-        log.info("  p-value = " + d4(pvalue) + "\n");
+        log.info("\n\t\tchi-square = " + Format.d4(chsq) + " with df = " + df + ";");
+        log.info("  p-value = " + Format.d4(pvalue) + "\n");
 
         log.info("\t--------------------------------------------------------------\n");
 

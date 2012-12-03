@@ -37,6 +37,7 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.utils.Derf;
+import com.fasteasytrade.jrandtest.utils.Format;
 
 /**
  * Counts individual bits. It counts the bits, 0's and 1's. The sums and
@@ -85,8 +86,8 @@ public class Count1Bit extends Base {
 
         rs.closeInputStream();
 
-        double pv = KStest(v4, no_seqs);
-        log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
+        double pv = Stat.KStest(v4, no_seqs);
+        log.info("\t ks test for " + no_seqs + " p's: " + Format.d4(pv) + "\n");
 
         //printf("\n\t count bits 0&1. Should be: " + length * 4);
         long k = length / v4.length;
@@ -94,21 +95,21 @@ public class Count1Bit extends Base {
         log.info("\n\t expected avg for 1 bit: " + k);
         log.info("\n\t found avg for 1 bit: " + (long)Stat.avg(v4));
         for (j = 0; j < no_seqs; j++) {
-            log.info("\n\t bit " + j + ": " + d4(v4[j]) + " delta: " + d4(v4[j] - k) + " %: " + d4((100.00 * v4[j] / k - 100.00)));
+            log.info("\n\t bit " + j + ": " + Format.d4(v4[j]) + " delta: " + Format.d4(v4[j] - k) + " %: " + Format.d4((100.00 * v4[j] / k - 100.00)));
         }
 
         log.info("\n\t the sum is\t\t:" + (long)(v4[1] - v4[0]));
-        log.info("\n\t % sum/n is\t\t: %" + d4(100 * (v4[1] - v4[0]) / length));
+        log.info("\n\t % sum/n is\t\t: %" + Format.d4(100 * (v4[1] - v4[0]) / length));
 
         double t = Stat.stdev(v4, k);
-        log.info("\n\t stdev for 1 bit\t: " + d4(t));
-        log.info("\n\t % stdev for 1 bit\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 1 bit\t: " + d4(Stat.chitest(v4, k)));
-        log.info("\n\t r2 for 1 bit\t\t: " + d4(Stat.r2_double(v4)));
+        log.info("\n\t stdev for 1 bit\t: " + Format.d4(t));
+        log.info("\n\t % stdev for 1 bit\t: %" + Format.d4(100.00 * t / k));
+        log.info("\n\t chitest for 1 bit\t: " + Format.d4(Stat.chitest(v4, k)));
+        log.info("\n\t r2 for 1 bit\t\t: " + Format.d4(Stat.r2_double(v4)));
 
         double e = Math.abs(v4[1] - v4[0]) / Math.sqrt(2.0 * length);
         e = Derf.derfc(e);
-        log.info("\n\t pValue (erfc)\t\t\t: " + d4(e));
+        log.info("\n\t pValue (erfc)\t\t\t: " + Format.d4(e));
 
         return;
     }

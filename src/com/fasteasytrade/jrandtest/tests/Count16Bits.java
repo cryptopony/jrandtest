@@ -81,7 +81,7 @@ public class Count16Bits extends Base {
 
         rs.closeInputStream();
 
-        double pv = KStest(v1, no_seqs);
+        double pv = Stat.KStest(v1, no_seqs);
         log.info("\t ks test for " + no_seqs + " p's: " + pv + "\n");
 
         long k = length / v1.length;

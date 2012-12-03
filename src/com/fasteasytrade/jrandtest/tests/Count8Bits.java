@@ -36,6 +36,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * Counts consecutive 8-bit words. The sums and differences are reported.
  * Each of the four 8-bit words should appear 1/256 of the time.
@@ -76,8 +78,8 @@ public class Count8Bits extends Base {
 
         rs.closeInputStream();
 
-        double pv = KStest(v1, no_seqs);
-        log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
+        double pv = Stat.KStest(v1, no_seqs);
+        log.info("\t ks test for " + no_seqs + " p's: " + Format.d4(pv) + "\n");
 
         long k = length / v1.length;
         log.info("\n\t found " + length + " 8 bits / 1 byte.");
@@ -87,10 +89,10 @@ public class Count8Bits extends Base {
         log.info("\n\t found avg for 8 bits / 1 byte: " + (long)Stat.avg(v1));
 
         double t = Stat.stdev(v1, k);
-        log.info("\n\t stdev for 1 byte\t: " + d4(t));
-        log.info("\n\t % stdev for 1 byte\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 1 byte\t: " + d4(Stat.chitest(v1, k)));
-        log.info("\n\t r2 for 1 byte\t\t: " + d4(Stat.r2_double(v1)));
+        log.info("\n\t stdev for 1 byte\t: " + Format.d4(t));
+        log.info("\n\t % stdev for 1 byte\t: %" + Format.d4(100.00 * t / k));
+        log.info("\n\t chitest for 1 byte\t: " + Format.d4(Stat.chitest(v1, k)));
+        log.info("\n\t r2 for 1 byte\t\t: " + Format.d4(Stat.r2_double(v1)));
 
         return;
     }

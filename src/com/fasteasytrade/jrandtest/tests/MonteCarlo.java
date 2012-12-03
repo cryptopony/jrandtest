@@ -36,6 +36,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The Monte Carlo test. Read x 16 bits, y 16 bits. if (x,y) distance is
  * larger then (256,256), we count a miss... the (x,y) point is not in the
@@ -99,7 +101,7 @@ public class MonteCarlo extends Base {
 
         double piValue = ((double)success / length);
         piValue *= 4.0;
-        log.info("\n\t piValue: " + d4(piValue));
+        log.info("\n\t piValue: " + Format.d4(piValue));
 
         return;
     }

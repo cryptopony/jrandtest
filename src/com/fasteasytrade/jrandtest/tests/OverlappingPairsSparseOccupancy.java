@@ -35,6 +35,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The Overlapping-Pairs-Sparse-Occupancy (OPSO) test.
  * 
@@ -142,7 +144,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
 
                 z = (no_mswds - mean) / std;
                 log.info("\t" + (33 - rt - bits_pl) + " to " + (32 - rt) + "  \t\t" + (no_mswds) + " ");
-                log.info("\t\t" + d4(z) + "\t\t" + d4(1 - Stat.Phi(z)) + "\n");
+                log.info("\t\t" + Format.d4(z) + "\t\t" + Format.d4(1 - Stat.Phi(z)) + "\n");
             }
 
             rs.closeInputStream();

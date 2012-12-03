@@ -36,6 +36,8 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The Birthday Spacings Test. Choose m birthdays in a \"year\" of n days.
  * List the spacings between the birthdays. Let j be the number of values
@@ -79,7 +81,7 @@ public class BirthdaySpacings extends Base {
 
         log.info("\t\tRESULTS OF BIRTHDAY SPACINGS TEST FOR " + filename + "\n");
         log.info("\t(no_bdays=" + no_bday + ", no_days/yr=2^" + no_bits + ",");
-        log.info(" lambda=" + d4(lambda) + ", sample size=" + no_obs + ")\n\n");
+        log.info(" lambda=" + Format.d4(lambda) + ", sample size=" + no_obs + ")\n\n");
         log.info("\tBits used\tmean\t\tchisqr\t\tp-value\n");
 
         int[] obs = new int[no_obs];
@@ -127,15 +129,15 @@ public class BirthdaySpacings extends Base {
             p[rt] = resultVec[2];
 
             log.info("\t " + (33 - no_bits - rt) + " to " + (32 - rt));
-            log.info("\t" + d4((double)sum / no_obs) + "\t\t" + d4(chi_fit) + "\t\t" + d4(p[rt]) + "\n");
+            log.info("\t" + Format.d4((double)sum / no_obs) + "\t\t" + Format.d4(chi_fit) + "\t\t" + Format.d4(p[rt]) + "\n");
 
         }
 
-        pvalue = KStest(p, 32 - no_bits + 1);
+        pvalue = Stat.KStest(p, 32 - no_bits + 1);
 
         log.info("\n\t\t\tdegree of freedoms is: " + dgf + "\n");
         log.info("\t---------------------------------------------------------------");
-        log.info("\n\t\tp-value for KStest on those " + (32 - no_bits + 1) + " p-values: " + d4(pvalue));
+        log.info("\n\t\tp-value for KStest on those " + (32 - no_bits + 1) + " p-values: " + Format.d4(pvalue));
         log.info("\n");
 
         return;

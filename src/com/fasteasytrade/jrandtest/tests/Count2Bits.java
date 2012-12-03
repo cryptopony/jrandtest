@@ -36,6 +36,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * Counts consecutive 2-bit words. The sums and differences are reported.
  * Each of the four 2-bit words should appear 25% of the time.
@@ -82,22 +84,22 @@ public class Count2Bits extends Base {
 
         rs.closeInputStream();
 
-        double pv = KStest(v5, no_seqs);
-        log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
+        double pv = Stat.KStest(v5, no_seqs);
+        log.info("\t ks test for " + no_seqs + " p's: " + Format.d4(pv) + "\n");
 
         long k = length / v5.length;
         log.info("\n\t found " + length + " 2 bits.");
         log.info("\n\t expected avg for 2 bits: " + k);
-        log.info("\n\t found avg for 2 bits: " + d4((long)Stat.avg(v5)));
+        log.info("\n\t found avg for 2 bits: " + Format.d4((long)Stat.avg(v5)));
         for (j = 0; j < 4; j++) {
-            log.info("\n\t count 2 bits " + j + ": " + d4(v5[j]) + " delta: " + d4(v5[j] - k) + " %: " + d4(100.00 * v5[j] / k - 100.00));
+            log.info("\n\t count 2 bits " + j + ": " + Format.d4(v5[j]) + " delta: " + Format.d4(v5[j] - k) + " %: " + Format.d4(100.00 * v5[j] / k - 100.00));
         }
 
         double t = Stat.stdev(v5, k);
-        log.info("\n\t stdev for 2 bits\t: " + d4(t));
-        log.info("\n\t % stdev for 2 bits\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 2 bits\t: " + d4(Stat.chitest(v5, k)));
-        log.info("\n\t r2 for 2 bits\t\t: " + d4(Stat.r2_double(v5)));
+        log.info("\n\t stdev for 2 bits\t: " + Format.d4(t));
+        log.info("\n\t % stdev for 2 bits\t: %" + Format.d4(100.00 * t / k));
+        log.info("\n\t chitest for 2 bits\t: " + Format.d4(Stat.chitest(v5, k)));
+        log.info("\n\t r2 for 2 bits\t\t: " + Format.d4(Stat.r2_double(v5)));
 
         return;
     }

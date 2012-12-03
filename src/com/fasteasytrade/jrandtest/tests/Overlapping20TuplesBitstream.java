@@ -35,6 +35,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The BitStream test.
  * 
@@ -88,8 +90,8 @@ public class Overlapping20TuplesBitstream extends Base {
         log.info("\t\tTHE OVERLAPPING 20-TUPLES BITSTREAM  TEST for " + filename + "\n");
         log.info("\t (" + nb_pw + " bits/word, " + no_wds + " words");
         log.info(" " + no_obs + " bitstreams.");
-        log.info(" No. missing words \n\t  should average " + d4(mean));
-        log.info(" with sigma=" + d4(std) + ".)\n");
+        log.info(" No. missing words \n\t  should average " + Format.d4(mean));
+        log.info(" with sigma=" + Format.d4(std) + ".)\n");
         log.info("\t----------------------------------------------------------------");
         log.info("\n\t\t   Bitstream test results for " + filename + ".\n\n");
         log.info("\tBitstream\tNo. missing words\tz-score\t\tp-value\n");
@@ -142,7 +144,7 @@ public class Overlapping20TuplesBitstream extends Base {
             }
 
             z = (no_mswds - mean) / std;
-            log.info("\t   " + i + "\t\t" + no_mswds + " \t\t\t" + d4(z) + "\t\t" + d4(1 - Stat.Phi(z)) + "\n");
+            log.info("\t   " + i + "\t\t" + no_mswds + " \t\t\t" + Format.d4(z) + "\t\t" + Format.d4(1 - Stat.Phi(z)) + "\n");
         }
 
         rs.closeInputStream();

@@ -36,6 +36,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The Squeeze test.
  * 
@@ -116,14 +118,14 @@ public class Squeeze extends Base {
         for (i = 0; i < 43; ++i) {
             tmp = (f[i] - Ef[i]) / Math.sqrt(Ef[i]);
             chsq += tmp * tmp;
-            log.info("\t% " + d4(tmp) + "  ");
+            log.info("\t% " + Format.d4(tmp) + "  ");
             if ((i + 1) % 6 == 0) {
                 log.info("\n\t");
             }
         }
 
-        log.info("\n\t\tChi-square with 42 degrees of freedom: " + d4(chsq) + "\n");
-        log.info("\t\tz-score=" + d4((chsq - 42.) / std) + ", p-value=" + d4(1 - Stat.Chisq(42, chsq)) + "\n");
+        log.info("\n\t\tChi-square with 42 degrees of freedom: " + Format.d4(chsq) + "\n");
+        log.info("\t\tz-score=" + Format.d4((chsq - 42.) / std) + ", p-value=" + Format.d4(1 - Stat.Chisq(42, chsq)) + "\n");
         log.info("\t_____________________________________________________________\n\n");
 
         return;

@@ -37,6 +37,8 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * The Minimum Distance Test.
  * 
@@ -129,7 +131,7 @@ public class MinimumDistance extends Base {
             p[i - 1] = 1 - Math.exp(-dmin / .995); /* transforming into U[0,1] */
 
             if (i % 5 == 0) {
-                log.info("\n\t   " + i + "\t\t" + d4(dmin) + "\t\t" + d4(sum / i) + "\t\t" + d4(p[i - 1]));
+                log.info("\n\t   " + i + "\t\t" + Format.d4(dmin) + "\t\t" + Format.d4(sum / i) + "\t\t" + Format.d4(p[i - 1]));
             }
         }
 
@@ -137,8 +139,8 @@ public class MinimumDistance extends Base {
 
         log.info("\n\t--------------------------------------------------------------");
         log.info("\n\tResult of KS test on " + no_smpl + " transformed mindist^2's:");
-        pvalue = KStest(p, no_smpl);
-        log.info(" p-value=" + d4(pvalue) + "\n\n");
+        pvalue = Stat.KStest(p, no_smpl);
+        log.info(" p-value=" + Format.d4(pvalue) + "\n\n");
 
     }
 

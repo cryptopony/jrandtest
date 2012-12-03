@@ -35,6 +35,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * Counts the 1 bits. Consider the file under test as a stream of bytes
  * (four per 32 bit integer). Each byte can contain from 0 to 8 1's, with
@@ -248,7 +250,7 @@ public class CountThe1s extends Base {
         }
 
         z = (chsq - mean) / std;
-        log.info("\t" + d4(chsq) + "\t\t" + d4(z) + "\t\t" + d4(1.0 - Stat.Phi(z)) + "\n");
+        log.info("\t" + Format.d4(chsq) + "\t\t" + Format.d4(z) + "\t\t" + Format.d4(1.0 - Stat.Phi(z)) + "\n");
 
         return chsq;
     }

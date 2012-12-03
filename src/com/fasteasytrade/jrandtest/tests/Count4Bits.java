@@ -36,6 +36,8 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.logging.Logger;
 
+import com.fasteasytrade.jrandtest.utils.Format;
+
 /**
  * Counts consecutive 4-bit words. The sums and differences are reported.
  * Each of the four 4-bit words should appear 1/16th of the time.
@@ -80,8 +82,8 @@ public class Count4Bits extends Base {
 
         rs.closeInputStream();
 
-        double pv = KStest(v6, no_seqs);
-        log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");
+        double pv = Stat.KStest(v6, no_seqs);
+        log.info("\t ks test for " + no_seqs + " p's: " + Format.d4(pv) + "\n");
 
         long k = length / no_seqs;
         //printf("\n\t expected count 4 bits. Should be: " + k);
@@ -89,13 +91,13 @@ public class Count4Bits extends Base {
         log.info("\n\t expected avg for 4 bits: " + k);
         log.info("\n\t found avg for 4 bits: " + (long)Stat.avg(v6));
         for (j = 0; j < v6.length; j++) {
-            log.info("\n\t 4 bits " + j + ": " + d4(v6[j]) + "\tdelta: " + d4(v6[j] - k) + "\t%: " + d4(100.00 * v6[j] / k - 100.00));
+            log.info("\n\t 4 bits " + j + ": " + Format.d4(v6[j]) + "\tdelta: " + Format.d4(v6[j] - k) + "\t%: " + Format.d4(100.00 * v6[j] / k - 100.00));
         }
         double t = Stat.stdev(v6, k);
-        log.info("\n\t stdev for 4 bits\t: " + d4(t));
-        log.info("\n\t % stdev for 4 bits\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 4 bits\t: " + d4(Stat.chitest(v6, k)));
-        log.info("\n\t r2 for 4 bits\t\t: " + d4(Stat.r2_double(v6)));
+        log.info("\n\t stdev for 4 bits\t: " + Format.d4(t));
+        log.info("\n\t % stdev for 4 bits\t: %" + Format.d4(100.00 * t / k));
+        log.info("\n\t chitest for 4 bits\t: " + Format.d4(Stat.chitest(v6, k)));
+        log.info("\n\t r2 for 4 bits\t\t: " + Format.d4(Stat.r2_double(v6)));
 
         return;
     }

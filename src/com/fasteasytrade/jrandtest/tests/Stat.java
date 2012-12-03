@@ -213,4 +213,54 @@ public class Stat {
         return sum / data.length;
     } // end avg
 
+    /**
+     * KStest <p> This test is based on a modified Kolmogorov-Smirnov
+     * method. <p> The test-statistic is (FN(X)-X)**2/(X*(1-X))
+     * (Anderson-Darling) where X is a uniform under null hypothesis. FN(X)
+     * is the empirical distribution of X.
+     */
+    public static double KStest(double[] x, int dim) {
+        int i;
+        double pvalue, tmp;
+        double z = -dim * dim;
+        double epsilon = Math.pow(10, -20);
+    
+        Arrays.sort(x, 0, dim);
+    
+        for (i = 0; i < dim; ++i) {
+            tmp = x[i] * (1 - x[dim - 1 - i]);
+            tmp = Math.max(epsilon, tmp);
+            z -= (2 * i + 1) * Math.log(tmp);
+        }
+    
+        z /= dim;
+        pvalue = 1 - Stat.AD(z);
+    
+        return pvalue;
+    }
+
+    /**
+     * c.d.f of Anderson-Darling statistic (a quick algorithm) <p> Used by
+     * KStest
+     */
+    public static double AD(double z) {
+        if (z < .01) {
+            return 0;
+        }
+    
+        if (z <= 2) {
+            return 2 * Math.exp(-1.2337 / z) * (1 + z / 8 - .04958 * z * z / (1.325 + z)) / Math.sqrt(z);
+        }
+    
+        if (z <= 4) {
+            return 1 - .6621361 * Math.exp(-1.091638 * z) - .95095 * Math.exp(-2.005138 * z);
+        }
+    
+        if (4 < z) {
+            return 1 - .4938691 * Math.exp(-1.050321 * z) - .5946335 * Math.exp(-1.527198 * z);
+        }
+    
+        return -1; // error indicator
+    } // end AD
+
 }

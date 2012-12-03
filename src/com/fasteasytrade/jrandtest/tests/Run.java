@@ -179,10 +179,10 @@ public class Run extends Base {
                 pd[j] = Stat.Chisq(6, dstat[0]);
             }
 
-            pv = KStest(pu, no_seqs);
+            pv = Stat.KStest(pu, no_seqs);
             log.info("\n\t\t\t\tSet " + i + "\n");
             log.info("\t\t runs up; ks test for " + no_seqs + " p's: " + pv + "\n");
-            pv = KStest(pd, no_seqs);
+            pv = Stat.KStest(pd, no_seqs);
             log.info("\t\t runs down; ks test for " + no_seqs + " p's: " + pv + "\n");
         }
 
