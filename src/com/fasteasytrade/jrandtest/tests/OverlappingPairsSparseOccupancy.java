@@ -90,7 +90,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
     }
 
     @Override
-    protected Result test(Map<String,String> details) {
+    protected ResultStatus test(Map<String,String> details) {
         int j;
         int u, l;
         int wd;
@@ -155,7 +155,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
 
         log.info("\t------------------------------");
         log.info("-----------------------------------\n");
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 
     /**

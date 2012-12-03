@@ -74,7 +74,7 @@ public class Squeeze extends Base {
     double chsq = 0;
 
     @Override
-    protected Result test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) throws Exception {
         log.info("\t\t    Table of standardized frequency counts\n");
         log.info("\t\t(obs-exp)^2/exp  for j=(1,..,6), 7,...,47,(48,...)\n\t");
 
@@ -129,7 +129,7 @@ public class Squeeze extends Base {
         log.info("\t\tz-score=" + Format.d4((chsq - 42.) / std) + ", p-value=" + Format.d4(1 - Stat.Chisq(42, chsq)) + "\n");
         log.info("\t_____________________________________________________________\n\n");
 
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 
 }

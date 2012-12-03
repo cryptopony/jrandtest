@@ -67,7 +67,7 @@ public class MinimumDistance extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    protected Result test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) throws Exception {
         Point[] pts;
 
         int i, j, k;
@@ -143,6 +143,6 @@ public class MinimumDistance extends Base {
         pvalue = Stat.KStest(p, no_smpl);
         log.info(" p-value=" + Format.d4(pvalue) + "\n\n");
 
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 }

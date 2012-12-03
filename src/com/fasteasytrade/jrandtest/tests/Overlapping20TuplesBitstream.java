@@ -61,7 +61,7 @@ public class Overlapping20TuplesBitstream extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    protected Result test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) throws Exception {
         final int nb_pw = 20, power = 21, no_obs = 20;
         final int no_bits = (int)Math.pow(2, power - 5);
         final int no_wds = (int)Math.pow(2, power);
@@ -150,6 +150,6 @@ public class Overlapping20TuplesBitstream extends Base {
         rs.closeInputStream();
 
         log.info("\t----------------------------------------------------------------");
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 }

@@ -35,6 +35,7 @@
 package com.fasteasytrade.jrandtest.tests;
 
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.io.RandomStream;
@@ -46,7 +47,7 @@ import com.fasteasytrade.jrandtest.io.RandomStream;
  * @author Zur Aougav
  */
 
-public abstract class Base {
+public abstract class Base implements RandomnessTest {
 
     final Logger log2 = Logger.getLogger(Base.class.getName());
 
@@ -62,9 +63,20 @@ public abstract class Base {
         this.rs = rs;
     }
 
+    @Override
+    public Result runTest(RandomStream rs) throws Exception {
+        if (rs == null) {
+            throw new IllegalArgumentException();
+        }
+        this.rs = rs;
+        Map<String,String> details = new TreeMap<String,String>();
+        ResultStatus status = test(details);
+        return new Result(status, details);
+    }
+
     /**
      * test method to be implemented by each test class.
      */
-    protected abstract Result test(Map<String,String> details) throws Exception;
+    protected abstract ResultStatus test(Map<String,String> details) throws Exception;
 
 }

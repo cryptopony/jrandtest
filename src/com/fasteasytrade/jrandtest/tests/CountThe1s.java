@@ -98,7 +98,7 @@ public class CountThe1s extends Base {
     }
 
     @Override
-    protected Result test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) throws Exception {
 
         setParameters();
 
@@ -110,7 +110,7 @@ public class CountThe1s extends Base {
             --rt;
         } while (rt >= 0);
 
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 
     /**

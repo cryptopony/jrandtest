@@ -64,7 +64,7 @@ public class BirthdaySpacings extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    protected Result test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) throws Exception {
 
         final int no_obs = 500;
         final int no_bday = 1024;
@@ -141,7 +141,7 @@ public class BirthdaySpacings extends Base {
         log.info("\n\t\tp-value for KStest on those " + (32 - no_bits + 1) + " p-values: " + Format.d4(pvalue));
         log.info("\n");
 
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 
 }

@@ -52,7 +52,7 @@ public class Count16Bits extends Base {
     /**
      */
     @Override
-    protected Result test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) throws Exception {
         final int no_seqs = 256 * 256;
         double[] v1 = new double[no_seqs]; // count each byte, 0 .. 255		
         long length = 0;
@@ -94,7 +94,7 @@ public class Count16Bits extends Base {
         log.info("\n\t chitest for 2 bytes\t: " + Stat.chitest(v1, k));
         log.info("\n\t r2 for 2 bytes\t\t: " + Stat.r2_double(v1));
 
-        return Result.UNKNOWN;
+        return ResultStatus.UNKNOWN;
     }
 
 }
