@@ -66,7 +66,7 @@ public class Run extends Base {
      * @param ustat array with one double, to return value to caller
      * @param dstat array with one double, to return value to caller
      */
-    public void udruns(double[] x, int length, double[] ustat, double[] dstat) throws Exception {
+    public void udruns(double[] x, int length, double[] ustat, double[] dstat) {
         int ru = 0;
         int rd = 0;
         int i;
@@ -81,7 +81,7 @@ public class Run extends Base {
 
         if (length < 4000) {
             log.info("Length of the sequence is too short (< 4000)!!!");
-            throw new Exception("Length of the sequence is too short (< 4000)!!!");
+            throw new IllegalStateException("Length of the sequence is too short (< 4000)!!!");
             //System.exit(0);
         }
 
@@ -144,7 +144,7 @@ public class Run extends Base {
     } // end udruns
 
     @Override
-    protected ResultStatus test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) {
         final int no_sets = 2;
         final int no_seqs = 10;
         final int length = 10000;

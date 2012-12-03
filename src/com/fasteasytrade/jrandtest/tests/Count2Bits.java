@@ -54,7 +54,7 @@ public class Count2Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    protected ResultStatus test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) {
         final int no_seqs = 4;
         double[] v5 = new double[4]; // count 2-bits: 00/01/10/11
         int j;

@@ -51,7 +51,7 @@ public class Count3Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    protected ResultStatus test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) {
         final int no_seqs = 8;
         double[] v1 = new double[no_seqs]; // count 3 bits - 000/001/010/../111
         long length = 0;

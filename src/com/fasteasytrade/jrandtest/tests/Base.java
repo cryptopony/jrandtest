@@ -77,6 +77,6 @@ public abstract class Base implements RandomnessTest {
     /**
      * test method to be implemented by each test class.
      */
-    protected abstract ResultStatus test(Map<String,String> details) throws Exception;
+    protected abstract ResultStatus test(Map<String,String> details);
 
 }

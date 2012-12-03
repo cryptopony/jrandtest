@@ -68,7 +68,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    protected ResultStatus test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) {
 
         setParameters();
 

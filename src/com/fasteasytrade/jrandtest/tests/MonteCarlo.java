@@ -56,7 +56,7 @@ public class MonteCarlo extends Base {
     /**
      */
     @Override
-    protected ResultStatus test(Map<String,String> details) throws Exception {
+    protected ResultStatus test(Map<String,String> details) {
         final int square256 = 256 * 256; // square(radius) of circle(256)
         long success = 0;
         long length = 0;
