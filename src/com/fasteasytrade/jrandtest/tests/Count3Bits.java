@@ -57,25 +57,25 @@ public class Count3Bits extends Base {
 
         log.info("\t\t\tThe Count3Bits test for file " + filename + "\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         byte b, b2, b3;
         int temp;
         int i;
 
         while (true) {
-            b = readByte();
-            if (!isOpen()) {
+            b = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
 
-            b2 = readByte();
-            if (!isOpen()) {
+            b2 = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
 
-            b3 = readByte();
-            if (!isOpen()) {
+            b3 = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
 
@@ -94,7 +94,7 @@ public class Count3Bits extends Base {
             }
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         double pv = KStest(v1, no_seqs);
         log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");

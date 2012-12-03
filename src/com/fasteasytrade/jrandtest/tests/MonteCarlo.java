@@ -61,7 +61,7 @@ public class MonteCarlo extends Base {
 
         log.info("\t\t\tThe MonteCarlo test for file " + filename + "\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         byte[] b = new byte[4];
         int x, y;
@@ -69,13 +69,13 @@ public class MonteCarlo extends Base {
 
         while (true) {
             for (i = 0; i < 4; i++) {
-                b[i] = readByte();
-                if (!isOpen()) {
+                b[i] = rs.readByte();
+                if (!rs.isOpen()) {
                     break;
                 }
             }
 
-            if (!isOpen()) {
+            if (!rs.isOpen()) {
                 break;
             }
 
@@ -92,7 +92,7 @@ public class MonteCarlo extends Base {
             }
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         log.info("\n\t found " + length + " points.");
         log.info("\n\t found " + success + " points in circle(256).");

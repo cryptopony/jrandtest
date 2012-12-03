@@ -152,7 +152,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
 
         log.info("\n\tRANK\tOBSERVED\tEXPECTED\t(O-E)^2/E\tSUM\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         for (i = 1; i <= no_matrices; i++) {
 
@@ -161,11 +161,11 @@ public class BinaryRankTestFor6x8Matrices extends Base {
              */
             for (j = 0; j < no_row; ++j) {
                 if (testName.equals("31x31")) {
-                    row[j] = uni() >>> 1;
+                    row[j] = rs.readInt() >>> 1;
                 } else if (testName.equals("32x32")) {
-                    row[j] = uni();
+                    row[j] = rs.readInt();
                 } else {
-                    row[j] = (uni() >>> rt);
+                    row[j] = (rs.readInt() >>> rt);
                 }
                 row[j] &= mask;
             }
@@ -175,7 +175,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             f[cls]++;
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         /*
          * compute chi-square

@@ -87,16 +87,16 @@ public class BirthdaySpacings extends Base {
         int[] bdspace = new int[no_bday]; // long?
 
         for (rt = 32 - no_bits; rt >= 0; --rt) {
-            openInputStream();
+            rs.openInputStream();
 
             sum = 0;
 
-            for (k = 0; isOpen() && k < no_obs; ++k) {
-                for (i = 0; isOpen() && i < no_bday; ++i) {
-                    bdspace[i] = (uni() >> rt) & mask;
+            for (k = 0; rs.isOpen() && k < no_obs; ++k) {
+                for (i = 0; rs.isOpen() && i < no_bday; ++i) {
+                    bdspace[i] = (rs.readInt() >> rt) & mask;
                 }
 
-                if (!isOpen()) {
+                if (!rs.isOpen()) {
                     break;
                 }
 
@@ -119,7 +119,7 @@ public class BirthdaySpacings extends Base {
                 obs[k] = no_dup;
             }
 
-            closeInputStream();
+            rs.closeInputStream();
 
             resultVec = Stat.Poisson_fit(lambda, obs, no_obs);
             dgf = (int)resultVec[0];

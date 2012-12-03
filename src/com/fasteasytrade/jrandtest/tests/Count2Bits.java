@@ -61,14 +61,14 @@ public class Count2Bits extends Base {
 
         log.info("\t\t\tThe Count2Bits test for file " + filename + "\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         byte b;
         int temp;
 
         while (true) {
-            b = readByte();
-            if (!isOpen()) {
+            b = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
             length += 4;
@@ -80,7 +80,7 @@ public class Count2Bits extends Base {
             }
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         double pv = KStest(v5, no_seqs);
         log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");

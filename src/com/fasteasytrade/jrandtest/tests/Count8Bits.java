@@ -58,14 +58,14 @@ public class Count8Bits extends Base {
 
         log.info("\t\t\tThe Count8Bits test for file " + filename + "\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         byte b;
         int temp;
 
         while (true) {
-            b = readByte();
-            if (!isOpen()) {
+            b = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
             length++;
@@ -74,7 +74,7 @@ public class Count8Bits extends Base {
             v1[temp]++; // increment counter
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         double pv = KStest(v1, no_seqs);
         log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");

@@ -160,7 +160,7 @@ public class Run extends Base {
         log.info("\t\t\tThe RUNS test for file " + filename + "\n");
         log.info("\t\t(Up and down runs in a sequence of 10000 numbers)");
 
-        openInputStream();
+        rs.openInputStream();
 
         x = new double[length];
         pu = new double[no_seqs];
@@ -170,7 +170,7 @@ public class Run extends Base {
             for (j = 0; j < no_seqs; ++j) {
                 for (k = 0; k < length; ++k) {
                     //x[k] = uni() / (0.000 + UNIMAX);
-                    x[k] = read32BitsAsDouble();
+                    x[k] = rs.read32BitsAsDouble();
                     //System.out.println("x["+k+"]="+x[k]);
                 }
 
@@ -186,7 +186,7 @@ public class Run extends Base {
             log.info("\t\t runs down; ks test for " + no_seqs + " p's: " + pv + "\n");
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         return;
     }

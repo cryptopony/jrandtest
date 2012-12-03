@@ -64,14 +64,14 @@ public class Count1Bit extends Base {
 
         log.info("\t\t\tThe Count1Bit test for file " + filename + "\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         byte b;
         int temp;
 
         while (true) {
-            b = readByte();
-            if (!isOpen()) {
+            b = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
             length += 8;
@@ -83,7 +83,7 @@ public class Count1Bit extends Base {
             }
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         double pv = KStest(v4, no_seqs);
         log.info("\t ks test for " + no_seqs + " p's: " + d4(pv) + "\n");

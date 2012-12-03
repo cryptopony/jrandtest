@@ -94,10 +94,10 @@ public class Overlapping20TuplesBitstream extends Base {
         log.info("\n\t\t   Bitstream test results for " + filename + ".\n\n");
         log.info("\tBitstream\tNo. missing words\tz-score\t\tp-value\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         //w20 = uni();
-        w20 = 0xffffffffL & uni();
+        w20 = 0xffffffffL & rs.readInt();
 
         /*
          * main loop
@@ -108,8 +108,8 @@ public class Overlapping20TuplesBitstream extends Base {
             }
 
             for (j = 0; j < no_bits; ++j) {
-                w32 = uni();
-                if (!isOpen()) {
+                w32 = rs.readInt();
+                if (!rs.isOpen()) {
                     log.info("\nError: end of file too early... End processing.\n\n");
                     break;
                 }
@@ -125,7 +125,7 @@ public class Overlapping20TuplesBitstream extends Base {
                 }
             }
 
-            if (!isOpen()) {
+            if (!rs.isOpen()) {
                 break;
             }
 
@@ -145,7 +145,7 @@ public class Overlapping20TuplesBitstream extends Base {
             log.info("\t   " + i + "\t\t" + no_mswds + " \t\t\t" + d4(z) + "\t\t" + d4(1 - Stat.Phi(z)) + "\n");
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         log.info("\t----------------------------------------------------------------");
     }

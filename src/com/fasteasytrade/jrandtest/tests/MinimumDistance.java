@@ -75,7 +75,7 @@ public class MinimumDistance extends Base {
         log.info("\t\tThis is the MINIMUM DISTANCE test for file " + filename + "\n\n");
         log.info("\tSample no.\t d^2\t\t mean\t\tequiv uni\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         pts = new Point[no_pts];
         p = new double[no_smpl];
@@ -86,20 +86,20 @@ public class MinimumDistance extends Base {
             //int same = 0;
             for (j = 0; j < no_pts; j++) {
                 pts[j] = new Point();
-                pts[j].y = ratio * (0xffffffffL & readInt());
-                if (!isOpen()) {
+                pts[j].y = ratio * (0xffffffffL & rs.readInt());
+                if (!rs.isOpen()) {
                     System.out.println("Eof... 1");
                     break;
                 }
-                pts[j].x = ratio * (0xffffffffL & readInt());
-                if (!isOpen()) {
+                pts[j].x = ratio * (0xffffffffL & rs.readInt());
+                if (!rs.isOpen()) {
                     System.out.println("Eof... 2");
                     break;
                 }
                 //if (j > 0 && pts[j].y == pts[j-1].y && pts[j].x == pts[j-1].x)
                 //	same++;
             }
-            if (!isOpen()) {
+            if (!rs.isOpen()) {
                 break;
                 //if (same > 0)
                 //	System.out.println("same="+same+" pts.length="+pts.length);
@@ -133,7 +133,7 @@ public class MinimumDistance extends Base {
             }
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         log.info("\n\t--------------------------------------------------------------");
         log.info("\n\tResult of KS test on " + no_smpl + " transformed mindist^2's:");

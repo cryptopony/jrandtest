@@ -57,19 +57,19 @@ public class Count16Bits extends Base {
 
         log.info("\t\t\tThe Count16Bits test for file " + filename + "\n");
 
-        openInputStream();
+        rs.openInputStream();
 
         byte b, b2;
         int temp;
 
         while (true) {
-            b = readByte();
-            if (!isOpen()) {
+            b = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
 
-            b2 = readByte();
-            if (!isOpen()) {
+            b2 = rs.readByte();
+            if (!rs.isOpen()) {
                 break;
             }
             length++;
@@ -79,7 +79,7 @@ public class Count16Bits extends Base {
             v1[temp]++; // increment counter
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         double pv = KStest(v1, no_seqs);
         log.info("\t ks test for " + no_seqs + " p's: " + pv + "\n");

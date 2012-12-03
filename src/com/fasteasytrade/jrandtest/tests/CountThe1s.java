@@ -161,21 +161,21 @@ public class CountThe1s extends Base {
             log.info("\t\t");
         }
 
-        openInputStream();
+        rs.openInputStream();
 
         int x1, x2, x3, x4, x5;
         if (testStream) {
-            x1 = b2l(0xff & readByte());
-            x2 = b2l(0xff & readByte());
-            x3 = b2l(0xff & readByte());
-            x4 = b2l(0xff & readByte());
-            x5 = b2l(0xff & readByte());
+            x1 = b2l(0xff & rs.readByte());
+            x2 = b2l(0xff & rs.readByte());
+            x3 = b2l(0xff & rs.readByte());
+            x4 = b2l(0xff & rs.readByte());
+            x5 = b2l(0xff & rs.readByte());
         } else {
-            x1 = b2l(0xff & (readInt() >>> rshft));
-            x2 = b2l(0xff & (readInt() >>> rshft));
-            x3 = b2l(0xff & (readInt() >>> rshft));
-            x4 = b2l(0xff & (readInt() >>> rshft));
-            x5 = b2l(0xff & (readInt() >>> rshft));
+            x1 = b2l(0xff & (rs.readInt() >>> rshft));
+            x2 = b2l(0xff & (rs.readInt() >>> rshft));
+            x3 = b2l(0xff & (rs.readInt() >>> rshft));
+            x4 = b2l(0xff & (rs.readInt() >>> rshft));
+            x5 = b2l(0xff & (rs.readInt() >>> rshft));
         }
 
         wd = 625 * x1 + 125 * x2 + 25 * x3 + 5 * x4 + x5;
@@ -188,11 +188,11 @@ public class CountThe1s extends Base {
             f4[wd]++;
 
             if (testStream) {
-                x1 = b2l(0xff & readByte());
+                x1 = b2l(0xff & rs.readByte());
             } else {
-                x1 = b2l(0xff & (readInt() >>> rshft));
+                x1 = b2l(0xff & (rs.readInt() >>> rshft));
             }
-            if (!isOpen()) {
+            if (!rs.isOpen()) {
                 System.out.println("filename " + filename + " is closed... at byte " + i);
                 log.info("\n\tError: filename " + filename + " is closed... at byte/int " + i + "\n");
                 break;
@@ -205,7 +205,7 @@ public class CountThe1s extends Base {
             f5[wd]++;
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         /**
          * compute Q5-Q4, where Q4,Q5=sum(obs-exp)**2/exp

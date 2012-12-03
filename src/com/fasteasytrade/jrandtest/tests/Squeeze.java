@@ -75,7 +75,7 @@ public class Squeeze extends Base {
         log.info("\t\t    Table of standardized frequency counts\n");
         log.info("\t\t(obs-exp)^2/exp  for j=(1,..,6), 7,...,47,(48,...)\n\t");
 
-        openInputStream();
+        rs.openInputStream();
 
         for (i = 0; i < 43; ++i) {
             f[i] = 0;
@@ -90,8 +90,8 @@ public class Squeeze extends Base {
              *  squeeze k 
              */
             while (k != 1 && j < 48) {
-                tmp = read32BitsAsDouble();
-                if (!isOpen()) {
+                tmp = rs.read32BitsAsDouble();
+                if (!rs.isOpen()) {
                     break;
                 }
                 if (tmp < 0 || tmp > 1) {
@@ -100,7 +100,7 @@ public class Squeeze extends Base {
                 k = (long)(k * tmp + 1);
                 ++j;
             }
-            if (!isOpen()) {
+            if (!rs.isOpen()) {
                 break;
             }
 
@@ -108,7 +108,7 @@ public class Squeeze extends Base {
             ++f[j];
         }
 
-        closeInputStream();
+        rs.closeInputStream();
 
         /* 
          * compute chi-square 

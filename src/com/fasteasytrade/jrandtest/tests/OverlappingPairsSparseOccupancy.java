@@ -114,7 +114,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
         wds = new int[dim];
 
         do {
-            openInputStream();
+            rs.openInputStream();
 
             for (i = 1; i <= no_tests; i++) {
                 for (j = 0; j < dim; j++) {
@@ -145,7 +145,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
                 log.info("\t\t" + d4(z) + "\t\t" + d4(1 - Stat.Phi(z)) + "\n");
             }
 
-            closeInputStream();
+            rs.closeInputStream();
 
             rt++;
         } while (rt <= 32 - bits_pl);
@@ -166,12 +166,12 @@ public class OverlappingPairsSparseOccupancy extends Base {
             ltrs_pw = 20 / bits_pl;
 
             for (int i = 1; i < ltrs_pw; i++) {
-                wd += (uni() >>> rt) & maskltr;
+                wd += (rs.readInt() >>> rt) & maskltr;
                 wd <<= bits_pl;
             }
         }
 
-        wd += (uni() >>> rt) & maskltr;
+        wd += (rs.readInt() >>> rt) & maskltr;
 
         /* 
          * 1048575 = 2**20-1 
