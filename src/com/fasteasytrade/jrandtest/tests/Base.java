@@ -51,8 +51,6 @@ public abstract class Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
 
-    final public int DIM = 4096;
-
     public double SIGN(double a) {
         return (a > 0 ? 1 : -1);
     }
