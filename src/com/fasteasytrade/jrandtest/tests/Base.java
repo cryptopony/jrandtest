@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.io.RandomStream;
@@ -60,50 +61,6 @@ public abstract class Base {
 
     public int SIGN(int a) {
         return (a > 0 ? 1 : -1);
-    }
-
-    /**
-     * Bubble sort array
-     * 
-     * @param arr is a double array
-     * @param dim only first dim entries are sorted in array arr. So part
-     *            of the array can be sorted.
-     */
-    public void qsort(double[] arr, int dim) {
-        int i, j;
-        double temp;
-
-        for (i = 0; i < dim - 1; i++) {
-            for (j = i + 1; j < dim; j++) {
-                if (arr[i] > arr[j]) {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
-    }
-
-    /**
-     * Bubble sort array
-     * 
-     * @param arr is an int array
-     * @param dim only first dim entries are sorted in array arr. So part
-     *            of the array can be sorted.
-     */
-    public void qsort(int[] arr, int dim) {
-        int i, j;
-        int temp;
-
-        for (i = 0; i < dim - 1; i++) {
-            for (j = i + 1; j < dim; j++) {
-                if (arr[i] > arr[j]) {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
     }
 
     /**
@@ -343,7 +300,7 @@ public abstract class Base {
         int[] f = new int[dim];
         double[] Ef = new double[dim];
 
-        qsort(obs, no_obs);
+        Arrays.sort(obs, 0, no_obs);
 
         for (j = 0; j < dim; j++) {
             while (Ef[j] < 5) {
@@ -558,7 +515,7 @@ public abstract class Base {
         double z = -dim * dim;
         double epsilon = Math.pow(10, -20);
 
-        qsort(x, dim);
+        Arrays.sort(x, 0, dim);
 
         for (i = 0; i < dim; ++i) {
             tmp = x[i] * (1 - x[dim - 1 - i]);

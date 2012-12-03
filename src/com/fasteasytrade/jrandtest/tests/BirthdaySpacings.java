@@ -33,6 +33,7 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 /**
@@ -99,13 +100,13 @@ public class BirthdaySpacings extends Base {
                     break;
                 }
 
-                qsort(bdspace, no_bday);
+                Arrays.sort(bdspace, 0, no_bday);
 
                 for (i = no_bday - 1; i >= 1; --i) {
                     bdspace[i] -= bdspace[i - 1];
                 }
 
-                qsort(bdspace, no_bday);
+                Arrays.sort(bdspace, 0, no_bday);
 
                 no_dup = 0;
                 for (i = 1; i < no_bday; ++i) {
