@@ -59,38 +59,6 @@ public abstract class Base {
         return (a > 0 ? 1 : -1);
     }
 
-    /**
-     * @author Zur Aougav <p> point class is used by MinimumDistance
-     * 
-     */
-    public class point {
-        public double x;
-
-        public double y;
-    }
-
-    /**
-     * Bubble sort array of points (of class point),
-     * 
-     * @param arr is a point array
-     * @param dim only first dim entries are sorted in array arr. So part
-     *            of the array can be sorted.
-     */
-    public void qsort(point[] arr, int dim) {
-        int i, j;
-        point temp;
-
-        for (i = 0; i < dim - 1; i++) {
-            for (j = i + 1; j < dim; j++) {
-                if (arr[i].y > arr[j].y) {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
-    }
-
     public static java.text.DecimalFormat df = new java.text.DecimalFormat();
     static {
         df.setMaximumFractionDigits(4);

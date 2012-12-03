@@ -34,6 +34,7 @@
 
 package com.fasteasytrade.jrandtest.tests;
 
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 /**
@@ -63,7 +64,7 @@ public class MinimumDistance extends Base {
 
     @Override
     public void test(String filename) throws Exception {
-        point[] pts;
+        Point[] pts;
 
         int i, j, k;
         double d, dmin;
@@ -76,7 +77,7 @@ public class MinimumDistance extends Base {
 
         openInputStream();
 
-        pts = new point[no_pts];
+        pts = new Point[no_pts];
         p = new double[no_smpl];
 
         for (i = 1; i <= no_smpl; ++i) {
@@ -84,7 +85,7 @@ public class MinimumDistance extends Base {
             dmin = 0x7fffffffffL;
             //int same = 0;
             for (j = 0; j < no_pts; j++) {
-                pts[j] = new point();
+                pts[j] = new Point();
                 pts[j].y = ratio * (0xffffffffL & readInt());
                 if (!isOpen()) {
                     System.out.println("Eof... 1");
@@ -104,7 +105,7 @@ public class MinimumDistance extends Base {
                 //	System.out.println("same="+same+" pts.length="+pts.length);
             }
 
-            qsort(pts, pts.length);
+            Arrays.sort(pts, 0, pts.length);
 
             /* 
              * find the minimum distance 
