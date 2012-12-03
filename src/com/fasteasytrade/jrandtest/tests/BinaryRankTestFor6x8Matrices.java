@@ -188,7 +188,7 @@ public class BinaryRankTestFor6x8Matrices extends Base {
             log.info("\t" + d4(tmp) + "\t" + d4(chsq) + "\n");
         }
 
-        pvalue = 1 - Chisq(df, chsq);
+        pvalue = 1 - Stat.Chisq(df, chsq);
         log.info("\n\t\tchi-square = " + d4(chsq) + " with df = " + df + ";");
         log.info("  p-value = " + d4(pvalue) + "\n");
 

@@ -248,7 +248,7 @@ public class CountThe1s extends Base {
         }
 
         z = (chsq - mean) / std;
-        log.info("\t" + d4(chsq) + "\t\t" + d4(z) + "\t\t" + d4(1.0 - Phi(z)) + "\n");
+        log.info("\t" + d4(chsq) + "\t\t" + d4(z) + "\t\t" + d4(1.0 - Stat.Phi(z)) + "\n");
 
         return chsq;
     }

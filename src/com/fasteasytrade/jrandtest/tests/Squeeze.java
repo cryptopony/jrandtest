@@ -123,7 +123,7 @@ public class Squeeze extends Base {
         }
 
         log.info("\n\t\tChi-square with 42 degrees of freedom: " + d4(chsq) + "\n");
-        log.info("\t\tz-score=" + d4((chsq - 42.) / std) + ", p-value=" + d4(1 - Chisq(42, chsq)) + "\n");
+        log.info("\t\tz-score=" + d4((chsq - 42.) / std) + ", p-value=" + d4(1 - Stat.Chisq(42, chsq)) + "\n");
         log.info("\t_____________________________________________________________\n\n");
 
         return;

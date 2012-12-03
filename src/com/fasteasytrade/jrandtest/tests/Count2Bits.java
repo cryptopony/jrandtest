@@ -88,16 +88,16 @@ public class Count2Bits extends Base {
         long k = length / v5.length;
         log.info("\n\t found " + length + " 2 bits.");
         log.info("\n\t expected avg for 2 bits: " + k);
-        log.info("\n\t found avg for 2 bits: " + d4((long)avg(v5)));
+        log.info("\n\t found avg for 2 bits: " + d4((long)Stat.avg(v5)));
         for (j = 0; j < 4; j++) {
             log.info("\n\t count 2 bits " + j + ": " + d4(v5[j]) + " delta: " + d4(v5[j] - k) + " %: " + d4(100.00 * v5[j] / k - 100.00));
         }
 
-        double t = stdev(v5, k);
+        double t = Stat.stdev(v5, k);
         log.info("\n\t stdev for 2 bits\t: " + d4(t));
         log.info("\n\t % stdev for 2 bits\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 2 bits\t: " + d4(chitest(v5, k)));
-        log.info("\n\t r2 for 2 bits\t\t: " + d4(r2_double(v5)));
+        log.info("\n\t chitest for 2 bits\t: " + d4(Stat.chitest(v5, k)));
+        log.info("\n\t r2 for 2 bits\t\t: " + d4(Stat.r2_double(v5)));
 
         return;
     }

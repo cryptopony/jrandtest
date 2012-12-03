@@ -142,7 +142,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
 
                 z = (no_mswds - mean) / std;
                 log.info("\t" + (33 - rt - bits_pl) + " to " + (32 - rt) + "  \t\t" + (no_mswds) + " ");
-                log.info("\t\t" + d4(z) + "\t\t" + d4(1 - Phi(z)) + "\n");
+                log.info("\t\t" + d4(z) + "\t\t" + d4(1 - Stat.Phi(z)) + "\n");
             }
 
             closeInputStream();

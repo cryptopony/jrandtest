@@ -87,15 +87,15 @@ public class Count4Bits extends Base {
         //printf("\n\t expected count 4 bits. Should be: " + k);
         log.info("\n\t found " + length + " 4 bits.");
         log.info("\n\t expected avg for 4 bits: " + k);
-        log.info("\n\t found avg for 4 bits: " + (long)avg(v6));
+        log.info("\n\t found avg for 4 bits: " + (long)Stat.avg(v6));
         for (j = 0; j < v6.length; j++) {
             log.info("\n\t 4 bits " + j + ": " + d4(v6[j]) + "\tdelta: " + d4(v6[j] - k) + "\t%: " + d4(100.00 * v6[j] / k - 100.00));
         }
-        double t = stdev(v6, k);
+        double t = Stat.stdev(v6, k);
         log.info("\n\t stdev for 4 bits\t: " + d4(t));
         log.info("\n\t % stdev for 4 bits\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 4 bits\t: " + d4(chitest(v6, k)));
-        log.info("\n\t r2 for 4 bits\t\t: " + d4(r2_double(v6)));
+        log.info("\n\t chitest for 4 bits\t: " + d4(Stat.chitest(v6, k)));
+        log.info("\n\t r2 for 4 bits\t\t: " + d4(Stat.r2_double(v6)));
 
         return;
     }

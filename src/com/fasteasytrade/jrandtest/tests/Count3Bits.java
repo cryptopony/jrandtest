@@ -102,16 +102,16 @@ public class Count3Bits extends Base {
         long k = length / v1.length;
         log.info("\n\t found " + length + " 3 bits.");
         log.info("\n\t expected avg for 3 bits: " + k);
-        log.info("\n\t found avg for 3 bits: " + d4(avg(v1)));
+        log.info("\n\t found avg for 3 bits: " + d4(Stat.avg(v1)));
         for (int j = 0; j < no_seqs; j++) {
             log.info("\n\t count 3 bits " + j + ": " + d4((long)v1[j]) + "\tdelta: " + d4(v1[j] - k) + "\t%: " + d4(100.00 * v1[j] / k - 100.00));
         }
 
-        double t = stdev(v1, k);
+        double t = Stat.stdev(v1, k);
         log.info("\n\t stdev for 3 bits\t: " + d4(t));
         log.info("\n\t % stdev for 3 bits\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 3 bits\t: " + d4(chitest(v1, k)));
-        log.info("\n\t r2 for 3 bits\t\t: " + d4(r2_double(v1)));
+        log.info("\n\t chitest for 3 bits\t: " + d4(Stat.chitest(v1, k)));
+        log.info("\n\t r2 for 3 bits\t\t: " + d4(Stat.r2_double(v1)));
 
         return;
     }

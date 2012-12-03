@@ -87,12 +87,12 @@ public class Count16Bits extends Base {
         long k = length / v1.length;
         log.info("\n\t found " + length + " 16 bits / 2 bytes.");
         log.info("\n\t expected avg for 16 bits / 2 bytes: " + k);
-        log.info("\n\t found avg for 16 bits / 2 bytes: " + (long)avg(v1));
-        double t = stdev(v1, k);
+        log.info("\n\t found avg for 16 bits / 2 bytes: " + (long)Stat.avg(v1));
+        double t = Stat.stdev(v1, k);
         log.info("\n\t stdev for 2 bytes\t: " + t);
         log.info("\n\t % stdev for 2 bytes\t: %" + (100.00 * t / k));
-        log.info("\n\t chitest for 2 bytes\t: " + chitest(v1, k));
-        log.info("\n\t r2 for 2 bytes\t\t: " + r2_double(v1));
+        log.info("\n\t chitest for 2 bytes\t: " + Stat.chitest(v1, k));
+        log.info("\n\t r2 for 2 bytes\t\t: " + Stat.r2_double(v1));
 
         return;
     }

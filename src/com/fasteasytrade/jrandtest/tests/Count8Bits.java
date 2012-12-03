@@ -84,13 +84,13 @@ public class Count8Bits extends Base {
 
         //printf("\n\t count 8 bits / 1 byte. Should be: " + k);
         log.info("\n\t expected avg for 8 bits / 1 byte: " + k);
-        log.info("\n\t found avg for 8 bits / 1 byte: " + (long)avg(v1));
+        log.info("\n\t found avg for 8 bits / 1 byte: " + (long)Stat.avg(v1));
 
-        double t = stdev(v1, k);
+        double t = Stat.stdev(v1, k);
         log.info("\n\t stdev for 1 byte\t: " + d4(t));
         log.info("\n\t % stdev for 1 byte\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 1 byte\t: " + d4(chitest(v1, k)));
-        log.info("\n\t r2 for 1 byte\t\t: " + d4(r2_double(v1)));
+        log.info("\n\t chitest for 1 byte\t: " + d4(Stat.chitest(v1, k)));
+        log.info("\n\t r2 for 1 byte\t\t: " + d4(Stat.r2_double(v1)));
 
         return;
     }

@@ -121,7 +121,7 @@ public class BirthdaySpacings extends Base {
 
             closeInputStream();
 
-            resultVec = Poisson_fit(lambda, obs, no_obs);
+            resultVec = Stat.Poisson_fit(lambda, obs, no_obs);
             dgf = (int)resultVec[0];
             chi_fit = resultVec[1];
             p[rt] = resultVec[2];

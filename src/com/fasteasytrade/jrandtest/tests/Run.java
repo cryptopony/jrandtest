@@ -175,8 +175,8 @@ public class Run extends Base {
                 }
 
                 udruns(x, length, ustat, dstat);
-                pu[j] = Chisq(6, ustat[0]);
-                pd[j] = Chisq(6, dstat[0]);
+                pu[j] = Stat.Chisq(6, ustat[0]);
+                pd[j] = Stat.Chisq(6, dstat[0]);
             }
 
             pv = KStest(pu, no_seqs);

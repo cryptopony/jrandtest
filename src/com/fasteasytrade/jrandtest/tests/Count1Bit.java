@@ -92,7 +92,7 @@ public class Count1Bit extends Base {
         long k = length / v4.length;
         log.info("\n\t found " + length + " 1 bit.");
         log.info("\n\t expected avg for 1 bit: " + k);
-        log.info("\n\t found avg for 1 bit: " + (long)avg(v4));
+        log.info("\n\t found avg for 1 bit: " + (long)Stat.avg(v4));
         for (j = 0; j < no_seqs; j++) {
             log.info("\n\t bit " + j + ": " + d4(v4[j]) + " delta: " + d4(v4[j] - k) + " %: " + d4((100.00 * v4[j] / k - 100.00)));
         }
@@ -100,11 +100,11 @@ public class Count1Bit extends Base {
         log.info("\n\t the sum is\t\t:" + (long)(v4[1] - v4[0]));
         log.info("\n\t % sum/n is\t\t: %" + d4(100 * (v4[1] - v4[0]) / length));
 
-        double t = stdev(v4, k);
+        double t = Stat.stdev(v4, k);
         log.info("\n\t stdev for 1 bit\t: " + d4(t));
         log.info("\n\t % stdev for 1 bit\t: %" + d4(100.00 * t / k));
-        log.info("\n\t chitest for 1 bit\t: " + d4(chitest(v4, k)));
-        log.info("\n\t r2 for 1 bit\t\t: " + d4(r2_double(v4)));
+        log.info("\n\t chitest for 1 bit\t: " + d4(Stat.chitest(v4, k)));
+        log.info("\n\t r2 for 1 bit\t\t: " + d4(Stat.r2_double(v4)));
 
         double e = Math.abs(v4[1] - v4[0]) / Math.sqrt(2.0 * length);
         e = Derf.derfc(e);
