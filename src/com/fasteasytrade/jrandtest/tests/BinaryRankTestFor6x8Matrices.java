@@ -36,10 +36,17 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * BinaryRankTestFor6x8Matrices from DieHard
+ * The Binary Rank Test for 6x8 matrices. From each of six random 32-bit
+ * integers from the generator under test, a specified byte is chosen, and
+ * the resulting six bytes form a 6x8 binary matrix whose rank is
+ * determined. That rank can be from 0 to 6, but ranks 0,1,2,3 are rare;
+ * their counts are pooled with those for rank 4. Ranks are found for
+ * 100,000 random matrices, and a chi-square test is performed on counts
+ * for ranks 6,5 and (0,...,4) (pooled together).
+ * 
+ * <p>Originally from DieHard.</p>
  * 
  * @author Zur Aougav
- *  
  */
 public class BinaryRankTestFor6x8Matrices extends Base {
     int[] row;
@@ -55,20 +62,6 @@ public class BinaryRankTestFor6x8Matrices extends Base {
     int no_matrices = 100000;
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|This is the BINARY RANK TEST for 6x8 matrices.  From each of |");
-        log.info("\t|six random 32-bit integers from the generator under test, a  |");
-        log.info("\t|specified byte is chosen, and the resulting six bytes form a |");
-        log.info("\t|6x8 binary matrix whose rank is determined.  That rank can be|");
-        log.info("\t|from 0 to 6, but ranks 0,1,2,3 are rare; their counts are    |");
-        log.info("\t|pooled with those for rank 4. Ranks are found for 100,000    |");
-        log.info("\t|random matrices, and a chi-square test is performed on       |");
-        log.info("\t|counts for ranks 6,5 and (0,...,4) (pooled together).        |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     @Override
     public void test(String filename) throws Exception {
@@ -104,8 +97,8 @@ public class BinaryRankTestFor6x8Matrices extends Base {
     }
 
     /**
-     * set some parameters, so subclasses can set different values. Algorithm,
-     * in test method, runs and use these different values.
+     * set some parameters, so subclasses can set different values.
+     * Algorithm, in test method, runs and use these different values.
      */
     public void setParameters() {
         testName = "6x8";

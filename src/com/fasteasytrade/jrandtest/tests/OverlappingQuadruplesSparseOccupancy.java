@@ -33,31 +33,23 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
-import java.util.logging.Logger;
 
 /**
- * OverlappingQuadruplesSparseOccupancy (OQSO) from DieHard
- *
+ * The Overlapping-Quadruples-Sparse-Occupancy (OQSO) test.
+ * 
+ * The test OQSO is similar, except that it considers 4-letter words from
+ * an alphabet of 32 letters, each letter determined by a designated string
+ * of 5 consecutive bits from the test file, elements of which are assumed
+ * 32-bit random integers. The mean number of missing words in a sequence
+ * of 2^21 four- letter words, (2^21+3 \"keystrokes\"), is again 141909,
+ * with sigma = 295. The mean is based on theory; sigma comes from
+ * extensive simulation.
+ * 
+ * <p>Originally from DieHard.</p>
+ * 
  * @author Zur Aougav
  */
 public class OverlappingQuadruplesSparseOccupancy extends OverlappingPairsSparseOccupancy {
-
-    final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|------------------------------------------------------------ |");
-        log.info("\t|    OQSO means Overlapping-Quadruples-Sparse-Occupancy       |");
-        log.info("\t|  The test OQSO is similar, except that it considers 4-letter|");
-        log.info("\t|words from an alphabet of 32 letters, each letter determined |");
-        log.info("\t|by a designated string of 5 consecutive bits from the test   |");
-        log.info("\t|file, elements of which are assumed 32-bit random integers.  |");
-        log.info("\t|The mean number of missing words in a sequence of 2^21 four- |");
-        log.info("\t|letter words,  (2^21+3 \"keystrokes\"), is again 141909, with  |");
-        log.info("\t|sigma = 295.  The mean is based on theory; sigma comes from  |");
-        log.info("\t|extensive simulation.                                        |");
-        log.info("\t|------------------------------------------------------------ |\n");
-    }
 
     @Override
     public void setParameters() {

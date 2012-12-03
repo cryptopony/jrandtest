@@ -48,9 +48,8 @@ import com.fasteasytrade.jrandtest.io.HttpGetUrlRandomStream;
 
 /**
  * Commnad line class to read from console / end-user the filename /
- * algorithmname and testname to be executed.
- * <p>
- * Generally, we will try to keep similar functions and options as in Gui class.
+ * algorithmname and testname to be executed. <p> Generally, we will try to
+ * keep similar functions and options as in Gui class.
  * 
  * @author Zur Aougav
  */
@@ -109,24 +108,19 @@ public class CmdLine {
 
     /**
      * print copyrights to console.
-     *  
+     * 
      */
     public static void printCopyrights() {
         System.out.println("JRandTest (C) Zur Aougav <aougav@hotmail.com>, 2005");
     }
 
     /**
-     * read list of tests from property file named alltests.txt.
-     * <p>
-     * Property file contains:
-     * <p>
-     * shortname=classname
-     * <p>
-     * where shortname will be displayed toend user in GUI window.
-     * <p>
-     * classname is the real class name of the test to be laoded dynamically and
-     * run (as Base interface).
-     *  
+     * read list of tests from property file named alltests.txt. <p>
+     * Property file contains: <p> shortname=classname <p> where shortname
+     * will be displayed toend user in GUI window. <p> classname is the
+     * real class name of the test to be laoded dynamically and run (as
+     * Base interface).
+     * 
      */
     private static Vector<String[]> loadPropFile(String fn) {
         Vector<String> v = new Vector<String>(); // to keep correct strings of lines
@@ -201,17 +195,14 @@ public class CmdLine {
     }
 
     /**
-     * Simple session: <br>
-     * 1. get input filename/algorithm for all tests (or "exit") <br>
-     * 2. repeat till "exit" <br>
-     * 2.1 display list of tests <br>
-     * 2.2 get requested test number <br>
-     * 2.3 run the test on the input file <br>
+     * Simple session: <br> 1. get input filename/algorithm for all tests
+     * (or "exit") <br> 2. repeat till "exit" <br> 2.1 display list of
+     * tests <br> 2.2 get requested test number <br> 2.3 run the test on
+     * the input file <br>
      * 
-     * @param args
-     *            not used.
-     * @throws Exception
-     *             generally are grabbed, but some I/O Exceptions are thrown.
+     * @param args not used.
+     * @throws Exception generally are grabbed, but some I/O Exceptions are
+     *             thrown.
      */
     public void runCmd(String[] args) throws Exception {
         printCopyrights();
@@ -460,7 +451,6 @@ public class CmdLine {
                 /*
                  * run test!
                  */
-                ob.help();
                 ob.test(algoname + " @ " + filename);
 
             } catch (Exception e) {

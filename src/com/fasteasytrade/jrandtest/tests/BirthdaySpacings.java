@@ -36,37 +36,27 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * BirthdaySpacings from DieHard
+ * The Birthday Spacings Test. Choose m birthdays in a \"year\" of n days.
+ * List the spacings between the birthdays. Let j be the number of values
+ * that occur more than once in that list, then j is asymptotically Poisson
+ * distributed with mean m^3/(4n). Experience shows n must be quite large,
+ * say n>= 2^18, for comparing the results to the Poisson distribution with
+ * that mean. This test uses n=2^24 and m=2^10, so that the underlying
+ * distribution for j is taken to be Poisson with lambda=2^30/(2^26)=16. A
+ * sample of 200 j's is taken, and a chi-square goodness of fit test
+ * provides a p value. The first test uses bits 1-24 (counting from the
+ * left) from integers in the specified file. Then the file is closed and
+ * reopened, then bits 2-25 of the same integers are used to provide
+ * birthdays, and so on to bits 9-32. Each set of bits provides a p-value,
+ * and the nine p-values provide a sample for a KSTEST.
+ * 
+ * <p>Originally from DieHard.</p>
  * 
  * @author Zur Aougav
- *  
  */
 public class BirthdaySpacings extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|           This is the BIRTHDAY SPACINGS TEST                |");
-        log.info("\t|Choose m birthdays in a \"year\" of n days.  List the spacings |");
-        log.info("\t|between the birthdays.  Let j be the number of values that   |");
-        log.info("\t|occur more than once in that list, then j is asymptotically  |");
-        log.info("\t|Poisson distributed with mean m^3/(4n).  Experience shows n  |");
-        log.info("\t|must be quite large, say n>=2^18, for comparing the results  |");
-        log.info("\t|to the Poisson distribution with that mean.  This test uses  |");
-        log.info("\t|n=2^24 and m=2^10, so that the underlying distribution for j |");
-        log.info("\t|is taken to be Poisson with lambda=2^30/(2^26)=16. A sample  |");
-        log.info("\t|of 200 j''s is taken, and a chi-square goodness of fit test  |");
-        log.info("\t|provides a p value.  The first test uses bits 1-24 (counting |");
-        log.info("\t|from the left) from integers in the specified file.  Then the|");
-        log.info("\t|file is closed and reopened, then bits 2-25 of the same inte-|");
-        log.info("\t|gers are used to provide birthdays, and so on to bits 9-32.  |");
-        log.info("\t|Each set of bits provides a p-value, and the nine p-values   |");
-        log.info("\t|provide a sample for a KSTEST.                               |");
-        log.info("\t|------------------------------------------------------------ |\n");
-
-    }
 
     @Override
     public void test(String filename) throws Exception {

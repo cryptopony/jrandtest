@@ -39,25 +39,18 @@ import java.util.logging.Logger;
 import com.fasteasytrade.jrandtest.utils.Derf;
 
 /**
- * Count1Bit class extends Base
- * <p>
- * count each bit, the 0's and 2's
- *
- * @author Zur Aougav 
+ * Counts individual bits. It counts the bits, 0's and 1's. The sums and
+ * the differences are reported. The expection is 50%, each sum from total
+ * bits.
+ * 
+ * <p>Originally from DieHard.</p>
+ * 
+ * @author Zur Aougav
  */
 
 public class Count1Bit extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is part of the Count test.  It counts the bits, 0's |");
-        log.info("\t|and 1's. The sums and the differences are reported. The      |");
-        log.info("\t|expection is 50%, each sum from total bits.                  |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     /**
      * @param filename input file with random data

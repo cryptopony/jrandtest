@@ -37,20 +37,25 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Squeeze from DieHard
- * <p>
- * SQUEEZE TEST:  How many iterations of k=k*uni()+1 are required
- * to squeeze k down to 1, starting with k=2147483647=2^31-1.
- * <p>
- * The exact distribution of the required j is used, with
- * a chi-square test based on no_trials=100,000 tries.
- * <p>
- * The mean of j is 23.064779, with variance 23.70971151.
- *
+ * The Squeeze test.
+ * 
+ * Random integers are floated to get uniforms on [0,1). Starting with
+ * k=2^31-1=2147483647, the test finds j, the number of iterations
+ * necessary to reduce k to 1 using the reduction k=ceiling(k*U), with U
+ * provided by floating integers from the file being tested. Such j''s are
+ * found 100,000 times, then counts for the number of times j was
+ * <=6,7,...,47,>=48 are used to provide a chi-square test for cell
+ * frequencies.
+ * 
+ * <p>Originally from DieHard.</p>
+ * 
  * @author Zur Aougav
  */
 
 public class Squeeze extends Base {
+
+    final private Logger log = Logger.getLogger(getClass().getName());
+
     final int no_trials = 100000;
     final double ratio = no_trials / 1000000.0;
     final double std = Math.sqrt(84);
@@ -63,21 +68,6 @@ public class Squeeze extends Base {
     double[] Ef = { 21.03, 57.79, 175.54, 467.32, 1107.83, 2367.84, 4609.44, 8241.16, 13627.81, 20968.49, 30176.12, 40801.97, 52042.03, 62838.28, 72056.37, 78694.51, 82067.55, 81919.35, 78440.08, 72194.12, 63986.79, 54709.31, 45198.52, 36136.61, 28000.28, 21055.67, 15386.52, 10940.20, 7577.96, 5119.56, 3377.26, 2177.87, 1374.39, 849.70, 515.18, 306.66, 179.39, 103.24, 58.51, 32.69, 18.03, 9.82, 11.21 };
     double tmp;
     double chsq = 0;
-    final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|                 This is the SQUEEZE test                    |");
-        log.info("\t| Random integers are floated to get uniforms on [0,1). Start-|");
-        log.info("\t| ing with k=2^31-1=2147483647, the test finds j, the number  |");
-        log.info("\t| of iterations necessary to reduce k to 1 using the reduction|");
-        log.info("\t| k=ceiling(k*U), with U provided by floating integers from   |");
-        log.info("\t| the file being tested.  Such j''s are found 100,000 times,  |");
-        log.info("\t| then counts for the number of times j was <=6,7,...,47,>=48 |");
-        log.info("\t| are used to provide a chi-square test for cell frequencies. |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     @Override
     public void test(String filename) throws Exception {

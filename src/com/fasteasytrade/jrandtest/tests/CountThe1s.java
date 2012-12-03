@@ -36,7 +36,20 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * CountThe1s from DieHard
+ * Counts the 1 bits. Consider the file under test as a stream of bytes
+ * (four per 32 bit integer). Each byte can contain from 0 to 8 1's, with
+ * probabilities 1,8,28,56,70,56,28,8,1 over 256. Now let the stream of
+ * bytes provide a string of overlapping 5-letter words, each "letter"
+ * taking values A,B,C,D,E. The letters are determined by the number of 1's
+ * in a byte: 0,1,or 2 yield A, 3 yields B, 4 yields C, 5 yields D and 6,7
+ * or 8 yield E. Thus we have a monkey at a typewriter hitting five keys
+ * with various probabilities (37,56,70,56,37 over 256). There are 5^5
+ * possible 5-letter words, and from a string of 256,000 (over-lapping)
+ * 5-letter words, counts are made on the frequencies for each word. The
+ * quadratic form in the weak inverse of the covariance matrix of the cell
+ * counts provides a chisquare test: Q5-Q4, the difference of the naive
+ * Pearson sums of (OBS-EXP)^2/EXP on counts for 5- and 4-letter cell
+ * counts.
  * 
  * @author Zur Aougav
  */
@@ -68,33 +81,10 @@ public class CountThe1s extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
 
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is the COUNT-THE-1''s TEST on a stream of bytes.    |");
-        log.info("\t|Consider the file under test as a stream of bytes (four per  |");
-        log.info("\t|32 bit integer).  Each byte can contain from 0 to 8 1''s,    |");
-        log.info("\t|with probabilities 1,8,28,56,70,56,28,8,1 over 256.  Now let |");
-        log.info("\t|the stream of bytes provide a string of overlapping  5-letter|");
-        log.info("\t|words, each \"letter\" taking values A,B,C,D,E. The letters are|");
-        log.info("\t|determined by the number of 1''s in a byte: 0,1,or 2 yield A,|");
-        log.info("\t|3 yields B, 4 yields C, 5 yields D and 6,7 or 8 yield E. Thus|");
-        log.info("\t|we have a monkey at a typewriter hitting five keys with vari-|");
-        log.info("\t|ous probabilities (37,56,70,56,37 over 256).  There are 5^5  |");
-        log.info("\t|possible 5-letter words, and from a string of 256,000 (over- |");
-        log.info("\t|lapping) 5-letter words, counts are made on the frequencies  |");
-        log.info("\t|for each word.   The quadratic form in the weak inverse of   |");
-        log.info("\t|the covariance matrix of the cell counts provides a chisquare|");
-        log.info("\t|test: Q5-Q4, the difference of the naive Pearson sums of     |");
-        log.info("\t|(OBS-EXP)^2/EXP on counts for 5- and 4-letter cell counts.   |");
-        log.info("\n\t|-------------------------------------------------------------|\n");
-
-    }
-
     /**
      * to support CountThe1s as stream (current class) and also
-     * CountThe1sSpecificBytes, we use differrent help() and setParameters()
-     * methods.
+     * CountThe1sSpecificBytes, we use differrent help() and
+     * setParameters() methods.
      */
     public void setParameters() {
         testStream = true;

@@ -37,11 +37,19 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Run from DieHard
- * <p>
- * Run class extends Base<br>
- * count the number of runs and compute the statistics<br>
- * Algorithm AS 157 Appl. Statist. (1981) vol. 30, No. 1
+ * The Runs test.
+ * 
+ * It counts runs up, and runs down, in a sequence of uniform [0,1)
+ * variables, obtained by float- ing the 32-bit integers in the specified
+ * file. This example shows how runs are counted: .123, .357, .789, .425,
+ * .224, .416, .95 contains an up-run of length 3, a down-run of length 2
+ * and an up-run of (at least) 2, depending on the next values. The
+ * covariance matrices for the runs-up and runs-down are well known,
+ * leading to chisquare tests for quadratic forms in the weak inverses of
+ * the covariance matrices. Runs are counted for sequences of length
+ * 10,000. This is done ten times. Then another three sets of ten.
+ * 
+ * <p>Originally from DieHard.</p>
  * 
  * @author Zur Aougav
  */
@@ -131,24 +139,6 @@ public class Run extends Base {
         dstat[0] /= length;
 
     } // end udruns
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is the RUNS test.  It counts runs up, and runs down,|");
-        log.info("\t|in a sequence of uniform [0,1) variables, obtained by float- |");
-        log.info("\t|ing the 32-bit integers in the specified file. This example  |");
-        log.info("\t|shows how runs are counted: .123,.357,.789,.425,.224,.416,.95|");
-        log.info("\t|contains an up-run of length 3, a down-run of length 2 and an|");
-        log.info("\t|up-run of (at least) 2, depending on the next values.  The   |");
-        log.info("\t|covariance matrices for the runs-up and runs-down are well   |");
-        log.info("\t|known, leading to chisquare tests for quadratic forms in the |");
-        log.info("\t|weak inverses of the covariance matrices.  Runs are counted  |");
-        log.info("\t|for sequences of length 10,000.  This is done ten times. Then|");
-        log.info("\t|another three sets of ten.                                   |");
-        log.info("\t|-------------------------------------------------------------|\n");
-
-    }
 
     /**
      * @param filename input file with random data

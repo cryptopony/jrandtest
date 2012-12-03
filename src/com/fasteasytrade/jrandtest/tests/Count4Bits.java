@@ -37,25 +37,15 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Count4Bits class extends Base
- * <p>
- * count each 4 bit, half byte.
+ * Counts consecutive 4-bit words. The sums and differences are reported.
+ * Each of the four 4-bit words should appear 1/16th of the time.
  * 
- * @author Zur Aougav 
+ * @author Zur Aougav
  */
 
 public class Count4Bits extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is part of the Count test.  It counts consecutive 4 |");
-        log.info("\t|bits. The sums and the differences are reported. The         |");
-        log.info("\t|expection is 1/16, each sum from total 4 bits.               |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     /**
      * @param filename input file with random data

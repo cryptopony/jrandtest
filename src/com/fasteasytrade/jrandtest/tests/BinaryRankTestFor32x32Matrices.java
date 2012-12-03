@@ -33,32 +33,18 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
-import java.util.logging.Logger;
 
 /**
- * BinaryRankTestFor32x32Matrices from DieHard *
+ * The Binary Rank Test for 32x32 matrices. A random 32x32 binary matrix is
+ * formed, each row a 32-bit random integer. The rank is determined. That
+ * rank can be from 0 to 32, ranks less than 29 are rare, and their counts
+ * are pooled with those for rank 29. Ranks are found for 40,000 such
+ * random matrices and a chisquare test is performed on counts for ranks
+ * 32, 31, 30 and <= 29.
  * 
  * @author Zur Aougav
  */
 public class BinaryRankTestFor32x32Matrices extends BinaryRankTestFor6x8Matrices {
-
-    final private Logger log = Logger.getLogger(getClass().getName());
-
-    /*
-     * @see com.fasteasytrade.JRandTest.Tests.Base#help()
-     */
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|This is the BINARY RANK TEST for 32x32 matrices. A random 32x|");
-        log.info("\t|32 binary matrix is formed, each row a 32-bit random integer.|");
-        log.info("\t|The rank is determined. That rank can be from 0 to 32, ranks |");
-        log.info("\t|less than 29 are rare, and their counts are pooled with those|");
-        log.info("\t|for rank 29.  Ranks are found for 40,000 such random matrices|");
-        log.info("\t|and a chisquare test is performed on counts for ranks  32,31,|");
-        log.info("\t|30 and <=29.                                                 |");
-        log.info("\t|-------------------------------------------------------------|");
-    }
 
     @Override
     public void setParameters() {

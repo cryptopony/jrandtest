@@ -36,42 +36,25 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Overlapping20TuplesBitstream from DieHard
- * <p>
- * THE OVERLAPPING 20-tuples TEST  BITSTREAM, 20 BITS PER WORD, N words
- *  <p>
- * If n=2^22, should be 19205.3 missing 20-letter words, sigma 167.
- *  <p>
- * If n=2^21, should be 141909 missing 20-letter words, sigma 428.
- *  <p>
- * If n=2^20, should be 385750 missing 20-letter words, sigma 512.
+ * The BitStream test.
+ * 
+ * The file under test is viewed as a stream of bits. Call them b1,b2,... .
+ * Consider an alphabet with two \"letters\", 0 and 1 and think of the
+ * stream of bits as a succession of 20-letter "words", overlapping. Thus
+ * the first word is b1b2...b20, the second is b2b3...b21, and so on. The
+ * bitstream test counts the number of missing 20-letter (20-bit) words in
+ * a string of 2^21 overlapping 20-letter words. There are 2^20 possible 20
+ * letter words. For a truly random string of 2^21+19 bits, the number of
+ * missing words j should be (very close to) normally distributed with mean
+ * 141,909 and sigma 428. Thus (j-141909)/428 should be a standard normal
+ * variate (z score) that leads to a uniform [0,1) p value. The test is
+ * repeated twenty times.
  * 
  * @author Zur Aougav
- * 
  */
 public class Overlapping20TuplesBitstream extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|                  THE BITSTREAM TEST                         |");
-        log.info("\t|The file under test is viewed as a stream of bits. Call them |");
-        log.info("\t|b1,b2,... .  Consider an alphabet with two \"letters\", 0 and 1|");
-        log.info("\t|and think of the stream of bits as a succession of 20-letter |");
-        log.info("\t|\"words\", overlapping.  Thus the first word is b1b2...b20, the|");
-        log.info("\t|second is b2b3...b21, and so on.  The bitstream test counts  |");
-        log.info("\t|the number of missing 20-letter (20-bit) words in a string of|");
-        log.info("\t|2^21 overlapping 20-letter words.  There are 2^20 possible 20|");
-        log.info("\t|letter words.  For a truly random string of 2^21+19 bits, the|");
-        log.info("\t|number of missing words j should be (very close to) normally |");
-        log.info("\t|distributed with mean 141,909 and sigma 428.  Thus           |");
-        log.info("\t| (j-141909)/428 should be a standard normal variate (z score)|");
-        log.info("\t|that leads to a uniform [0,1) p value.  The test is repeated |");
-        log.info("\t|twenty times.                                                |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     @Override
     public void test(String filename) throws Exception {

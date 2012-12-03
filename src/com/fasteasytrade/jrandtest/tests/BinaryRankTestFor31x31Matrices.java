@@ -33,30 +33,21 @@
  */
 package com.fasteasytrade.jrandtest.tests;
 
-import java.util.logging.Logger;
 
 /**
- * BinaryRankTestFor31x31Matrices from DieHard
+ * The Binary Rank Test for 31x31 matrices. The leftmost 31 bits of 31
+ * random integers from the test sequence are used to form a 31x31 binary
+ * matrix over the field {0,1}. The rank is determined. That rank can be
+ * from 0 to 31, but ranks < 28 are rare, and their counts are pooled with
+ * those for rank 28. Ranks are found for 40,000 such random matrices and a
+ * chisquare test is performed on counts for ranks 31, 30, 28 and <= 28.
+ * 
+ * <p>Originally from DieHard.</p>
  * 
  * @author Zur Aougav
- *  
+ * 
  */
 public class BinaryRankTestFor31x31Matrices extends BinaryRankTestFor6x8Matrices {
-
-    final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|This is the BINARY RANK TEST for 31x31 matrices. The leftmost|");
-        log.info("\t|31 bits of 31 random integers from the test sequence are used|");
-        log.info("\t|to form a 31x31 binary matrix over the field {0,1}. The rank |");
-        log.info("\t|is determined. That rank can be from 0 to 31, but ranks< 28  |");
-        log.info("\t|are rare, and their counts are pooled with those for rank 28.|");
-        log.info("\t|Ranks are found for 40,000 such random matrices and a chisqu-|");
-        log.info("\t|are test is performed on counts for ranks 31,30,28 and <=28. |");
-        log.info("\t|-------------------------------------------------------------|");
-    }
 
     @Override
     public void setParameters() {

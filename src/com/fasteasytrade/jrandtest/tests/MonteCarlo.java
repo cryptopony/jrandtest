@@ -37,14 +37,11 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * MonteCarlo class extends Base
- * <p>
- * Test Monte Carlo. Read x 16 bits, y 16 bits.<br>
- * if (x,y) distance is larger then (256,256), we count<br> 
- * a miss... the (x,y) point is not in the circle(256).<br>
- * Else, we count success.
- * <p> 
- * piValue is (success / num_of_points) * 4.
+ * The Monte Carlo test. Read x 16 bits, y 16 bits. if (x,y) distance is
+ * larger then (256,256), we count a miss... the (x,y) point is not in the
+ * circle(256). Else, we count success.
+ * 
+ * <p> piValue is (success / num_of_points) * 4.
  * 
  * @author Zur Aougav
  */
@@ -52,15 +49,6 @@ import java.util.logging.Logger;
 public class MonteCarlo extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is the Monte Carlo test. We read 16 bits as X, and  |");
-        log.info("\t|16 bits as Y. If (X,Y) point in circle(256) we count success.|");
-        log.info("\t|piValue is (success / num_of_points) * 4.                    |");
-        log.info("\t|-------------------------------------------------------------|");
-    }
 
     /**
      * @param filename input file with random data

@@ -40,9 +40,8 @@ import com.fasteasytrade.jrandtest.io.RandomStream;
 import com.fasteasytrade.jrandtest.utils.Derf;
 
 /**
- * Base class for all test classes.
- * <p>
- * Contains common methods and handle input/output list of listeners.
+ * Base class for all test classes. <p> Contains common methods and handle
+ * input/output list of listeners.
  * 
  * @author Zur Aougav
  */
@@ -66,11 +65,9 @@ public abstract class Base {
     /**
      * Bubble sort array
      * 
-     * @param arr
-     *            is a double array
-     * @param dim
-     *            only first dim entries are sorted in array arr. So part of the
-     *            array can be sorted.
+     * @param arr is a double array
+     * @param dim only first dim entries are sorted in array arr. So part
+     *            of the array can be sorted.
      */
     public void qsort(double[] arr, int dim) {
         int i, j;
@@ -90,11 +87,9 @@ public abstract class Base {
     /**
      * Bubble sort array
      * 
-     * @param arr
-     *            is an int array
-     * @param dim
-     *            only first dim entries are sorted in array arr. So part of the
-     *            array can be sorted.
+     * @param arr is an int array
+     * @param dim only first dim entries are sorted in array arr. So part
+     *            of the array can be sorted.
      */
     public void qsort(int[] arr, int dim) {
         int i, j;
@@ -112,10 +107,8 @@ public abstract class Base {
     }
 
     /**
-     * @author Zur Aougav
-     *         <p>
-     *         point class is used by MinimumDistance
-     *  
+     * @author Zur Aougav <p> point class is used by MinimumDistance
+     * 
      */
     public class point {
         public double x;
@@ -126,11 +119,9 @@ public abstract class Base {
     /**
      * Bubble sort array of points (of class point),
      * 
-     * @param arr
-     *            is a point array
-     * @param dim
-     *            only first dim entries are sorted in array arr. So part of the
-     *            array can be sorted.
+     * @param arr is a point array
+     * @param dim only first dim entries are sorted in array arr. So part
+     *            of the array can be sorted.
      */
     public void qsort(point[] arr, int dim) {
         int i, j;
@@ -171,8 +162,7 @@ public abstract class Base {
     /**
      * Returns double as string 10.4: zzzzz.dddd.
      * 
-     * @param d
-     *            double number
+     * @param d double number
      * 
      * @return String with 4 decimal places (as in C "%10.4f")
      */
@@ -294,10 +284,8 @@ public abstract class Base {
     /**
      * Returns double Standard Deviation
      * 
-     * @param data
-     *            array of doubles
-     * @param avg
-     *            avg of data array
+     * @param data array of doubles
+     * @param avg avg of data array
      */
     public static double stdev(double[] data, double avg) {
         double s1 = 0;
@@ -344,7 +332,7 @@ public abstract class Base {
      * @return vector of 3 doubles: (1) degree of freedom, (2) chi_fit (3)
      *         piValue
      * 
-     * used by Birthday Spacings Test from diehard
+     *         used by Birthday Spacings Test from diehard
      */
     public double[] Poisson_fit(double lambda, int[] obs, int no_obs) {
         int dim = no_obs / 5;
@@ -395,8 +383,7 @@ public abstract class Base {
     }
 
     /**
-     * @param data
-     *            input array of doubles
+     * @param data input array of doubles
      * @return avg of all enties in data array
      */
     public static double avg(double[] data) {
@@ -430,21 +417,18 @@ public abstract class Base {
     RandomStream rs = null;
 
     /**
-     * register RandomStream interface.
-     * <p>
-     * Supports only one random stream.
+     * register RandomStream interface. <p> Supports only one random
+     * stream.
      * 
-     * @param rs
-     *            register radom stream interface
+     * @param rs register radom stream interface
      */
     public void registerInput(RandomStream rs) {
         this.rs = rs;
     }
 
     /**
-     * checks if input random stream is open.
-     * <p>
-     * random stream isOpen method is used to return boolean.
+     * checks if input random stream is open. <p> random stream isOpen
+     * method is used to return boolean.
      * 
      * @return true if input random stream is open, else false.
      */
@@ -553,8 +537,8 @@ public abstract class Base {
     }
 
     /**
-     * read one int from registered input random stream and divide it by (2^32 -
-     * 1).
+     * read one int from registered input random stream and divide it by
+     * (2^32 - 1).
      * 
      * @return double number netween 0 and 1.
      */
@@ -563,13 +547,10 @@ public abstract class Base {
     }
 
     /**
-     * KStest
-     * <p>
-     * This test is based on a modified Kolmogorov-Smirnov method.
-     * <p>
-     * The test-statistic is (FN(X)-X)**2/(X*(1-X)) (Anderson-Darling) where X
-     * is a uniform under null hypothesis. FN(X) is the empirical distribution
-     * of X.
+     * KStest <p> This test is based on a modified Kolmogorov-Smirnov
+     * method. <p> The test-statistic is (FN(X)-X)**2/(X*(1-X))
+     * (Anderson-Darling) where X is a uniform under null hypothesis. FN(X)
+     * is the empirical distribution of X.
      */
     public double KStest(double[] x, int dim) {
         int i;
@@ -592,9 +573,8 @@ public abstract class Base {
     }
 
     /**
-     * c.d.f of Anderson-Darling statistic (a quick algorithm)
-     * <p>
-     * Used by KStest
+     * c.d.f of Anderson-Darling statistic (a quick algorithm) <p> Used by
+     * KStest
      */
     private static double AD(double z) {
         if (z < .01) {
@@ -617,15 +597,9 @@ public abstract class Base {
     } // end AD
 
     /**
-     * help method to be implemented by each test class.
-     */
-    public abstract void help();
-
-    /**
      * test method to be implemented by each test class.
      * 
-     * @param filename
-     *            is the filename to be read or the algorithm name.
+     * @param filename is the filename to be read or the algorithm name.
      */
     public abstract void test(String filename) throws Exception;
 

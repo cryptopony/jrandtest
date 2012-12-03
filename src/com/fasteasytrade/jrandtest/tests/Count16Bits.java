@@ -37,24 +37,14 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Count16Bits class extends Base
- * <p>
- * count 2 bytes. 16 bits.
- *
+ * Counts consecutive 16 bits.
+ * 
  * @author Zur Aougav
  * */
 
 public class Count16Bits extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is part of the Count test.  It counts consecutive   |");
-        log.info("\t|16 bits.                                                     |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     /**
      * @param filename input file with random data

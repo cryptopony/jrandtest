@@ -36,8 +36,22 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * OverlappingPairsSparseOccupancy (OPSO) from DieHard
- *
+ * The Overlapping-Pairs-Sparse-Occupancy (OPSO) test.
+ * 
+ * The OPSO test considers 2-letter words from an alphabet of 1024 letters.
+ * Each letter is determined by a specified ten bits from a 32-bit integer
+ * in the sequence to be tested. OPSO generates 2^21 (overlapping) 2-letter
+ * words (from 2^21+1 "keystrokes") and counts the number of missing
+ * words---that is 2-letter words which do not appear in the entire
+ * sequence. That count should be very close to normally distributed with
+ * mean 141,909, sigma 290. Thus (missingwrds-141909)/290 should be a
+ * standard normal variable. The OPSO test takes 32 bits at a time from the
+ * test file and uses a designated set of ten consecutive bits. It then
+ * restarts the file for the next de- signated 10 bits, and so on.
+ * 
+ * 
+ * <p>Originally from DieHard.</p>
+ * 
  * @author Zur Aougav
  */
 public class OverlappingPairsSparseOccupancy extends Base {
@@ -61,25 +75,6 @@ public class OverlappingPairsSparseOccupancy extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     //	end used by get_w
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|        OPSO means Overlapping-Pairs-Sparse-Occupancy        |");
-        log.info("\t|The OPSO test considers 2-letter words from an alphabet of   |");
-        log.info("\t|1024 letters.  Each letter is determined by a specified ten  |");
-        log.info("\t|bits from a 32-bit integer in the sequence to be tested. OPSO|");
-        log.info("\t|generates  2^21 (overlapping) 2-letter words  (from 2^21+1   |");
-        log.info("\t|\"keystrokes\")  and counts the number of missing words---that |");
-        log.info("\t|is 2-letter words which do not appear in the entire sequence.|");
-        log.info("\t|That count should be very close to normally distributed with |");
-        log.info("\t|mean 141,909, sigma 290. Thus (missingwrds-141909)/290 should|");
-        log.info("\t|be a standard normal variable. The OPSO test takes 32 bits at|");
-        log.info("\t|a time from the test file and uses a designated set of ten   |");
-        log.info("\t|consecutive bits. It then restarts the file for the next de- |");
-        log.info("\t|signated 10 bits, and so on.                                 |");
-        log.info("\t|------------------------------------------------------------ |\n");
-    }
 
     /**
      * Different parameters set by 3 algorithms: OPSO, OQSO and DNA.
@@ -160,7 +155,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
     }
 
     /**
-     * get a word from specific bits 
+     * get a word from specific bits
      */
     public int get_w(int rt) {
         wd <<= bits_pl;

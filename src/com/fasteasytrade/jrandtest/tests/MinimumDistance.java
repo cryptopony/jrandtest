@@ -37,10 +37,21 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * MinimumDistance from DieHard
+ * The Minimum Distance Test.
+ * 
+ * It does this 100 times: choose n=8000 random points in a square of side
+ * 10000. Find d, the minimum distance between the (n^2-n)/2 pairs of
+ * points. If the points are truly independent uniform, then d^2, the
+ * square of the minimum distance should be (very close to) exponentially
+ * distributed with mean .995 . Thus 1-exp(-d^2/.995) should be uniform on
+ * [0,1) and a KSTEST on the resulting 100 values serves as a test of
+ * uniformity for random points in the square. Test numbers=0 mod 5 are
+ * printed but the KSTEST is based on the full set of 100 random choices of
+ * 8000 points in the 10000x10000 square.
+ * 
+ * <p>Originally from DieHard.</p>
  * 
  * @author Zur Aougav
- * 
  */
 public class MinimumDistance extends Base {
 
@@ -49,24 +60,6 @@ public class MinimumDistance extends Base {
     final int side = 10000;
     final double ratio = 10000.0 / UNIMAX;
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|              THE MINIMUM DISTANCE TEST                      |");
-        log.info("\t|It does this 100 times:  choose n=8000 random points in a    |");
-        log.info("\t|square of side 10000.  Find d, the minimum distance between  |");
-        log.info("\t|the (n^2-n)/2 pairs of points.  If the points are truly inde-|");
-        log.info("\t|pendent uniform, then d^2, the square of the minimum distance|");
-        log.info("\t|should be (very close to) exponentially distributed with mean|");
-        log.info("\t|.995 .  Thus 1-exp(-d^2/.995) should be uniform on [0,1) and |");
-        log.info("\t|a KSTEST on the resulting 100 values serves as a test of uni-|");
-        log.info("\t|formity for random points in the square. Test numbers=0 mod 5|");
-        log.info("\t|are printed but the KSTEST is based on the full set of 100   |");
-        log.info("\t|random choices of 8000 points in the 10000x10000 square.     |");
-        log.info("\t|-------------------------------------------------------------|\n");
-
-    }
 
     @Override
     public void test(String filename) throws Exception {

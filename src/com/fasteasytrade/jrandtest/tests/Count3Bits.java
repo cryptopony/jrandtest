@@ -37,24 +37,14 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Count3Bits class extends Base
- * <p>
- * count 3 bits.
+ * Counts consecutive 3-bit words. The sums and differences are reported.
  * 
- * @author Zur Aougav 
+ * @author Zur Aougav
  */
 
 public class Count3Bits extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is part of the Count test.  It counts consecutive   |");
-        log.info("\t|3 bits.                                                      |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     /**
      * @param filename input file with random data

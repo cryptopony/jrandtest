@@ -37,25 +37,17 @@ package com.fasteasytrade.jrandtest.tests;
 import java.util.logging.Logger;
 
 /**
- * Count2Bits class extends Base
- * <p>
- * count each bit, the 0's and 2's
- *
- * @author Zur Aougav 
+ * Counts consecutive 2-bit words. The sums and differences are reported.
+ * Each of the four 2-bit words should appear 25% of the time.
+ * 
+ * <p>Originally from DieHard.</p>
+ * 
+ * @author Zur Aougav
  */
 
 public class Count2Bits extends Base {
 
     final private Logger log = Logger.getLogger(getClass().getName());
-
-    @Override
-    public void help() {
-        log.info("\n\t|-------------------------------------------------------------|");
-        log.info("\t|    This is part of the Count test.  It counts consecutive 2 |");
-        log.info("\t|bits. The sums and the differences are reported. The         |");
-        log.info("\t|expection is 25%, each sum from total 2 bits.                |");
-        log.info("\t|-------------------------------------------------------------|\n");
-    }
 
     /**
      * @param filename input file with random data
