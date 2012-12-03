@@ -144,7 +144,7 @@ public class Run extends Base {
     } // end udruns
 
     @Override
-    public Result test(Map<String,String> details) throws Exception {
+    protected Result test(Map<String,String> details) throws Exception {
         final int no_sets = 2;
         final int no_seqs = 10;
         final int length = 10000;

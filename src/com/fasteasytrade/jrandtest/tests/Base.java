@@ -65,6 +65,6 @@ public abstract class Base {
     /**
      * test method to be implemented by each test class.
      */
-    public abstract Result test(Map<String,String> details) throws Exception;
+    protected abstract Result test(Map<String,String> details) throws Exception;
 
 }

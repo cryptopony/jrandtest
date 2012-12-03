@@ -90,7 +90,7 @@ public class OverlappingPairsSparseOccupancy extends Base {
     }
 
     @Override
-    public Result test(Map<String,String> details) {
+    protected Result test(Map<String,String> details) {
         int j;
         int u, l;
         int wd;

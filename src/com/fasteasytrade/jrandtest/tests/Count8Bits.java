@@ -52,7 +52,7 @@ public class Count8Bits extends Base {
     final private Logger log = Logger.getLogger(getClass().getName());
 
     @Override
-    public Result test(Map<String,String> details) throws Exception {
+    protected Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 256;
         double[] v1 = new double[no_seqs]; // count each byte, 0 .. 255		
         long length = 0;

@@ -58,7 +58,7 @@ public class Count1Bit extends Base {
     /**
      */
     @Override
-    public Result test(Map<String,String> details) throws Exception {
+    protected Result test(Map<String,String> details) throws Exception {
         final int no_seqs = 2;
         double[] v4 = new double[no_seqs]; // count bit 0's and 1's
         int j;
