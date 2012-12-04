@@ -36,7 +36,6 @@ package com.fasteasytrade.jrandtest.tests;
 
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Logger;
 
 import com.fasteasytrade.jrandtest.io.RandomStream;
 
@@ -48,8 +47,6 @@ import com.fasteasytrade.jrandtest.io.RandomStream;
  */
 
 public abstract class Base implements RandomnessTest {
-
-    final Logger log2 = Logger.getLogger(Base.class.getName());
 
     RandomStream rs = null;
 
